@@ -23,9 +23,11 @@ public class Team5181Robot extends IterativeRobot {
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
-    Joystick js1 = new Joystick(1); //Construct joystick object with usb index 1.
+    Joystick js1; 
     public void robotInit() {
-
+        
+        js1 = new Joystick(1); //Construct joystick object with usb index 1.
+        
     }
 
     /**
