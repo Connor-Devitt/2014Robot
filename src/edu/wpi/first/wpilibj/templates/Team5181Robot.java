@@ -5,6 +5,8 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
+//comment
+
 package edu.wpi.first.wpilibj.templates;
 
 
