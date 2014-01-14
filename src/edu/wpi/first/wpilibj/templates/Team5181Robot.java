@@ -10,6 +10,7 @@ package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Timer;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -19,15 +20,18 @@ import edu.wpi.first.wpilibj.Joystick;
  * directory.
  */
 public class Team5181Robot extends IterativeRobot {
+    
+    //Declarations
+    Joystick js1;
+    Timer timer;
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
-    Joystick js1; 
     public void robotInit() {
         
         js1 = new Joystick(1); //Construct joystick object with usb index 1.
-        
+        timer = new Timer();
     }
 
     /**
