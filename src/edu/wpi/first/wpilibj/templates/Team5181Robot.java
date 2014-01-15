@@ -20,8 +20,9 @@ import edu.wpi.first.wpilibj.RobotDrive;
 public class Team5181Robot extends IterativeRobot {
     
     //Declarations
-    Joystick js1;
+    Joystick joystick;
     RobotDrive robotDrive;
+    
     
     /**
      * This function is run when the robot is first started up and should be
@@ -29,10 +30,14 @@ public class Team5181Robot extends IterativeRobot {
      */
     public void robotInit() {
         
-        js1 = new Joystick(1); //Construct joystick object with usb index 1.
-        robotDrive = new RobotDrive(StaticVars.FRONT_LEFT_MOTOR, StaticVars.REAR_LEFT_MOTOR,
-                                    StaticVars.FRONT_RIGHT_MOTOR, StaticVars.REAR_RIGHT_MOTOR);
-    
+        joystick = new Joystick(StaticVars.JOYSTICK_PORT); //Construct joystick object using JOYSTICK_PORT
+        
+        robotDrive = new RobotDrive(StaticVars.FRONT_LEFT_MOTOR,
+                                    StaticVars.REAR_LEFT_MOTOR,
+                                    StaticVars.FRONT_RIGHT_MOTOR, 
+                                    StaticVars.REAR_RIGHT_MOTOR);
+        
+        
     }
 
     /**
@@ -48,11 +53,12 @@ public class Team5181Robot extends IterativeRobot {
     public void teleopPeriodic() {
         
         //1. get driver station data
-        double radDir = js1.getDirectionRadians();
-        double magnitude = js1.getMagnitude();
+        double degDir = joystick.getDirectionRadians()*180.0/Math.PI;
+        double magnitude = joystick.getMagnitude();
         //2. get sensor data
         //3. process data
         //4. output data
+        robotDrive.mecanumDrive_Polar(magnitude, degDir, 0);    //drive robot with no twist right now.
         
     }
     
