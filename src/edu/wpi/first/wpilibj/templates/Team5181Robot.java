@@ -8,8 +8,6 @@
 package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.RobotDrive;
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
@@ -19,26 +17,15 @@ import edu.wpi.first.wpilibj.RobotDrive;
  */
 public class Team5181Robot extends IterativeRobot {
     
-    //Declarations
-    Joystick joystick;
-    RobotDrive robotDrive;
-    double degDir;
-    double magnitude;
+    //Global Declarations
+    RobotHardware hardware;
     
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
     public void robotInit() {
-        
-        joystick = new Joystick(StaticVars.JOYSTICK_PORT); //Construct joystick object using JOYSTICK_PORT
-        
-        robotDrive = new RobotDrive(StaticVars.FRONT_LEFT_MOTOR,
-                                    StaticVars.REAR_LEFT_MOTOR,
-                                    StaticVars.FRONT_RIGHT_MOTOR, 
-                                    StaticVars.REAR_RIGHT_MOTOR);
-        
-        
+        hardware = new RobotHardware();
     }
 
     /**
@@ -54,12 +41,16 @@ public class Team5181Robot extends IterativeRobot {
     public void teleopPeriodic() {
         
         //1. get driver station data
-        degDir = joystick.getDirectionRadians()*180.0/Math.PI;
-        magnitude = joystick.getMagnitude();
+        
+        //get direction, magnitude, and twist from hardware joystick
+        double direction = hardware.getJoystick().getDirectionRadians()*180.0/Math.PI;
+        double magnitude = hardware.getJoystick().getMagnitude();
+        double twist     = hardware.getJoystick().getTwist();
+        
         //2. get sensor data
         //3. process data
         //4. output data
-        robotDrive.mecanumDrive_Polar(magnitude, degDir, 0);    //drive robot with no twist for now.
+        hardware.getRobotDrive().mecanumDrive_Polar(magnitude, direction, twist);    //drive robot with no twist for now.
         
     }
     
