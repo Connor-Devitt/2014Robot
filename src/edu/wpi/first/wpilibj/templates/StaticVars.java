@@ -11,4 +11,7 @@ public class StaticVars {
     
     //joystick  port number
     public static int JOYSTICK_PORT = 1;
+    
+    //Button Mapping
+    public static int BUTTON_TRIGGER = 1;
 }
