@@ -20,7 +20,7 @@ public class Team5181Robot extends IterativeRobot {
     
     //Declarations
     Joystick js1;
-     /**
+    /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
