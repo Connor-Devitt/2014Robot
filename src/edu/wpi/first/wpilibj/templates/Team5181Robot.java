@@ -8,6 +8,7 @@
 package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
@@ -19,6 +20,7 @@ public class Team5181Robot extends IterativeRobot {
     
     //Global Declarations
     RobotHardware hardware;
+    SmartDashboard dash;
     
     /**
      * This function is run when the robot is first started up and should be
@@ -26,6 +28,7 @@ public class Team5181Robot extends IterativeRobot {
      */
     public void robotInit() {
         hardware = new RobotHardware();
+        dash = new SmartDashboard();
     }
 
     /**
