@@ -45,7 +45,7 @@ public class Team5181Robot extends IterativeRobot {
         //1. get driver station data
         
         //get direction, magnitude, and twist from hardware joystick
-        double direction = hardware.getJoystick().getDirectionRadians()*180.0/Math.PI;
+        double direction = hardware.getJoystick().getDirectionDegrees();
         double magnitude = hardware.getJoystick().getMagnitude();
         double twist     = hardware.getJoystick().getTwist();
         
