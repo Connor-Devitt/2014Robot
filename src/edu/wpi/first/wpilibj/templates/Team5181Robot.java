@@ -37,7 +37,6 @@ public class Team5181Robot extends IterativeRobot {
     public void autonomousPeriodic() {
 
     }
-
     /**
      * This function is called periodically during operator control
      */
@@ -53,7 +52,7 @@ public class Team5181Robot extends IterativeRobot {
         //2. get sensor data
         //3. process data
         //4. output data
-        hardware.getRobotDrive().mecanumDrive_Polar(magnitude, direction, twist);    //drive robot with no twist for now.
+        hardware.getRobotDrive().mecanumDrive_Polar(magnitude, direction, twist);
         
     }
     
