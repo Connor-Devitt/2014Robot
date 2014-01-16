@@ -17,6 +17,10 @@ public class Autonomous {
         this.hardware = hardware;
     }
     
+    public void runAuto(int autoChoice) {
+        auto1();
+    }
+    
     public boolean isTimerStarted() {
         return timerStarted;
     }
