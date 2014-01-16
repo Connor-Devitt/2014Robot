@@ -21,6 +21,7 @@ public class Team5181Robot extends IterativeRobot {
     //Global Declarations
     RobotHardware hardware;
     SmartDashboard dash;
+    Autonomous autonomous;
     
     /**
      * This function is run when the robot is first started up and should be
@@ -29,6 +30,7 @@ public class Team5181Robot extends IterativeRobot {
     public void robotInit() {
         hardware = new RobotHardware();
         dash = new SmartDashboard();
+        autonomous = new Autonomous(hardware);
     }
 
     public void robotDisabled() {
@@ -38,7 +40,10 @@ public class Team5181Robot extends IterativeRobot {
      * This function is called periodically during autonomous
      */
     public void autonomousPeriodic() {
+        if (!autonomous.isTimerStarted())
+                autonomous.startTimer();
         
+        autonomous.runAuto(-1); //negative value because we only have 1 auto function.
     }
     /**
      * This function is called periodically during operator control
