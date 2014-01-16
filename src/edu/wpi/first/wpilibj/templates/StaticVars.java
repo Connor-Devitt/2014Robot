@@ -14,4 +14,7 @@ public class StaticVars {
     
     //Button Mapping
     public static int BUTTON_TRIGGER = 1;
+    
+    //Autonomous drive magnitude
+    public static double DRIVE_MAGNITUDE = 0.5;
 }
