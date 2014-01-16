@@ -31,6 +31,9 @@ public class Team5181Robot extends IterativeRobot {
         dash = new SmartDashboard();
     }
 
+    public void robotDisabled() {
+        
+    }
     /**
      * This function is called periodically during autonomous
      */
