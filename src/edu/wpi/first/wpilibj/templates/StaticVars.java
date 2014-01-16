@@ -14,7 +14,15 @@ public class StaticVars {
     
     //Button Mapping
     public static int BUTTON_TRIGGER = 1;
+    public static int THUMB_BUTTON = 2;
+    public static int BUTTON3 = 3;
+    public static int BUTTON4 = 4;
+    public static int BUTTON5 = 5;
+    public static int BUTTON6 = 6;
     
     //Autonomous drive magnitude
     public static double DRIVE_MAGNITUDE = 0.5;
+    
+    //Autonomous drive timer
+    public static double DRIVE_TIMER = 3;
 }

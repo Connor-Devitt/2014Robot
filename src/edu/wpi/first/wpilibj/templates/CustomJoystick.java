@@ -3,6 +3,7 @@ package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.Joystick;
 
+
 /**
  * This class can be used to optimally tune input values from a joystick.
  * And can be used to dead-band the joystick.

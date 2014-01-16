@@ -44,6 +44,7 @@ public class Team5181Robot extends IterativeRobot {
                 autonomous.startTimer();
         
         autonomous.runAuto(-1); //negative value because we only have 1 auto function.
+        
     }
     /**
      * This function is called periodically during operator control
