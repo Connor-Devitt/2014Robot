@@ -9,18 +9,32 @@ public class Autonomous {
     private String status;
     private boolean timerStarted;
     private static Timer timer;
-    
+    private RobotHardware hardware;
     
     
     public Autonomous(RobotHardware hardware) {
-        
+        status = "shoot";
+        this.hardware = hardware;
     }
     
     public boolean isTimerStarted() {
         return timerStarted;
     }
     
+    public void startTimer() {
+        timer.start();
+    }
+    
     private void auto1() {
+        
+        if (status.equals("drive")) {
+            //drive robot
+            hardware.getRobotDrive().mecanumDrive_Polar(StaticVars.DRIVE_MAGNITUDE, 0, 0);
+        } else {
+            //shoot robot
+            status = "drive";
+            
+        }
         
     }
     
