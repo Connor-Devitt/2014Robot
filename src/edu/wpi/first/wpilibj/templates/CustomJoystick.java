@@ -32,9 +32,9 @@ public class CustomJoystick extends Joystick {
      * @return magnitude of vector
      */
     public double getMagnitude() {
-        if (Math.abs(this.getMagnitude()) < 0.25)
+        if (Math.abs(super.getMagnitude()) < 0.25)
             return 0;
-        return Math.sqrt(Math.abs(this.getMagnitude()));
+        return Math.sqrt(Math.abs(super.getMagnitude()));
     }
     /**
      * Overrides superclass getTwist()
@@ -43,7 +43,7 @@ public class CustomJoystick extends Joystick {
      * @return double
      */
     public double getTwist() {
-        if (Math.abs(this.getTwist()) < 0.6)
+        if (Math.abs(super.getTwist()) < 0.6)
             return 0;
         return super.getTwist();
     }
