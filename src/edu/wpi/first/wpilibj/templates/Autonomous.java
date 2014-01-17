@@ -34,7 +34,7 @@ public class Autonomous {
         if (status.equals("drive")) {
             //drive robot
             startTimer();
-            while (StaticVars.DRIVE_TIMER > 0) { //Robot will drive while the timer is running
+            while (timer.get()<StaticVars.DRIVE_TIMER) { //Robot will drive while the timer is running
             hardware.getRobotDrive().mecanumDrive_Polar(StaticVars.DRIVE_MAGNITUDE, 0, 0);
             } 
         } else {
