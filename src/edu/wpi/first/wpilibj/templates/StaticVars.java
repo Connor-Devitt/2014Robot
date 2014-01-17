@@ -19,10 +19,16 @@ public class StaticVars {
     public static int BUTTON4 = 4;
     public static int BUTTON5 = 5;
     public static int BUTTON6 = 6;
+    public static int BUTTON7 = 7;
+    public static int BUTTON8 = 8;
+    public static int BUTTON9 = 9;
+    public static int BUTTON10 = 10;
+    public static int BUTTON11 = 11;
+    public static int BUTTON12 = 12;
     
     //Autonomous drive magnitude
     public static double DRIVE_MAGNITUDE = 0.5;
     
     //Autonomous drive timer
-    public static double DRIVE_TIMER = 3;
+    public static double DRIVE_TIMER = 3000;
 }
