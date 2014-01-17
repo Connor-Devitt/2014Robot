@@ -15,6 +15,7 @@ public class Autonomous {
     public Autonomous(RobotHardware hardware) {
         status = "shoot";
         this.hardware = hardware;
+        timerStarted = false;
     }
     
     public void runAuto(int autoChoice) {
@@ -27,14 +28,16 @@ public class Autonomous {
     
     public void startTimer() {
         timer.start();
+        timerStarted = true;
     }
     
     private void auto1() {
         
         if (status.equals("drive")) {
             //drive robot
-            startTimer();
-            while (timer.get()<StaticVars.DRIVE_TIMER) { //Robot will drive while the timer is running
+            if (!isTimerStarted())
+                startTimer();
+            if (timer.get()<StaticVars.DRIVE_TIMER) { //Robot will drive while the timer is running
             hardware.getRobotDrive().mecanumDrive_Polar(StaticVars.DRIVE_MAGNITUDE, 0, 0);
             } 
         } else {
