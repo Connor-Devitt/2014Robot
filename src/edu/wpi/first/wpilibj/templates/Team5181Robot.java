@@ -40,8 +40,7 @@ public class Team5181Robot extends IterativeRobot {
      * This function is called periodically during autonomous
      */
     public void autonomousPeriodic() {
-        if (!autonomous.isTimerStarted())
-                autonomous.startTimer();
+        
         
         autonomous.runAuto(-1); //negative value because we only have 1 auto function.
         
