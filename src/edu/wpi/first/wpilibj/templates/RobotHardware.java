@@ -79,18 +79,7 @@ public class RobotHardware {
                 }
             }
         }
-        /*switch (j) {
-            case 1: 
-                return frontLeft;
-            case 2:
-                return rearLeft;
-            case 3: 
-                return frontRight;
-            case 4: 
-                return rearRight;
-            default:
-                return null;
-        }*/
+        
     }
 }
 
