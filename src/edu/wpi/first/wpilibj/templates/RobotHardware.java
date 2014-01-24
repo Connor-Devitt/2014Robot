@@ -4,6 +4,7 @@ package edu.wpi.first.wpilibj.templates;
 import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.Solenoid;
 
 public class RobotHardware {
     
@@ -13,12 +14,14 @@ public class RobotHardware {
     //RobotDrive used to drive robot
     private final RobotDrive robotDrive;
     
+    //Jaguar motor controllers used by robotDrive object
     private final Jaguar frontLeft;
     private final Jaguar rearLeft;
     private final Jaguar frontRight;
     private final Jaguar rearRight;
     
-    
+    //Sample solenoid to control pneumatics
+    private final Solenoid solenoid1;
     
     public RobotHardware() {
         joystick = new CustomJoystick(StaticVars.JOYSTICK_PORT); //Construct joystick object using JOYSTICK_PORT
@@ -29,6 +32,8 @@ public class RobotHardware {
         rearRight  = new Jaguar(StaticVars.REAR_RIGHT_MOTOR);
         
         robotDrive = new RobotDrive(frontLeft, rearLeft, frontRight, rearRight);
+        
+        solenoid1 = new Solenoid(StaticVars.SOLENOID_ONE_PORT); //sample initialization
     }
     
     //Hardware testing method to be run during robotInitialization.
@@ -43,6 +48,12 @@ public class RobotHardware {
     
     public RobotDrive getRobotDrive() {
         return robotDrive;
+    }
+    
+    //This function will have to be updated and specified to account
+    //for more than one solenoids. Simply placeholder for now.
+    public Solenoid getSolenoid1() {
+        return solenoid1;
     }
     
     /**
