@@ -33,7 +33,7 @@ public class CustomJoystick extends Joystick {
      */
     public double getMagnitude() {
         //Might not be needed because Joystick class compensates
-        //for deadband elimination SetEnabledDeadbandElimination(true) ->default
+        //for deadband elimination enableDeadbandElimination(true) ->default
         if (Math.abs(super.getMagnitude()) < 0.25)
             return 0;
         return Math.sqrt(Math.abs(super.getMagnitude()));   //cook the magnitude
@@ -46,7 +46,7 @@ public class CustomJoystick extends Joystick {
      */
     public double getTwist() {
         //Might not be needed because Joystick class compensates
-        //for deadband elimination SetEnabledDeadbandElimination(true) ->default
+        //for deadband elimination enableDeadbandElimination(true) ->default
         if (Math.abs(super.getTwist()) < 0.6)
             return 0;
         return super.getTwist();
