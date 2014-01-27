@@ -20,6 +20,7 @@ public class Team5181Robot extends IterativeRobot {
     
     //Global Declarations
     RobotHardware hardware;
+    SmartDashboard dash;
     Autonomous autonomous;
     
     /**
@@ -28,6 +29,7 @@ public class Team5181Robot extends IterativeRobot {
      */
     public void robotInit() {
         hardware = new RobotHardware();
+        dash = new SmartDashboard();
         autonomous = new Autonomous(hardware);
     }
 
@@ -54,10 +56,6 @@ public class Team5181Robot extends IterativeRobot {
         double direction = hardware.getJoystick().getDirectionDegrees();
         double magnitude = hardware.getJoystick().getMagnitude();
         double twist     = hardware.getJoystick().getTwist();
-        
-        SmartDashboard.putNumber("Direction", direction);
-        SmartDashboard.putNumber("Magnitude", magnitude);
-        SmartDashboard.putNumber("Twist", twist);
         
         //2. get sensor data
         //3. process data
