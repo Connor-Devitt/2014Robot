@@ -13,6 +13,8 @@ public class CustomJoystick extends Joystick {
 
     public CustomJoystick(int port) {
         super(port);
+        
+        //Possibly needed for Logitech 3D pro joystick.
         setAxisChannel(Joystick.AxisType.kTwist, 3);
     }
     
