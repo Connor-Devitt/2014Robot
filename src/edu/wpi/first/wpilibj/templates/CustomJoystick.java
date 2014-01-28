@@ -13,6 +13,7 @@ public class CustomJoystick extends Joystick {
 
     public CustomJoystick(int port) {
         super(port);
+        setAxisChannel(Joystick.AxisType.kTwist, 3);
     }
     
     /**
