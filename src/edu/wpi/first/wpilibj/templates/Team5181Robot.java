@@ -55,9 +55,11 @@ public class Team5181Robot extends IterativeRobot {
         double magnitude = hardware.getJoystick().getMagnitude();
         double twist     = hardware.getJoystick().getTwist();
         
+        /*
         SmartDashboard.putNumber("Direction", direction);
         SmartDashboard.putNumber("Magnitude", magnitude);
         SmartDashboard.putNumber("Twist", twist);
+        */
         
         //2. get sensor data
         //3. process data
