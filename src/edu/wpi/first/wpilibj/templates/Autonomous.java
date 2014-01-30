@@ -38,9 +38,11 @@ public class Autonomous {
             //drive robot
             if (!isTimerStarted())
                 startTimer();
-            if (timer.get()<StaticVars.DRIVE_TIMER) { //Robot will drive while the timer is running
-            hardware.getRobotDrive().mecanumDrive_Polar(StaticVars.DRIVE_MAGNITUDE, 0, 0);
-            } 
+            
+            //Robot will drive while the timer is running.
+            if (timer.get()<StaticVars.DRIVE_TIMER)
+                hardware.getRobotDrive().mecanumDrive_Polar(StaticVars.DRIVE_MAGNITUDE, 0, 0);
+             
         } else {
             //shoot robot
             status = "drive";
