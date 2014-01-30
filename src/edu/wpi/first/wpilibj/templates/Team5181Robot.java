@@ -8,7 +8,10 @@
 package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
@@ -29,8 +32,21 @@ public class Team5181Robot extends IterativeRobot {
     public void robotInit() {
         hardware = new RobotHardware();
         autonomous = new Autonomous(hardware);
+        LiveWindow.addActuator("Drive train", 
+                             "front left motor", 
+                             hardware.getJaguar(StaticVars.FRONT_LEFT_MOTOR));
+        LiveWindow.addActuator("Drive train",
+                             "front right motor",
+                             hardware.getJaguar(StaticVars.FRONT_RIGHT_MOTOR));
+        LiveWindow.addActuator("Drive train", 
+                             "back left motor", 
+                             hardware.getJaguar(StaticVars.REAR_LEFT_MOTOR));
+        LiveWindow.addActuator("Drive train", 
+                             "back right motor",
+                             hardware.getJaguar(StaticVars.REAR_RIGHT_MOTOR));
+        
     }
-
+    
     public void robotDisabled() {
         
     }
@@ -71,11 +87,18 @@ public class Team5181Robot extends IterativeRobot {
         
     }
     
+    public void test() {
+        while (isTest() && isEnabled()) {
+            LiveWindow.run();
+            Timer.delay(0.1);
+        }
+    }
+    
     /**
      * This function is called periodically during test mode
      */
     public void testPeriodic() {
-    
+        
     }
     
 }
