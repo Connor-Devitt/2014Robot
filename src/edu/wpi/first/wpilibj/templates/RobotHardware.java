@@ -22,7 +22,7 @@ public class RobotHardware {
     
     //Sample solenoid to control pneumatics
     private final Solenoid solenoid1;
-    
+      
     public RobotHardware() {
         joystick = new CustomJoystick(StaticVars.JOYSTICK_PORT); //Construct joystick object using JOYSTICK_PORT
         
