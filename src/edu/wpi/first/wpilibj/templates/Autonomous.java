@@ -1,7 +1,6 @@
 
 package edu.wpi.first.wpilibj.templates;
 
-import java.lang.String;
 import edu.wpi.first.wpilibj.Timer;
 
 public class Autonomous {
@@ -9,7 +8,7 @@ public class Autonomous {
     private String status;
     private boolean timerStarted;
     private static Timer timer;
-    private RobotHardware hardware;
+    private final RobotHardware hardware;
     
     
     public Autonomous(RobotHardware hardware) {
@@ -44,6 +43,7 @@ public class Autonomous {
                 hardware.getRobotDrive().mecanumDrive_Polar(StaticVars.DRIVE_MAGNITUDE, 0, 0);
             } else {
                 hardware.getRobotDrive().mecanumDrive_Polar(0.0, 0.0, 0.0);
+                status = "stopped";
             }
         } else {
             if (status.equals("shoot")) {

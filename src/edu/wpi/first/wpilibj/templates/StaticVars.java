@@ -30,7 +30,7 @@ public class StaticVars {
     public static double DRIVE_MAGNITUDE = 0.5;
     
     //Autonomous drive timer
-    public static double DRIVE_TIMER = 3000;
+    public static double DRIVE_TIMER = 3;
     
     //Solenoid port numbers
     public static int SOLENOID_ONE_PORT = 1;    //Rename for clarification later on.
