@@ -87,18 +87,11 @@ public class Team5181Robot extends IterativeRobot {
         
     }
     
-    public void test() {
-        while (isTest() && isEnabled()) {
-            LiveWindow.run();
-            Timer.delay(0.1);
-        }
-    }
-    
     /**
      * This function is called periodically during test mode
      */
     public void testPeriodic() {
-        
+        LiveWindow.run();
     }
     
 }
