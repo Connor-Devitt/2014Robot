@@ -16,6 +16,7 @@ public class Autonomous {
         status = "shoot";
         this.hardware = hardware;
         timerStarted = false;
+        timer = new Timer();
     }
     
     public void runAuto(int autoChoice) {
