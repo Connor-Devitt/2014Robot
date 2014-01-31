@@ -53,6 +53,14 @@ public class CustomJoystick extends Joystick {
      * @return double
      */
     public double getTwist() {
+        if(Math.abs(super.getTwist())< StaticVars.JOYSTICK_TWIST_DEADBAND)
+            return 0;
+        else{
+            if(super.getTwist() >= .6)
+                return 2.5*super.getTwist() - 1.5;
+            else
+                return 2.5*super.getTwist() + 1.5;
+        }
         //Might not be needed because Joystick class compensates
         //for deadband elimination enableDeadbandElimination(true) ->default
         //if (Math.abs(super.getTwist()) < 0.6)
@@ -61,8 +69,8 @@ public class CustomJoystick extends Joystick {
         //return 2.5*super.getTwist() - 1.5;
         
         //We can turn it into one statment using ternary operator
-        return (Math.abs(super.getTwist()) < StaticVars.JOYSTICK_TWIST_DEADBAND) ? 0 :
-                2.5*super.getTwist() - 1.5;
+        //return (Math.abs(super.getTwist()) < StaticVars.JOYSTICK_TWIST_DEADBAND) ? 0 :
+        //        2.5*super.getTwist() - 1.5: 2.5*super.getTwist() + 1.5;
     }
 
 }
