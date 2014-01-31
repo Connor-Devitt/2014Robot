@@ -9,8 +9,10 @@ public class StaticVars {
     public static int FRONT_RIGHT_MOTOR = 4;
     public static int REAR_RIGHT_MOTOR = 2;
     
-    //joystick  port number
+    //joystick constants
     public static int JOYSTICK_PORT = 1;
+    public static double JOYSTICK_TWIST_DEADBAND = 0.6;
+    public static double JOYSTICK_MAGNITUDE_DEADBAND = 0.25;
     
     //Button Mapping
     public static int BUTTON_TRIGGER = 1;
