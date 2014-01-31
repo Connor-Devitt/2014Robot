@@ -14,7 +14,7 @@ public class CustomJoystick extends Joystick {
     public CustomJoystick(int port) {
         super(port);
         
-        //Possibly needed for Logitech 3D pro joystick.
+        //Necessary for Logitech 3D Joystick. Must specify 3rd axis as twist.
         setAxisChannel(Joystick.AxisType.kTwist, 3);
     }
     
@@ -37,9 +37,14 @@ public class CustomJoystick extends Joystick {
     public double getMagnitude() {
         //Might not be needed because Joystick class compensates
         //for deadband elimination enableDeadbandElimination(true) ->default
-        if (Math.abs(super.getMagnitude()) < 0.25)
-            return 0;
-        return Math.sqrt(Math.abs(super.getMagnitude()));   //cook the magnitude
+        //if (Math.abs(super.getMagnitude()) < 0.25)
+        //    return 0;
+        //return Math.sqrt(Math.abs(super.getMagnitude()));   //cook the magnitude
+        //return Math.abs((4.0/3.0)*super.getMagnitude() - 1.0/3.0);
+        
+        //We could turn it into 1 statement using ternary operator
+        return (Math.abs(super.getMagnitude()) < StaticVars.JOYSTICK_MAGNITUDE_DEADBAND) ? 0 :
+                Math.abs((4.0/3.0)*super.getMagnitude() - 1.0/3.0);
     }
     /**
      * Overrides superclass getTwist()
@@ -50,9 +55,14 @@ public class CustomJoystick extends Joystick {
     public double getTwist() {
         //Might not be needed because Joystick class compensates
         //for deadband elimination enableDeadbandElimination(true) ->default
-        if (Math.abs(super.getTwist()) < 0.6)
-            return 0;
-        return super.getTwist();
+        //if (Math.abs(super.getTwist()) < 0.6)
+        //    return 0;
+        //return super.getTwist();
+        //return 2.5*super.getTwist() - 1.5;
+        
+        //We can turn it into one statment using ternary operator
+        return (Math.abs(super.getTwist()) < StaticVars.JOYSTICK_TWIST_DEADBAND) ? 0 :
+                2.5*super.getTwist() - 1.5;
     }
 
 }
