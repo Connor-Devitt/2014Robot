@@ -39,6 +39,9 @@ public class StaticVars {
     public static int SOLENOID_ONE_PORT = 1;    //Rename for clarification later on.
     
     //Turret encoder channels
-    public static int TURRET_ENCODER_A_CHANNEL;
-    public static int TURRET_ENCODER_B_CHANNEL;
+    public static int TURRET_ENCODER_A_CHANNEL = 1;
+    public static int TURRET_ENCODER_B_CHANNEL = 2;
+    
+    //Gyro channel
+    public static int GYRO_CHANNEL = 6;
 }
