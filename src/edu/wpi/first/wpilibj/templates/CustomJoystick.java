@@ -35,14 +35,8 @@ public class CustomJoystick extends Joystick {
      * @return magnitude of vector
      */
     public double getMagnitude() {
-        //Might not be needed because Joystick class compensates
-        //for deadband elimination enableDeadbandElimination(true) ->default
-        //if (Math.abs(super.getMagnitude()) < 0.25)
-        //    return 0;
-        //return Math.sqrt(Math.abs(super.getMagnitude()));   //cook the magnitude
-        //return Math.abs((4.0/3.0)*super.getMagnitude() - 1.0/3.0);
-        
-        //We could turn it into 1 statement using ternary operator
+        //Piecewise function which takes into account the deadband and
+        //cooks the variables above deadband.
         return (Math.abs(super.getMagnitude()) < StaticVars.JOYSTICK_MAGNITUDE_DEADBAND) ? 0 :
                 Math.abs((4.0/3.0)*super.getMagnitude() - 1.0/3.0);
     }
@@ -53,6 +47,8 @@ public class CustomJoystick extends Joystick {
      * @return double
      */
     public double getTwist() {
+        //Piecewise function which takes into account the deadband and
+        //cooks the variables outside deadband.
         if(Math.abs(super.getTwist())< StaticVars.JOYSTICK_TWIST_DEADBAND)
             return 0;
         else{
@@ -61,16 +57,6 @@ public class CustomJoystick extends Joystick {
             else
                 return 2.5*super.getTwist() + 1.5;
         }
-        //Might not be needed because Joystick class compensates
-        //for deadband elimination enableDeadbandElimination(true) ->default
-        //if (Math.abs(super.getTwist()) < 0.6)
-        //    return 0;
-        //return super.getTwist();
-        //return 2.5*super.getTwist() - 1.5;
-        
-        //We can turn it into one statment using ternary operator
-        //return (Math.abs(super.getTwist()) < StaticVars.JOYSTICK_TWIST_DEADBAND) ? 0 :
-        //        2.5*super.getTwist() - 1.5: 2.5*super.getTwist() + 1.5;
     }
 
 }
