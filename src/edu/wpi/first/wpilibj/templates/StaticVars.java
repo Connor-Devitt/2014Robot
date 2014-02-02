@@ -8,6 +8,7 @@ public class StaticVars {
     public static int REAR_LEFT_MOTOR = 1;
     public static int FRONT_RIGHT_MOTOR = 4;
     public static int REAR_RIGHT_MOTOR = 2;
+    public static int TURRET_MOTOR = 5;
     
     //joystick constants
     public static int JOYSTICK_PORT = 1;
@@ -36,4 +37,8 @@ public class StaticVars {
     
     //Solenoid port numbers
     public static int SOLENOID_ONE_PORT = 1;    //Rename for clarification later on.
+    
+    //Turret encoder channels
+    public static int TURRET_ENCODER_A_CHANNEL;
+    public static int TURRET_ENCODER_B_CHANNEL;
 }
