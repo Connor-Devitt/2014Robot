@@ -24,7 +24,7 @@ public class RobotHardware {
     private final Solenoid solenoid1;
       
     public RobotHardware() {
-        joystick = new CustomJoystick(StaticVars.JOYSTICK_PORT); //Construct joystick object using JOYSTICK_PORT
+        joystick = new CustomJoystick();
         
         frontLeft  = new Jaguar(StaticVars.FRONT_LEFT_MOTOR);
         rearLeft   = new Jaguar(StaticVars.REAR_LEFT_MOTOR);
