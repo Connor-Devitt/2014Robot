@@ -11,8 +11,8 @@ import edu.wpi.first.wpilibj.Joystick;
  */
 public class CustomJoystick extends Joystick {
 
-    public CustomJoystick(int port) {
-        super(port);
+    public CustomJoystick() {
+        super(StaticVars.JOYSTICK_PORT);
         
         //Necessary for Logitech 3D Joystick. Must specify 3rd axis as twist.
         setAxisChannel(Joystick.AxisType.kTwist, 3);
