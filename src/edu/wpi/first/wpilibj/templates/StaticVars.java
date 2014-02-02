@@ -44,4 +44,7 @@ public class StaticVars {
     
     //Gyro channel
     public static int GYRO_CHANNEL = 6;
+    
+    //Rangefinder DigitalModule
+    public static int RANGEFINDER_DIGITAL_MODULE = 1; //Can only be 1 or 2
 }
