@@ -38,7 +38,9 @@ public class CustomJoystick extends Joystick {
         //Piecewise function which takes into account the deadband and
         //cooks the variables above deadband.
         return (Math.abs(super.getMagnitude()) < StaticVars.JOYSTICK_MAGNITUDE_DEADBAND) ? 0 :
-                Math.abs((4.0/3.0)*super.getMagnitude() - 1.0/3.0);
+                Math.abs((super.getMagnitude() - StaticVars.JOYSTICK_MAGNITUDE_DEADBAND)/
+                         (1 - StaticVars.JOYSTICK_MAGNITUDE_DEADBAND));
+        //        Math.abs((4.0/3.0)*super.getMagnitude() - 1.0/3.0);
     }
     /**
      * Overrides superclass getTwist()
@@ -52,10 +54,15 @@ public class CustomJoystick extends Joystick {
         if(Math.abs(super.getTwist())< StaticVars.JOYSTICK_TWIST_DEADBAND)
             return 0;
         else{
-            if(super.getTwist() >= .6)
-                return 2.5*super.getTwist() - 1.5;
-            else
-                return 2.5*super.getTwist() + 1.5;
+            if(super.getTwist() >= StaticVars.JOYSTICK_TWIST_DEADBAND) {
+                //return 2.5*super.getTwist() - 1.5;
+                return (super.getTwist() - StaticVars.JOYSTICK_TWIST_DEADBAND)/
+                       (1 - StaticVars.JOYSTICK_TWIST_DEADBAND);
+            } else {
+                //return 2.5*super.getTwist() + 1.5;
+                return (super.getTwist() + StaticVars.JOYSTICK_TWIST_DEADBAND)/
+                       (1 - StaticVars.JOYSTICK_TWIST_DEADBAND);
+            }
         }
     }
 
