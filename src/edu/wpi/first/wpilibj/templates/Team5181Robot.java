@@ -8,8 +8,6 @@
 package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 /**
@@ -23,7 +21,13 @@ public class Team5181Robot extends IterativeRobot {
     
     //Global Declarations
     RobotHardware hardware;
+    
     Autonomous autonomous;
+    Actuators actuators;
+    Sensors sensors;
+    DriveTrain driveTrain;
+    Turret turret;
+    CustomJoystick joystick;
     
     /**
      * This function is run when the robot is first started up and should be
@@ -32,6 +36,11 @@ public class Team5181Robot extends IterativeRobot {
     public void robotInit() {
         hardware = new RobotHardware();
         autonomous = new Autonomous(hardware);
+        
+        actuators = new Actuators();
+        sensors = new Sensors();
+        driveTrain = new DriveTrain(actuators);
+        joystick = new CustomJoystick();
         
         //TestPeriodic initializations
         LiveWindow.addActuator("Drive train", 
@@ -72,12 +81,6 @@ public class Team5181Robot extends IterativeRobot {
         double direction = hardware.getJoystick().getDirectionDegrees();
         double magnitude = hardware.getJoystick().getMagnitude();
         double twist     = hardware.getJoystick().getTwist();
-        
-        /*
-        SmartDashboard.putNumber("Direction", direction);
-        SmartDashboard.putNumber("Magnitude", magnitude);
-        SmartDashboard.putNumber("Twist", twist);
-        */
         
         //2. get sensor data
         //3. process data
