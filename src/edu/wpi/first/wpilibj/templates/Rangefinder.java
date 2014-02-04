@@ -10,9 +10,8 @@ public class Rangefinder extends I2C {
     
     DigitalModule digitalModule;
     int sevenBitAddress;
-    Timer bootTimer;
     
-    public Rangefinder() {
+    public Rangefinder(int addressHex) {
         super(DigitalModule.getInstance(StaticVars.RANGEFINDER_DIGITAL_MODULE), 0x70);
         sevenBitAddress = 0x70;  //defaul address will change later in constructor..
         digitalModule = DigitalModule.getInstance(StaticVars.RANGEFINDER_DIGITAL_MODULE);
@@ -21,11 +20,14 @@ public class Rangefinder extends I2C {
         super.write(sevenBitAddress*2, 0xAA);
         super.write(sevenBitAddress*2, 0xA5);
         super.write(sevenBitAddress*2, 0x80);
-        sevenBitAddress = 0x80/2;
-        bootTimer = new Timer();
-        bootTimer.start();
-        while (bootTimer.get() < 0.05) {/*Wait for sensor to reboot*/};
-        bootTimer.stop();
+        
+        sevenBitAddress = addressHex/2; //0xH0 -> form of address to keep things simple
+        Timer.delay(0.05);  //Time needed to reboot
+        
+    }
+    
+    public double getDist() {
+        return 0.0;
     }
     
 }
