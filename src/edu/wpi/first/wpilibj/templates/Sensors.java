@@ -14,7 +14,8 @@ public class Sensors {
         turretEncoder = new Encoder(StaticVars.TURRET_ENCODER_A_CHANNEL,
                                     StaticVars.TURRET_ENCODER_B_CHANNEL);
         gyro = new Gyro(StaticVars.GYRO_CHANNEL);
-        rangefinder = new Rangefinder();
+        gyro.reset();   //zero the gyro
+        rangefinder = new Rangefinder(0x80);
     }
     
 }
