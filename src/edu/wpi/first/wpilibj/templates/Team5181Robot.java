@@ -45,16 +45,16 @@ public class Team5181Robot extends IterativeRobot {
         //TestPeriodic initializations
         LiveWindow.addActuator("Drive train", 
                              "front left motor", 
-                             hardware.getJaguar(StaticVars.FRONT_LEFT_MOTOR));
+                             hardware.getTalon(StaticVars.FRONT_LEFT_MOTOR));
         LiveWindow.addActuator("Drive train",
                              "front right motor",
-                             hardware.getJaguar(StaticVars.FRONT_RIGHT_MOTOR));
+                             hardware.getTalon(StaticVars.FRONT_RIGHT_MOTOR));
         LiveWindow.addActuator("Drive train", 
                              "back left motor", 
-                             hardware.getJaguar(StaticVars.REAR_LEFT_MOTOR));
+                             hardware.getTalon(StaticVars.REAR_LEFT_MOTOR));
         LiveWindow.addActuator("Drive train", 
                              "back right motor",
-                             hardware.getJaguar(StaticVars.REAR_RIGHT_MOTOR));
+                             hardware.getTalon(StaticVars.REAR_RIGHT_MOTOR));
         
     }
     
