@@ -14,8 +14,7 @@ public class DriveTrain extends RobotDrive {
     }
     
     void fieldDriveMecanumPolar(Gyro gyro, double magnitude, double direction, double rotation) {
-        //TODO: implement field-centric driving
-        direction = direction - (gyro.getAngle() % 360);
+        direction = direction - (gyro.getAngle() % 360);    //assume cw is +, ccw is -
         super.mecanumDrive_Polar(magnitude, direction, rotation);
     }
     
