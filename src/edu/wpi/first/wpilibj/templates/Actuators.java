@@ -2,30 +2,27 @@
 package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.Jaguar;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.SpeedController;
 
 public class Actuators {
 
-    private final Jaguar frontLeft;
-    private final Jaguar rearLeft;
-    private final Jaguar frontRight;
-    private final Jaguar rearRight;
+    private final Talon frontLeft;
+    private final Talon rearLeft;
+    private final Talon frontRight;
+    private final Talon rearRight;
     
     private final Jaguar turretMotor;
     
-    private final Solenoid solenoid1;
-    
     public Actuators() {
         
-        frontLeft = new Jaguar(StaticVars.FRONT_LEFT_MOTOR);
-        rearLeft = new Jaguar(StaticVars.REAR_LEFT_MOTOR);
-        frontRight = new Jaguar(StaticVars.FRONT_RIGHT_MOTOR);
-        rearRight = new Jaguar(StaticVars.REAR_RIGHT_MOTOR);
+        frontLeft = new Talon(StaticVars.FRONT_LEFT_MOTOR);
+        rearLeft = new Talon(StaticVars.REAR_LEFT_MOTOR);
+        frontRight = new Talon(StaticVars.FRONT_RIGHT_MOTOR);
+        rearRight = new Talon(StaticVars.REAR_RIGHT_MOTOR);
         
         turretMotor = new Jaguar(StaticVars.TURRET_MOTOR);
-        
-        solenoid1 = new Solenoid(StaticVars.SOLENOID_ONE_PORT);
     }
     
     /**
@@ -56,9 +53,4 @@ public class Actuators {
             }
         }
     }
-    
-    public Solenoid getSolenoid() {
-        return solenoid1;
-    }
-    
 }
