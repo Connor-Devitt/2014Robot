@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.Solenoid;
 public class RobotHardware {
     
     //Joystick used to control robot functions
-    private final CustomJoystick joystick;
+    //private final CustomJoystick joystick;
     
     //RobotDrive used to drive robot
     private final RobotDrive robotDrive;
@@ -21,7 +21,7 @@ public class RobotHardware {
     private final Talon rearRight;
     
     public RobotHardware() {
-        joystick = new CustomJoystick();
+        //joystick = new CustomJoystick();
         
         frontLeft  = new Talon(StaticVars.FRONT_LEFT_MOTOR);
         rearLeft   = new Talon(StaticVars.REAR_LEFT_MOTOR);
@@ -37,10 +37,11 @@ public class RobotHardware {
     }
     
     //Accessor Methods
+    /*
     public Joystick getJoystick() {
         return joystick;
     }
-    
+    */
     public RobotDrive getRobotDrive() {
         return robotDrive;
     }

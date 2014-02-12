@@ -8,7 +8,7 @@ public class StaticVars {
     public static int REAR_LEFT_MOTOR = 1;
     public static int FRONT_RIGHT_MOTOR = 4;
     public static int REAR_RIGHT_MOTOR = 2;
-    public static int TURRET_MOTOR = 5;
+    //public static int TURRET_MOTOR = 5;
     
     //joystick constants
     public static int JOYSTICK_PORT = 1;
@@ -16,6 +16,7 @@ public class StaticVars {
     public static double JOYSTICK_MAGNITUDE_DEADBAND = 0.25;
     
     //Button Mapping
+    /*
     public static int BUTTON_TRIGGER = 1;
     public static int THUMB_BUTTON = 2;
     public static int BUTTON3 = 3;
@@ -28,7 +29,7 @@ public class StaticVars {
     public static int BUTTON10 = 10;
     public static int BUTTON11 = 11;
     public static int BUTTON12 = 12;
-    
+    */
     //Autonomous drive magnitude
     public static double DRIVE_MAGNITUDE = 0.5;
     
@@ -36,14 +37,15 @@ public class StaticVars {
     public static double DRIVE_TIMER = 3;
     
     //Solenoid port numbers
-    public static int SOLENOID_ONE_PORT = 1;    //Rename for clarification later on.
+    //public static int SOLENOID_ONE_PORT = 2;    //Rename for clarification later on.
     
     //Turret encoder channels
-    public static int TURRET_ENCODER_A_CHANNEL = 1;
-    public static int TURRET_ENCODER_B_CHANNEL = 2;
+    //public static int TURRET_ENCODER_A_CHANNEL = 1;
+    //public static int TURRET_ENCODER_B_CHANNEL = 2;
     
     //Gyro channel
-    public static int GYRO_CHANNEL = 6;
+    public static int GYRO_CHANNEL = 1;
+    public static int GYRO_MODULE = 2;
     
     //Rangefinder DigitalModule
     public static int RANGEFINDER_DIGITAL_MODULE = 1; //Can only be 1 or 2
