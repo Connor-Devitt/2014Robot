@@ -1,4 +1,3 @@
-
 package edu.wpi.first.wpilibj.templates;
 
 public class StaticVars {
@@ -45,7 +44,7 @@ public class StaticVars {
     
     //Gyro channel
     public static int GYRO_CHANNEL = 1;
-    public static int GYRO_MODULE = 2;
+    public static int GYRO_MODULE = 1;
     
     //Rangefinder DigitalModule
     public static int RANGEFINDER_DIGITAL_MODULE = 1; //Can only be 1 or 2
