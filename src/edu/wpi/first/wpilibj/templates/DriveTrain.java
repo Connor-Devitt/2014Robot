@@ -5,7 +5,9 @@ import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Gyro;
 
 public class DriveTrain  {
-    public RobotDrive robotDrive;
+    
+    RobotDrive robotDrive;
+    
     public DriveTrain(Actuators actuators) {
         robotDrive = new RobotDrive(actuators.getMotorController(StaticVars.FRONT_LEFT_MOTOR),
                                     actuators.getMotorController(StaticVars.REAR_LEFT_MOTOR),

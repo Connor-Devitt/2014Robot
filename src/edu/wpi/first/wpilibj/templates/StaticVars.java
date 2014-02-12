@@ -16,7 +16,7 @@ public class StaticVars {
     public static double JOYSTICK_MAGNITUDE_DEADBAND = 0.25;
     
     //Button Mapping
-    /*
+    
     public static int BUTTON_TRIGGER = 1;
     public static int THUMB_BUTTON = 2;
     public static int BUTTON3 = 3;
@@ -29,7 +29,7 @@ public class StaticVars {
     public static int BUTTON10 = 10;
     public static int BUTTON11 = 11;
     public static int BUTTON12 = 12;
-    */
+    
     //Autonomous drive magnitude
     public static double DRIVE_MAGNITUDE = 0.5;
     
