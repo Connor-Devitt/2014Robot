@@ -1,9 +1,7 @@
 
 package edu.wpi.first.wpilibj.templates;
 
-import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.Talon;
-import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.SpeedController;
 
 public class Actuators {
@@ -13,8 +11,6 @@ public class Actuators {
     private final Talon frontRight;
     private final Talon rearRight;
     
-    //private final Jaguar turretMotor;
-    
     public Actuators() {
         
         frontLeft = new Talon(StaticVars.FRONT_LEFT_MOTOR);
@@ -22,7 +18,7 @@ public class Actuators {
         frontRight = new Talon(StaticVars.FRONT_RIGHT_MOTOR);
         rearRight = new Talon(StaticVars.REAR_RIGHT_MOTOR);
         
-        //turretMotor = new Jaguar(StaticVars.TURRET_MOTOR);
+        
     }
     
     /**
@@ -43,11 +39,7 @@ public class Actuators {
                     if (motorChannel == StaticVars.REAR_RIGHT_MOTOR) {
                         return rearRight;
                     } else {
-                        //if (motorChannel == StaticVars.TURRET_MOTOR)
-                        //    return turretMotor;
-                        //else {
-                            return null;
-                        //}
+                        return null;
                     }
                 }
             }

@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.Gyro;
 
 public class DriveTrain  {
     
-    RobotDrive robotDrive;
+    private final RobotDrive robotDrive;
     
     public DriveTrain(Actuators actuators) {
         robotDrive = new RobotDrive(actuators.getMotorController(StaticVars.FRONT_LEFT_MOTOR),
@@ -15,7 +15,7 @@ public class DriveTrain  {
                                     actuators.getMotorController(StaticVars.REAR_RIGHT_MOTOR));
     }
     
-    void fieldDriveMecanumPolar(Gyro gyro, double magnitude, double direction, double rotation) {
+    public void fieldDriveMecanumPolar(Gyro gyro, double magnitude, double direction, double rotation) {
         direction = direction - (gyro.getAngle() % 360);    //assume cw is +, ccw is -
         robotDrive.mecanumDrive_Polar(magnitude, direction, rotation);
     } 

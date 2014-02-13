@@ -8,12 +8,14 @@ public class Autonomous {
     private String status;
     private boolean timerStarted;
     private static Timer timer;
-    private final RobotHardware hardware;
+    private final DriveTrain drivetrain;
+    private final Sensors sensors;
     
     
-    public Autonomous(RobotHardware hardware) {
+    public Autonomous(DriveTrain drivetrain, Sensors sensors) {
         status = "shoot";
-        this.hardware = hardware;
+        this.drivetrain = drivetrain;
+        this.sensors = sensors;
         timerStarted = false;
         timer = new Timer();
     }
@@ -39,10 +41,14 @@ public class Autonomous {
                 startTimer();
             
             //Robot will drive while the timer is running.
-            if (timer.get()<StaticVars.DRIVE_TIMER) {
-                hardware.getRobotDrive().mecanumDrive_Polar(StaticVars.DRIVE_MAGNITUDE, 0, 0);
+            if (timer.get() < StaticVars.AUTONOMOUS_DRIVE_TIMER) {
+                //hardware.getRobotDrive().mecanumDrive_Polar(StaticVars.DRIVE_MAGNITUDE, 0, 0);
+                drivetrain.fieldDriveMecanumPolar(sensors.getGryro(),
+                                                  StaticVars.AUTONOMOUS_DRIVE_MAGNITUDE,
+                                                  0, 0);
             } else {
-                hardware.getRobotDrive().mecanumDrive_Polar(0.0, 0.0, 0.0);
+                //hardware.getRobotDrive().mecanumDrive_Polar(0.0, 0.0, 0.0);
+                drivetrain.fieldDriveMecanumPolar(sensors.getGryro(), 0.0, 0.0, 0.0);
                 status = "stopped";
             }
         } else {
