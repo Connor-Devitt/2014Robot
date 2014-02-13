@@ -19,7 +19,7 @@ public class Rangefinder extends I2C {
         stateTimer = new Timer();
         Timer.delay(0.15);  //Boot delay of 150ms   make sure pin 1 is grounded (low).
         sevenBitAddress = 0x70;  //defaul address will change later in constructor..
-        
+        distance = 0;
         //change address
         changeAddress(addressHex);
         
