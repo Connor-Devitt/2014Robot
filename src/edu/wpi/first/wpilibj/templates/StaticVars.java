@@ -7,7 +7,6 @@ public class StaticVars {
     public static int REAR_LEFT_MOTOR = 1;
     public static int FRONT_RIGHT_MOTOR = 4;
     public static int REAR_RIGHT_MOTOR = 2;
-    //public static int TURRET_MOTOR = 5;
     
     //joystick constants
     public static int JOYSTICK_PORT = 1;
@@ -30,17 +29,17 @@ public class StaticVars {
     public static int BUTTON12 = 12;
     */
     //Autonomous drive magnitude
-    public static double DRIVE_MAGNITUDE = 0.5;
+    public static double AUTONOMOUS_DRIVE_MAGNITUDE = 0.5;
     
     //Autonomous drive timer
-    public static double DRIVE_TIMER = 3;
+    public static double AUTONOMOUS_DRIVE_TIMER = 3;
     
     //Solenoid port numbers
     //public static int SOLENOID_ONE_PORT = 2;    //Rename for clarification later on.
     
     //Turret encoder channels
-    //public static int TURRET_ENCODER_A_CHANNEL = 1;
-    //public static int TURRET_ENCODER_B_CHANNEL = 2;
+    public static int TURRET_ENCODER_A_CHANNEL = 1;
+    public static int TURRET_ENCODER_B_CHANNEL = 2;
     
     //Gyro channel
     public static int GYRO_CHANNEL = 1;
