@@ -40,12 +40,7 @@ public class Team5181Robot extends IterativeRobot {
         sensors = new Sensors();
         driveTrain = new DriveTrain(actuators);
         joystick = new CustomJoystick();
-        //frontLeft  = new Talon(StaticVars.FRONT_LEFT_MOTOR);
-        //rearLeft   = new Talon(StaticVars.REAR_LEFT_MOTOR);
-        //frontRight = new Talon(StaticVars.FRONT_RIGHT_MOTOR);
-        //rearRight  = new Talon(StaticVars.REAR_RIGHT_MOTOR);
-        //robotDrive = new RobotDrive(frontLeft, rearLeft, frontRight, rearRight);
-        //TestPeriodic initializations
+        
         /*
         LiveWindow.addActuator("Drive train", 
                              "front left motor", 
@@ -79,8 +74,6 @@ public class Team5181Robot extends IterativeRobot {
         double magnitude = joystick.getMagnitude();
         double twist = joystick.getTwist();
         
-        //hardware.getRobotDrive().mecanumDrive_Polar(magnitude, direction, twist);
-        //robotDrive.mecanumDrive_Polar(magnitude, direction, twist);
         driveTrain.fieldDriveMecanumPolar(sensors.getGryro(), magnitude, direction, twist);
         
     }
