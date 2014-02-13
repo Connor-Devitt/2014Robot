@@ -16,7 +16,7 @@ public class Rangefinder extends I2C {
     
     public Rangefinder(int addressHex) {
         
-        super(DigitalModule.getInstance(StaticVars.RANGEFINDER_DIGITAL_MODULE),  0x70);
+        super(DigitalModule.getInstance(StaticVars.RANGEFINDER_DIGITAL_MODULE), 0x70);
         stateTimer = new Timer();
         Timer.delay(0.15);  //Boot delay of 150ms   make sure pin 1 is grounded (low).
         sevenBitAddress = 0x70;  //defaul address will change later in constructor..
