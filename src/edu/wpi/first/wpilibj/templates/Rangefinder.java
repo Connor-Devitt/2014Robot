@@ -12,6 +12,7 @@ public class Rangefinder extends I2C {
     private String state;
     private Timer stateTimer;
     private double distance;    //measured in centimeters.
+    byte[] range;
     
     public Rangefinder(int addressHex) {
         
@@ -20,6 +21,7 @@ public class Rangefinder extends I2C {
         Timer.delay(0.15);  //Boot delay of 150ms   make sure pin 1 is grounded (low).
         sevenBitAddress = 0x70;  //defaul address will change later in constructor..
         distance = 0;
+        range = new byte[2];
         //change address
         changeAddress(addressHex);
         
@@ -47,40 +49,25 @@ public class Rangefinder extends I2C {
         sevenBitAddress = addressHex/2;
     }
     
-    private void takeRange() {
+    public void takeRange() {
         byte[] rangeCommand = new byte[2];
         byte[] rangeResponse = new byte[0];
         
         rangeCommand[0] = (byte) (sevenBitAddress*2);
         rangeCommand[1] = (byte) 0x51;
         boolean response = transaction(rangeCommand, 2, rangeResponse, 0);
-        //Timer.delay(0.1); //delay for 100 ms.
+        
     }
     
-    private byte[] retrieveRange() {
+    public void retrieveRange() {
         byte[] readAddress = new byte[1];
-        byte[] range = new byte[2];
         readAddress[0] = (byte) (sevenBitAddress*2 + 1);
         boolean response = transaction(readAddress, 1, range, 2);
-        return range;
     }
     
     
     public void calcDistance() {
-        if (state != "ranging" && state != "retrieving") {
-            takeRange();
-            state = "ranging";
-            stateTimer.reset();
-            stateTimer.start();
-        }
-        
-        if (state == "ranging" && stateTimer.get() > 0.1) {
-            byte[] range = retrieveRange();
             distance = range[0] + 0xFF + range[1];
-            state = "waiting";
-            stateTimer.stop();
-            stateTimer.reset();
-        }
     }
     
     public double getDistance() {
