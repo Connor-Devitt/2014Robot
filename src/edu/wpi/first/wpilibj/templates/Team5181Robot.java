@@ -10,6 +10,7 @@ package edu.wpi.first.wpilibj.templates;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 /**
@@ -28,6 +29,7 @@ public class Team5181Robot extends IterativeRobot {
     DriveTrain driveTrain;
     //Turret turret;
     CustomJoystick joystick;
+    JoystickButton rangeButton;
     
     /**
      * This function is run when the robot is first started up and should be
@@ -40,7 +42,7 @@ public class Team5181Robot extends IterativeRobot {
         sensors = new Sensors();
         driveTrain = new DriveTrain(actuators);
         joystick = new CustomJoystick();
-        
+        rangeButton = new JoystickButton(joystick, StaticVars.BUTTON7);
         /*
         LiveWindow.addActuator("Drive train", 
                              "front left motor", 
@@ -75,6 +77,14 @@ public class Team5181Robot extends IterativeRobot {
         double twist = joystick.getTwist();
         
         driveTrain.fieldDriveMecanumPolar(sensors.getGryro(), magnitude, direction, twist);
+        
+        if (rangeButton.get()) {
+            sensors.getRangefinder().takeRange();
+            sensors.getRangefinder().retrieveRange();
+            sensors.getRangefinder().calcDistance();
+            System.out.println(sensors.getRangefinder().getDistance());
+        }
+        
         
     }
     
