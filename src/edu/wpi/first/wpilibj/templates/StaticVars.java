@@ -47,4 +47,5 @@ public class StaticVars {
     
     //Rangefinder DigitalModule
     public static int RANGEFINDER_DIGITAL_MODULE = 1; //Can only be 1 or 2
+    public static int RANGEFINDER_8BIT_ADDRESS = 0x80;
 }

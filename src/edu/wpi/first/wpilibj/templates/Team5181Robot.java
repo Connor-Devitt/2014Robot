@@ -77,6 +77,7 @@ public class Team5181Robot extends IterativeRobot {
         double twist = joystick.getTwist();
         
         driveTrain.fieldDriveMecanumPolar(sensors.getGryro(), magnitude, direction, twist);
+        //System.out.println(sensors.getRangefinder().addressOnly());
         /*
         if (rangeButton.get()) {
             sensors.getRangefinder().takeRange();

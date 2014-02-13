@@ -24,16 +24,6 @@ public class Rangefinder extends I2C {
         range = new byte[2];
         //change address
         changeAddress(addressHex);
-        
-        /*
-        
-        super.write(sevenBitAddress*2, 0xAA);
-        super.write(sevenBitAddress*2, 0xA5);
-        super.write(sevenBitAddress*2, 0x80);
-        
-        sevenBitAddress = addressHex/2; //0xH0 -> form of address to keep things simple
-        Timer.delay(0.15);  //Time needed to reboot
-        */
     }
     
     private void changeAddress(int addressHex) {
@@ -55,14 +45,15 @@ public class Rangefinder extends I2C {
         
         rangeCommand[0] = (byte) (sevenBitAddress*2);
         rangeCommand[1] = (byte) 0x51;
-        boolean response = transaction(rangeCommand, 2, rangeResponse, 0);
-        
+        boolean aborted = transaction(rangeCommand, 2, rangeResponse, 0);
+        //System.out.println("Takerange resp:" + aborted);
     }
     
     public void retrieveRange() {
         byte[] readAddress = new byte[1];
         readAddress[0] = (byte) (sevenBitAddress*2 + 1);
-        boolean response = transaction(readAddress, 1, range, 2);
+        boolean aborted = transaction(readAddress, 1, range, 2);
+        //System.out.println(
     }
     
     

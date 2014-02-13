@@ -15,7 +15,7 @@ public class Sensors {
                                     StaticVars.TURRET_ENCODER_B_CHANNEL);
         gyro = new Gyro(StaticVars.GYRO_CHANNEL);
         gyro.reset();   //zero the gyro
-        rangefinder = new Rangefinder(0x80);
+        rangefinder = new Rangefinder(StaticVars.RANGEFINDER_8BIT_ADDRESS);
     }
     
     public Gyro getGryro() {
