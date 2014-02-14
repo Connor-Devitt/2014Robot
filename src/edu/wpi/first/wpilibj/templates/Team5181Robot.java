@@ -8,6 +8,7 @@
 package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
@@ -27,8 +28,6 @@ public class Team5181Robot extends IterativeRobot {
     DriveTrain driveTrain;
     //Turret turret;
     CustomJoystick joystick;
-    JoystickButton rangeButton;
-    JoystickButton gyroResetButton;
     
     /**
      * This function is run when the robot is first started up and should be
@@ -42,8 +41,6 @@ public class Team5181Robot extends IterativeRobot {
         driveTrain = new DriveTrain(actuators);
         joystick = new CustomJoystick();
         
-        rangeButton = new JoystickButton(joystick, StaticVars.RANGE_BUTTON);
-        gyroResetButton = new JoystickButton(joystick, StaticVars.GYRO_RESET_BUTTON);
         /*
         LiveWindow.addActuator("Drive train", 
                              "front left motor", 
@@ -73,24 +70,24 @@ public class Team5181Robot extends IterativeRobot {
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
-        double direction = joystick.getDirectionDegrees();
-        double magnitude = joystick.getMagnitude();
-        double twist = joystick.getTwist();
         
-        driveTrain.fieldDriveMecanumPolar(sensors.getGyroAngle(), magnitude, direction, twist);
-        
-        if (gyroResetButton.get())
+        if (joystick.gyroResetButtonPressed())
             sensors.resetGyro();
-        //System.out.println(sensors.getRangefinder().addressOnly());
-        /*
-        if (rangeButton.get()) {
-            sensors.getRangefinder().takeRange();
-            sensors.getRangefinder().retrieveRange();
-            sensors.getRangefinder().calcDistance();
-            System.out.println(sensors.getRangefinder().getDistance());
-        }
-        */
         
+        if (joystick.rangeButtonPressed()) {
+            //get range...
+        }
+        
+        if (joystick.magLockTriggerButtonPressed()) {
+            sensors.turnMagLockOff();
+            //Timer.delay(0.001); //delay for a milisecond to allow for release.
+            sensors.turnMagLockOn();    //turn mag lock back on right away...
+        }
+        
+        driveTrain.fieldDriveMecanumPolar(sensors.getGyroAngle(),
+                                          joystick.getMagnitude(),
+                                          joystick.getDirectionDegrees(),
+                                          joystick.getTwist());
     }
     
     /**
