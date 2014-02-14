@@ -2,6 +2,7 @@
 package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 
 /**
@@ -11,11 +12,16 @@ import edu.wpi.first.wpilibj.Joystick;
  */
 public class CustomJoystick extends Joystick {
 
+    private final JoystickButton rangeButton;
+    private final JoystickButton gyroResetButton;
+    
+    
     public CustomJoystick() {
         super(StaticVars.JOYSTICK_PORT);
-        
         //Necessary for Logitech 3D Joystick. Must specify 3rd axis as twist.
         setAxisChannel(Joystick.AxisType.kTwist, 3);
+        rangeButton = new JoystickButton(this, StaticVars.RANGE_BUTTON);
+        gyroResetButton = new JoystickButton(this, StaticVars.GYRO_RESET_BUTTON);
     }
     
     /**
@@ -41,6 +47,7 @@ public class CustomJoystick extends Joystick {
                 Math.abs((super.getMagnitude() - StaticVars.JOYSTICK_MAGNITUDE_DEADBAND)/
                          (1 - StaticVars.JOYSTICK_MAGNITUDE_DEADBAND));
     }
+    
     /**
      * Overrides superclass getTwist()
      * in order to give programmer easy
@@ -61,6 +68,14 @@ public class CustomJoystick extends Joystick {
                        (1 - StaticVars.JOYSTICK_TWIST_DEADBAND);
             }
         }
+    }
+    
+    public boolean rangeButtonPressed() {
+        return rangeButton.get();
+    }
+    
+    public boolean gyroResetButtonPressed() {
+        return gyroResetButton.get();
     }
 
 }
