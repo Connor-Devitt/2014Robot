@@ -43,12 +43,12 @@ public class Autonomous {
             //Robot will drive while the timer is running.
             if (timer.get() < StaticVars.AUTONOMOUS_DRIVE_TIMER) {
                 //hardware.getRobotDrive().mecanumDrive_Polar(StaticVars.DRIVE_MAGNITUDE, 0, 0);
-                drivetrain.fieldDriveMecanumPolar(sensors.getGryro(),
+                drivetrain.fieldDriveMecanumPolar(sensors.getGyroAngle(),
                                                   StaticVars.AUTONOMOUS_DRIVE_MAGNITUDE,
                                                   0, 0);
             } else {
                 //hardware.getRobotDrive().mecanumDrive_Polar(0.0, 0.0, 0.0);
-                drivetrain.fieldDriveMecanumPolar(sensors.getGryro(), 0.0, 0.0, 0.0);
+                drivetrain.fieldDriveMecanumPolar(sensors.getGyroAngle(), 0.0, 0.0, 0.0);
                 status = "stopped";
             }
         } else {
