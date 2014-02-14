@@ -14,7 +14,7 @@ public class CustomJoystick extends Joystick {
 
     private final JoystickButton rangeButton;
     private final JoystickButton gyroResetButton;
-    
+    private final JoystickButton magLockTriggerButton;
     
     public CustomJoystick() {
         super(StaticVars.JOYSTICK_PORT);
@@ -22,6 +22,7 @@ public class CustomJoystick extends Joystick {
         setAxisChannel(Joystick.AxisType.kTwist, 3);
         rangeButton = new JoystickButton(this, StaticVars.RANGE_BUTTON);
         gyroResetButton = new JoystickButton(this, StaticVars.GYRO_RESET_BUTTON);
+        magLockTriggerButton = new JoystickButton(this, StaticVars.MAG_LOCK_TRIGGER_BUTTON);
     }
     
     /**
@@ -76,6 +77,10 @@ public class CustomJoystick extends Joystick {
     
     public boolean gyroResetButtonPressed() {
         return gyroResetButton.get();
+    }
+    
+    public boolean magLockTriggerButtonPressed() {
+        return magLockTriggerButton.get();
     }
 
 }
