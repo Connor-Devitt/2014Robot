@@ -42,8 +42,8 @@ public class Team5181Robot extends IterativeRobot {
         driveTrain = new DriveTrain(actuators);
         joystick = new CustomJoystick();
         
-        rangeButton = new JoystickButton(joystick, StaticVars.BUTTON7);
-        gyroResetButton = new JoystickButton(joystick, StaticVars.BUTTON8);
+        rangeButton = new JoystickButton(joystick, StaticVars.RANGE_BUTTON);
+        gyroResetButton = new JoystickButton(joystick, StaticVars.GYRO_RESET_BUTTON);
         /*
         LiveWindow.addActuator("Drive train", 
                              "front left motor", 
