@@ -13,6 +13,10 @@ public class StaticVars {
     public static double JOYSTICK_TWIST_DEADBAND = 0.6;
     public static double JOYSTICK_MAGNITUDE_DEADBAND = 0.25;
     
+    //Axis Mapping
+    public static int TWIST_AXIS = 3;
+    public static int BALL_LOAD_AXIS = 6;
+    
     //Button Mapping
     
     public static int MAG_LOCK_TRIGGER_BUTTON = 1;
@@ -48,5 +52,7 @@ public class StaticVars {
     //Rangefinder DigitalModule
     public static int RANGEFINDER_DIGITAL_MODULE = 1; //Can only be 1 or 2
     
+    //Relay channels
     public static int MAG_LOCK_RELAY_CHANNEL = 1;
+    public static int BALL_LOAD_RELAY_CHENNEL = 2;
 }
