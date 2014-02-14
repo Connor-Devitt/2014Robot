@@ -2,7 +2,6 @@
 package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.Gyro;
 
 public class DriveTrain  {
     
@@ -15,8 +14,8 @@ public class DriveTrain  {
                                     actuators.getMotorController(StaticVars.REAR_RIGHT_MOTOR));
     }
     
-    public void fieldDriveMecanumPolar(Gyro gyro, double magnitude, double direction, double rotation) {
-        direction = direction - (gyro.getAngle() % 360);    //assume cw is +, ccw is -
+    public void fieldDriveMecanumPolar(double gyroAngle, double magnitude, double direction, double rotation) {
+        direction = direction - (gyroAngle % 360);    //assume cw is +, ccw is -
         robotDrive.mecanumDrive_Polar(magnitude, direction, rotation);
     } 
     
