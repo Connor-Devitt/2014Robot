@@ -15,7 +15,7 @@ public class StaticVars {
     
     //Button Mapping
     
-    public static int BUTTON_TRIGGER = 1;
+    public static int MAG_LOCK_TRIGGER_BUTTON = 1;
     public static int THUMB_BUTTON = 2;
     public static int BUTTON3 = 3;
     public static int BUTTON4 = 4;
