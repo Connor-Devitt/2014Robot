@@ -21,16 +21,25 @@ public class Sensors {
         magLockRelay = new Relay(StaticVars.MAG_LOCK_RELAY_CHANNEL);
     }
     
-    public Gyro getGryro() {
-        return gyro;
+    public double getGyroAngle() {
+        return gyro.getAngle();
     }
     
-    public Rangefinder getRangefinder() {
-        return rangefinder;
+    public void resetGyro() {
+        gyro.reset();
     }
     
-    public Relay getMagLockRelay() {
-        return magLockRelay;
+    //Returns int, measured in centimeters...
+    public int getRangefinderDistance() {
+        return rangefinder.getRange();
+    }
+    
+    public void turnMagLockOff() {
+        magLockRelay.set(Relay.Value.kOff);
+    }
+    
+    public void turnMagLockOn() {
+        magLockRelay.set(Relay.Value.kOn);
     }
     
 }
