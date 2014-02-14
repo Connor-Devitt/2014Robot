@@ -1,69 +1,28 @@
 
 package edu.wpi.first.wpilibj.templates;
 
-import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.DigitalModule;
-import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.I2C;
+import edu.wpi.first.wpilibj.SensorBase;
 
 //TODO implement!
-public class Rangefinder extends I2C {
+public class Rangefinder extends SensorBase {
     
-    private int sevenBitAddress;
-    private String state;
-    private Timer stateTimer;
-    private double distance;    //measured in centimeters.
-    byte[] range;
+    private I2C ranger;
     
-    public Rangefinder(int addressHex) {
+    public Rangefinder() {
+        ranger = DigitalModule.getInstance(1).getI2C(0xE0); //Use default shppd add
         
-        super(DigitalModule.getInstance(StaticVars.RANGEFINDER_DIGITAL_MODULE), 0x70);
-        stateTimer = new Timer();
-        Timer.delay(0.15);  //Boot delay of 150ms   make sure pin 1 is grounded (low).
-        sevenBitAddress = 0x70;  //defaul address will change later in constructor..
-        distance = 0;
-        range = new byte[2];
-        //change address
-        changeAddress(addressHex);
-    }
-    
-    private void changeAddress(int addressHex) {
-        byte[] dataToSend = new byte[4];
-        byte[] dataReceived = new byte[0];
-        
-        dataToSend[0] = (byte) (sevenBitAddress*2);
-        dataToSend[1] = (byte) 0xAA;
-        dataToSend[2] = (byte) 0xA5;
-        dataToSend[3] = (byte) addressHex;
-        
-        boolean aborted = super.transaction(dataToSend, 4, dataReceived, 0);
-        sevenBitAddress = addressHex/2;
-        Timer.delay(0.15);
     }
     
     public void takeRange() {
-        byte[] rangeCommand = new byte[2];
-        byte[] rangeResponse = new byte[0];
-        
-        rangeCommand[0] = (byte) (sevenBitAddress*2);
-        rangeCommand[1] = (byte) 0x51;
-        boolean aborted = transaction(rangeCommand, 2, rangeResponse, 0);
-        //System.out.println("Takerange resp:" + aborted);
+        ranger.write(0xE0, 0x51);   //take range reading add=0xE0, cmmd=0x51
     }
     
-    public void retrieveRange() {
-        byte[] readAddress = new byte[1];
-        readAddress[0] = (byte) (sevenBitAddress*2 + 1);
-        boolean aborted = transaction(readAddress, 1, range, 2);
-        //System.out.println(
+    //returns distance in centimeters...
+    public int getRange() {
+        byte[] byteReturn = new byte[2];
+        ranger.read(0xE1, 2, byteReturn);
+        return (((int) byteReturn[0]) << 8) + ((int) byteReturn[1]);
     }
-    
-    
-    public void calcDistance() {
-            distance = range[0] + 0xFF + range[1];
-    }
-    
-    public double getDistance() {
-        return distance;
-    }
-    
 }
