@@ -17,7 +17,6 @@ public class Sensors {
         rangefinder = new Rangefinder();
         ballLoadDownLimit = new DigitalInput(StaticVars.BALL_LOAD_DOWN_LIMIT_CHANNEL);
         ballLoadUpLimit = new DigitalInput(StaticVars.BALL_LOAD_UP_LIMIT_CHANNEL);
-        rangefinder.update();
     }
     
     public double getGyroAngle() {
@@ -34,9 +33,9 @@ public class Sensors {
         return rangefinder.getDistance();
     }
     
-    public void updateRangefinder() {
-        rangefinder.update();
-    }
+    //public void updateRangefinder() {
+   //     rangefinder.update();
+   // }
     
     public boolean ballLoadDownLimitReached() {
         return ballLoadDownLimit.get();
