@@ -86,7 +86,7 @@ public class CustomJoystick extends Joystick {
     }
     
     public int getBallLoadValue() {
-        return (int) getRawAxis(StaticVars.BALL_LOAD_AXIS);
+        return -((int) getRawAxis(StaticVars.BALL_LOAD_AXIS));
     }
 
 }
