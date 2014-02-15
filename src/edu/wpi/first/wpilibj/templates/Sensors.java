@@ -2,15 +2,12 @@
 package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.Gyro;
-import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.DigitalInput;
 
 public class Sensors {
 
     private final Gyro gyro;
     private final Rangefinder rangefinder;
-    private final Relay magLockRelay;
-    private final Relay ballLoadRelay;
     private final DigitalInput ballLoadDownLimit;
     private final DigitalInput ballLoadUpLimit;
     
@@ -18,8 +15,6 @@ public class Sensors {
         gyro = new Gyro(StaticVars.GYRO_CHANNEL);
         gyro.reset();   //zero the gyro
         rangefinder = new Rangefinder();
-        magLockRelay = new Relay(StaticVars.MAG_LOCK_RELAY_CHANNEL);
-        ballLoadRelay = new Relay(StaticVars.BALL_LOAD_RELAY_CHENNEL);
         ballLoadDownLimit = new DigitalInput(StaticVars.BALL_LOAD_DOWN_LIMIT_CHANNEL);
         ballLoadUpLimit = new DigitalInput(StaticVars.BALL_LOAD_UP_LIMIT_CHANNEL);
     }
@@ -40,26 +35,6 @@ public class Sensors {
     
     public void updateRangefinder() {
         rangefinder.update();
-    }
-    
-    public void turnMagLockOff() {
-        magLockRelay.set(Relay.Value.kOff);
-    }
-    
-    public void turnMagLockOn() {
-        magLockRelay.set(Relay.Value.kOn);
-    }
-    
-    public void setBallLoadRelayForward() {
-        ballLoadRelay.set(Relay.Value.kForward);
-    }
-    
-    public void setBallLoadRelayReverse() {
-        ballLoadRelay.set(Relay.Value.kReverse);
-    }
-    
-    public void setballLoadRelayOff() {
-        ballLoadRelay.set(Relay.Value.kOff);
     }
     
     public boolean ballLoadDownLimitReached() {
