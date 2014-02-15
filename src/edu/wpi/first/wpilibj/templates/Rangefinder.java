@@ -38,22 +38,22 @@ public class Rangefinder extends SensorBase {
         return latestDist;
     }
     
-    public void update() {
+   /* public void update() {
         if (!rangeThread.isAlive()) {
             System.out.println("Thread stopped, starting");
             rangeThread.start();
         }
-    }
+    }*/
     
     private class RangeThread extends Thread {
         public void run() {
-            while (true) {
+            while (true){
                 takeRange();
                 Timer.delay(StaticVars.RANGE_DELAY);
                 latestDist = getRange();
                 Timer.delay(StaticVars.RANGE_DELAY);
+                System.out.println("LatestDist updated");
             }
-        }
-    
+       }
     }
 }
