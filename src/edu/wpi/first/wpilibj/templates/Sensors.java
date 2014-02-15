@@ -1,14 +1,12 @@
 
 package edu.wpi.first.wpilibj.templates;
 
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.DigitalInput;
 
 public class Sensors {
 
-    private final Encoder turretEncoder;
     private final Gyro gyro;
     private final Rangefinder rangefinder;
     private final Relay magLockRelay;
@@ -17,8 +15,6 @@ public class Sensors {
     private final DigitalInput ballLoadUpLimit;
     
     public Sensors() {
-        turretEncoder = new Encoder(StaticVars.TURRET_ENCODER_A_CHANNEL,
-                                    StaticVars.TURRET_ENCODER_B_CHANNEL);
         gyro = new Gyro(StaticVars.GYRO_CHANNEL);
         gyro.reset();   //zero the gyro
         rangefinder = new Rangefinder();
@@ -66,7 +62,7 @@ public class Sensors {
     }
     
     public boolean ballLoadUpLimitReached() {
-        return ballLoadDownLimit.get();
+        return ballLoadUpLimit.get();
     }
     
 }
