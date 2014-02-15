@@ -13,7 +13,6 @@ public class Rangefinder extends SensorBase {
     private int latestDist;
     private byte[] byteReturn;
     private RangeThread rangeThread;
-        
     
     public Rangefinder() {
         ranger = DigitalModule.getInstance(1).getI2C(0xE0); //Use default shppd add
@@ -38,6 +37,7 @@ public class Rangefinder extends SensorBase {
     
     public void update() {
         if (!rangeThread.isAlive())
+            System.out.println("Thread stopped, starting");
             rangeThread.start();
     }
     
