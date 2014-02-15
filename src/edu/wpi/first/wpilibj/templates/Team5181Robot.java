@@ -9,7 +9,6 @@ package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 /**
@@ -79,18 +78,18 @@ public class Team5181Robot extends IterativeRobot {
         }
         
         if (joystick.magLockTriggerButtonPressed()) {
-            sensors.turnMagLockOff();
+            actuators.turnMagLockOff();
             Timer.delay(StaticVars.MAG_LOCK_DELAY); // delay for 5ms to allow for release.
-            sensors.turnMagLockOn();    //turn mag lock back on right away...
+            actuators.turnMagLockOn();    //turn mag lock back on right away...
         }
         
         //Ball loading logic...
         if (joystick.getBallLoadValue() != 0) {
             if (joystick.getBallLoadValue() == -1 && !sensors.ballLoadUpLimitReached())
-                sensors.setBallLoadRelayReverse();
+                actuators.setBallLoadRelayReverse();
             if (joystick.getBallLoadValue() == 1 && !sensors.ballLoadDownLimitReached())
-                sensors.setBallLoadRelayForward();
-        } else sensors.setballLoadRelayOff();
+                actuators.setBallLoadRelayForward();
+        } else actuators.setballLoadRelayOff();
         
         sensors.updateRangefinder();    //update rangefinder to get another distance
         
