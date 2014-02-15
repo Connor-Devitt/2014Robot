@@ -18,6 +18,7 @@ public class Rangefinder extends SensorBase {
         latestDist = -1;
         byteReturn = new byte[2];
         rangeThread = new RangeThread();
+        System.out.println("Found rangefinder I2C:" + ranger.addressOnly());
     }
     
     private void takeRange() {
