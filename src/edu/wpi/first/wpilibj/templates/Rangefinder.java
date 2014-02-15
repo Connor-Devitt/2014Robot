@@ -47,6 +47,5 @@ public class Rangefinder extends SensorBase {
             Timer.delay(StaticVars.RANGE_DELAY);
             latestDist = getRange();
         }
-    
     }
 }
