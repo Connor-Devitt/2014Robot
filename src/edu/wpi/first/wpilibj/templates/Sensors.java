@@ -33,8 +33,13 @@ public class Sensors {
     }
     
     //Returns int, measured in centimeters...
+    
     public int getRangefinderDistance() {
-        return rangefinder.getRange();
+        return rangefinder.getDistance();
+    }
+    
+    public void updateRangefinder() {
+        rangefinder.update();
     }
     
     public void turnMagLockOff() {
