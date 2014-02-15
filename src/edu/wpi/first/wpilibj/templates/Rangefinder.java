@@ -1,4 +1,3 @@
-
 package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.DigitalModule;
@@ -13,13 +12,14 @@ public class Rangefinder extends SensorBase {
     private int latestDist;
     private byte[] byteReturn;
     private RangeThread rangeThread;
-        
     
     public Rangefinder() {
         ranger = DigitalModule.getInstance(1).getI2C(0xE0); //Use default shppd add
         latestDist = -1;
         byteReturn = new byte[2];
         rangeThread = new RangeThread();
+        Timer.delay(0.1);
+        rangeThread.start();
     }
     
     private void takeRange() {
@@ -36,16 +36,22 @@ public class Rangefinder extends SensorBase {
         return latestDist;
     }
     
-    public void update() {
-        if (!rangeThread.isAlive())
+   /* public void update() {
+        if (!rangeThread.isAlive()) {
+            System.out.println("Thread stopped, starting");
             rangeThread.start();
-    }
+        }
+    }*/
     
     private class RangeThread extends Thread {
         public void run() {
-            takeRange();
-            Timer.delay(StaticVars.RANGE_DELAY);
-            latestDist = getRange();
-        }
+            while (true){
+                takeRange();
+                Timer.delay(StaticVars.RANGE_DELAY);
+                latestDist = getRange();
+                Timer.delay(StaticVars.RANGE_DELAY);
+                System.out.println("LatestDist updated");
+            }
+       }
     }
 }
