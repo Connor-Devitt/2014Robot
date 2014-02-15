@@ -33,9 +33,9 @@ public class Sensors {
         return rangefinder.getDistance();
     }
     
-    //public void updateRangefinder() {
-   //     rangefinder.update();
-   // }
+   public void updateRangefinder() {
+        rangefinder.update();
+   }
     
     public boolean ballLoadDownLimitReached() {
         return ballLoadDownLimit.get();
