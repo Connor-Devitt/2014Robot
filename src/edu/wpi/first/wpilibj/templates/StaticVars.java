@@ -45,5 +45,5 @@ public class StaticVars {
     public static int BALL_LOAD_UP_LIMIT_CHANNEL = 2;
     
     //Mag-Lock turn on delay
-    public static double MAG_LOCK_DELAY = 0.008; //delay for 8ms
+    public static double MAG_LOCK_DELAY = 0.005; //delay for 5ms
 }
