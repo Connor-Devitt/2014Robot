@@ -80,12 +80,11 @@ public class Team5181Robot extends IterativeRobot {
         
         if (joystick.magLockTriggerButtonPressed()) {
             sensors.turnMagLockOff();
-            Timer.delay(0.001); //delay for a milisecond to allow for release.
+            Timer.delay(0.001); // delay for a milisecond to allow for release.
             sensors.turnMagLockOn();    //turn mag lock back on right away...
         }
         
         //Ball loading logic...
-        System.out.println(joystick.getBallLoadValue());
         if (joystick.getBallLoadValue() != 0) {
             if (joystick.getBallLoadValue() == -1 /*&& !sensors.ballLoadUpLimitReached()*/)
                 sensors.setBallLoadRelayReverse();
