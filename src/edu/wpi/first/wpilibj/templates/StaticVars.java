@@ -53,6 +53,10 @@ public class StaticVars {
     public static int RANGEFINDER_DIGITAL_MODULE = 1; //Can only be 1 or 2
     
     //Relay channels
-    public static int MAG_LOCK_RELAY_CHANNEL = 1;
-    public static int BALL_LOAD_RELAY_CHENNEL = 2;
+    public static int MAG_LOCK_RELAY_CHANNEL = 2;
+    public static int BALL_LOAD_RELAY_CHENNEL = 1;
+    
+    //DigitalInput channels
+    public static int BALL_LOAD_DOWN_LIMIT_CHANNEL = 1;
+    public static int BALL_LOAD_UP_LIMIT_CHANNEL = 2;
 }
