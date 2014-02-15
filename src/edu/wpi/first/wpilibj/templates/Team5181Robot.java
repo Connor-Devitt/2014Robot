@@ -91,8 +91,8 @@ public class Team5181Robot extends IterativeRobot {
                 actuators.setBallLoadRelayForward();
         } else actuators.setballLoadRelayOff();
         
-        sensors.updateRangefinder();    //update rangefinder to get another distance
-        System.out.println("Update method called.");
+        //sensors.updateRangefinder();    //update rangefinder to get another distance
+        //System.out.println("Update method called.");
         driveTrain.fieldDriveMecanumPolar(sensors.getGyroAngle(),
                                           joystick.getMagnitude(),
                                           joystick.getDirectionDegrees(),
