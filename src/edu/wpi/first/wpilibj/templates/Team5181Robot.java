@@ -86,9 +86,9 @@ public class Team5181Robot extends IterativeRobot {
         
         //Ball loading logic...
         if (joystick.getBallLoadValue() != 0) {
-            if (joystick.getBallLoadValue() == -1 /*&& !sensors.ballLoadUpLimitReached()*/)
+            if (joystick.getBallLoadValue() == -1 && !sensors.ballLoadUpLimitReached())
                 sensors.setBallLoadRelayReverse();
-            if (joystick.getBallLoadValue() == 1 /*&& !sensors.ballLoadDownLimitReached()*/)
+            if (joystick.getBallLoadValue() == 1 && !sensors.ballLoadDownLimitReached())
                 sensors.setBallLoadRelayForward();
         } else sensors.setballLoadRelayOff();
         
