@@ -18,6 +18,7 @@ public class Rangefinder extends SensorBase {
         latestDist = -1;
         byteReturn = new byte[2];
         rangeThread = new RangeThread();
+        Timer.delay(0.1);
         rangeThread.start();
     }
     
@@ -48,7 +49,8 @@ public class Rangefinder extends SensorBase {
                 takeRange();
                 Timer.delay(StaticVars.RANGE_DELAY);
                 latestDist = getRange();
-                System.out.println("LatestDist updateas");
+                Timer.delay(StaticVars.RANGE_DELAY);
+                System.out.println("LatestDist updated");
             }
        }
     }
