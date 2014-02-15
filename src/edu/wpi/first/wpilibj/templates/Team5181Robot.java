@@ -92,7 +92,7 @@ public class Team5181Robot extends IterativeRobot {
                 sensors.setBallLoadRelayForward();
         } else sensors.setballLoadRelayOff();
         
-        //sensors.updateRangefinder();    //update rangefinder to get another distance
+        sensors.updateRangefinder();    //update rangefinder to get another distance
         
         driveTrain.fieldDriveMecanumPolar(sensors.getGyroAngle(),
                                           joystick.getMagnitude(),
