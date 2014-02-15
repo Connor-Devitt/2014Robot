@@ -1,4 +1,3 @@
-
 package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.DigitalModule;
@@ -36,9 +35,10 @@ public class Rangefinder extends SensorBase {
     }
     
     public void update() {
-        if (!rangeThread.isAlive())
+        if (!rangeThread.isAlive()) {
             System.out.println("Thread stopped, starting");
             rangeThread.start();
+        }
     }
     
     private class RangeThread extends Thread {
