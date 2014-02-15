@@ -19,7 +19,7 @@ public class Rangefinder extends SensorBase {
         byteReturn = new byte[2];
         rangeThread = new RangeThread();
         Timer.delay(0.1);
-        rangeThread.start();
+        //rangeThread.start();
     }
     
     private void takeRange() {
