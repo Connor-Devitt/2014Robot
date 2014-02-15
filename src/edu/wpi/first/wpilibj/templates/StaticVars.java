@@ -43,4 +43,7 @@ public class StaticVars {
     //DigitalInput channels
     public static int BALL_LOAD_DOWN_LIMIT_CHANNEL = 1;
     public static int BALL_LOAD_UP_LIMIT_CHANNEL = 2;
+    
+    //Mag-Lock turn on delay
+    public static double MAG_LOCK_DELAY = 0.008; //delay for 8ms
 }
