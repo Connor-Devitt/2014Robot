@@ -15,6 +15,7 @@ public class Sensors {
         gyro = new Gyro(StaticVars.GYRO_CHANNEL);
         gyro.reset();   //zero the gyro
         rangefinder = new Rangefinder();
+        rangefinder.startThread();
         ballLoadDownLimit = new DigitalInput(StaticVars.BALL_LOAD_DOWN_LIMIT_CHANNEL);
         ballLoadUpLimit = new DigitalInput(StaticVars.BALL_LOAD_UP_LIMIT_CHANNEL);
     }
