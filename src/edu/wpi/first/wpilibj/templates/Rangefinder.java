@@ -14,10 +14,11 @@ public class Rangefinder extends SensorBase {
     private RangeThread rangeThread;
     
     public Rangefinder() {
-        ranger = DigitalModule.getInstance(1).getI2C(0xE0); //Use default shppd add
+        ranger = DigitalModule.getInstance(1).getI2C(0x70); //Use default shppd add
         latestDist = -1;
         byteReturn = new byte[2];
         rangeThread = new RangeThread();
+        Timer.delay(0.1);
         System.out.println("Found rangefinder I2C:" + ranger.addressOnly());
     }
     
