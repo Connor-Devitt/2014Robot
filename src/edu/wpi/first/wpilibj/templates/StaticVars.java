@@ -13,24 +13,14 @@ public class StaticVars {
     public static double JOYSTICK_TWIST_DEADBAND = 0.6;
     public static double JOYSTICK_MAGNITUDE_DEADBAND = 0.25;
     
-    //Axis Mapping
+    //Joystick Axis Mapping
     public static int TWIST_AXIS = 3;
     public static int BALL_LOAD_AXIS = 6;
     
-    //Button Mapping
-    
+    //Joystick Button Mapping
     public static int MAG_LOCK_TRIGGER_BUTTON = 1;
-    public static int THUMB_BUTTON = 2;
-    public static int BUTTON3 = 3;
-    public static int BUTTON4 = 4;
-    public static int BUTTON5 = 5;
-    public static int BUTTON6 = 6;
-    public static int RANGE_BUTTON = 7;
+    public static int RANGE_BUTTON = 4;
     public static int GYRO_RESET_BUTTON = 8;
-    public static int BUTTON9 = 9;
-    public static int BUTTON10 = 10;
-    public static int BUTTON11 = 11;
-    public static int BUTTON12 = 12;
     
     //Autonomous drive magnitude
     public static double AUTONOMOUS_DRIVE_MAGNITUDE = 0.5;
@@ -38,15 +28,13 @@ public class StaticVars {
     //Autonomous drive timer
     public static double AUTONOMOUS_DRIVE_TIMER = 3;
     
-    //Solenoid port numbers
-    //public static int SOLENOID_ONE_PORT = 2;    //Rename for clarification later on.
-    
     //Gyro channel
     public static int GYRO_CHANNEL = 1;
     public static int GYRO_MODULE = 1;
     
     //Rangefinder DigitalModule
     public static int RANGEFINDER_DIGITAL_MODULE = 1; //Can only be 1 or 2
+    public static double RANGE_DELAY = 0.08;    //delay in s -> 80ms
     
     //Relay channels
     public static int MAG_LOCK_RELAY_CHANNEL = 2;
