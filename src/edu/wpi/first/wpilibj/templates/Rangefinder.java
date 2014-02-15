@@ -20,8 +20,6 @@ public class Rangefinder extends SensorBase {
         rangeThread = new RangeThread();
         Timer.delay(0.1);
         System.out.println("Found rangefinder I2C:" + ranger.addressOnly());
-        rangeThread.start();
-        System.out.println("Thread started.");
     }
     
     private void takeRange() {
@@ -32,6 +30,11 @@ public class Rangefinder extends SensorBase {
     private int getRange() {
         ranger.read(0xE1, 2, byteReturn);
         return (int) ((byteReturn[0] << 8) | byteReturn[1]);
+    }
+    
+    public void startThread() {
+        rangeThread.start();
+        System.out.println("Thread started.");
     }
     
     public int getDistance() {
