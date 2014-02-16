@@ -11,22 +11,35 @@ public class Rangefinder extends SensorBase {
     private int latestDist;
     private byte[] byteReturn;
     private RangeThread rangeThread;
+    private byte readByte;
+    private byte writeByte;
     
     public Rangefinder() {
-        ranger = DigitalModule.getInstance(1).getI2C(0x70); //Use default shppd add
+        ranger = DigitalModule.getInstance(1).getI2C(0xE0); //Use default shppd add
+        ranger.setCompatabilityMode(true);
         latestDist = -1;
         byteReturn = new byte[2];
         rangeThread = new RangeThread();
+        readByte = (byte) 0xE1;
+        writeByte = (byte) 0xE0;
         Timer.delay(0.1);
     }
     
     private void takeRange() {
-        ranger.write(0x70, 0x51);   //take range reading addr=0xE0, cmmd=0x51
+        byte[] dataToSend = new byte[2];
+        byte[] dataToReceive = new byte[0];
+        dataToSend[0] = writeByte;
+        dataToSend[1] = (byte) 0x51;
+        ranger.transaction(dataToSend, 2, dataToReceive, 0);
+        //ranger.write(0x70, 0x51);   //take range reading addr=0xE0, cmmd=0x51
     }
     
     //returns distance in centimeters...
     private int getRange() {
-        ranger.read(0x70, 2, byteReturn);
+        //ranger.read(0x70, 2, byteReturn);
+        byte[] dataToSend = new byte[1];
+        dataToSend[0] = readByte;
+        ranger.transaction(dataToSend, 1, byteReturn, 2);
         return (int) ((byteReturn[0] << 8) | byteReturn[1]);
     }
     
@@ -47,7 +60,7 @@ public class Rangefinder extends SensorBase {
     }
     
     public void checkRangefinder() {
-        if (ranger.addressOnly())
+        if (!ranger.addressOnly())
             System.out.println("I2C Rangefinder Address: SUCCESS");
         else System.out.println("I2C Rangefinder Address: FAILURE");
     }
