@@ -14,12 +14,12 @@ public class Rangefinder extends SensorBase {
     private RangeThread rangeThread;
     
     public Rangefinder() {
-        ranger = DigitalModule.getInstance(1).getI2C(0xE0); //Use default shppd add
+        ranger = DigitalModule.getInstance(1).getI2C(0x70); //Use default shppd add
         latestDist = -1;
         byteReturn = new byte[2];
         rangeThread = new RangeThread();
         Timer.delay(0.1);
-        //rangeThread.start();
+        System.out.println("Found rangefinder I2C:" + ranger.addressOnly());
     }
     
     private void takeRange() {
@@ -32,16 +32,21 @@ public class Rangefinder extends SensorBase {
         return (int) ((byteReturn[0] << 8) | byteReturn[1]);
     }
     
+    public void startThread() {
+        rangeThread.start();
+        System.out.println("Thread started.");
+    }
+    
     public int getDistance() {
         return latestDist;
     }
     
-   /* public void update() {
+    public void update() {
         if (!rangeThread.isAlive()) {
             System.out.println("Thread stopped, starting");
             rangeThread.start();
         }
-    }*/
+    }
     
     private class RangeThread extends Thread {
         public void run() {
@@ -50,7 +55,7 @@ public class Rangefinder extends SensorBase {
                 Timer.delay(StaticVars.RANGE_DELAY);
                 latestDist = getRange();
                 Timer.delay(StaticVars.RANGE_DELAY);
-                System.out.println("LatestDist updated");
+                //System.out.println("LatestDist updated");
             }
        }
     }
