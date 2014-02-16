@@ -21,7 +21,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 public class Team5181Robot extends IterativeRobot {
     
     //Global Declarations
-    //Autonomous autonomous;
+    Autonomous autonomous;
     Actuators actuators;
     Sensors sensors;
     DriveTrain driveTrain;
@@ -33,8 +33,7 @@ public class Team5181Robot extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
-        //autonomous = new Autonomous(hardware);
-        
+           
         actuators = new Actuators();
         sensors = new Sensors();
         driveTrain = new DriveTrain(actuators);
@@ -54,6 +53,10 @@ public class Team5181Robot extends IterativeRobot {
                              "back right motor",
                              rearRight);
         */
+    }
+    
+    public void autonomousInit() {
+        autonomous = new Autonomous(driveTrain, sensors);
     }
     
     /**

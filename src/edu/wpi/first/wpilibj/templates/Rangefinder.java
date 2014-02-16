@@ -5,7 +5,6 @@ import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.SensorBase;
 import edu.wpi.first.wpilibj.Timer;
 
-//TODO implement!
 public class Rangefinder extends SensorBase {
     
     private I2C ranger;
@@ -19,16 +18,15 @@ public class Rangefinder extends SensorBase {
         byteReturn = new byte[2];
         rangeThread = new RangeThread();
         Timer.delay(0.1);
-        System.out.println("Found rangefinder I2C:" + ranger.addressOnly());
     }
     
     private void takeRange() {
-        ranger.write(0xE0, 0x51);   //take range reading addr=0xE0, cmmd=0x51
+        ranger.write(0x70, 0x51);   //take range reading addr=0xE0, cmmd=0x51
     }
     
     //returns distance in centimeters...
     private int getRange() {
-        ranger.read(0xE1, 2, byteReturn);
+        ranger.read(0x70, 2, byteReturn);
         return (int) ((byteReturn[0] << 8) | byteReturn[1]);
     }
     
@@ -46,6 +44,12 @@ public class Rangefinder extends SensorBase {
             System.out.println("Thread stopped, starting");
             rangeThread.start();
         }
+    }
+    
+    public void checkRangefinder() {
+        if (ranger.addressOnly())
+            System.out.println("I2C Rangefinder Address: SUCCESS");
+        else System.out.println("I2C Rangefinder Address: FAILURE");
     }
     
     private class RangeThread extends Thread {
