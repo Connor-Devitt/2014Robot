@@ -11,7 +11,6 @@ public class Autonomous {
     private final DriveTrain drivetrain;
     private final Sensors sensors;
     
-    
     public Autonomous(DriveTrain drivetrain, Sensors sensors) {
         status = "shoot";
         this.drivetrain = drivetrain;
