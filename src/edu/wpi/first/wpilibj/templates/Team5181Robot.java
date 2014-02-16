@@ -76,6 +76,7 @@ public class Team5181Robot extends IterativeRobot {
         if (joystick.gyroResetButtonPressed())
             sensors.resetGyro();
         
+        
         if (joystick.rangeButtonPressed()) {
             System.out.println(sensors.getRangefinderDistance());
         }
@@ -88,9 +89,9 @@ public class Team5181Robot extends IterativeRobot {
         
         //Ball loading logic...
         if (joystick.getBallLoadValue() != 0) {
-            if (joystick.getBallLoadValue() == -1 && !sensors.ballLoadUpLimitReached())
+            if (joystick.getBallLoadValue() == -1 && sensors.ballLoadUpLimitReached())
                 actuators.setBallLoadRelayReverse();
-            if (joystick.getBallLoadValue() == 1 && !sensors.ballLoadDownLimitReached())
+            if (joystick.getBallLoadValue() == 1 && sensors.ballLoadDownLimitReached())
                 actuators.setBallLoadRelayForward();
         } else actuators.setballLoadRelayOff();
         
