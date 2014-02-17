@@ -46,4 +46,10 @@ public class StaticVars {
     
     //Mag-Lock turn on delay
     public static double MAG_LOCK_DELAY = 0.005; //delay for 5ms
+    
+    //Pneumatic System constants
+    public static int PRESSURE_SWITCH_CHANNEL = 8;
+    public static int COMPRESSOR_RELAY_CHANNEL = 2;
+    public static int DOUBLE_SOLENOID_FORWARD_CHANNEL = 1;
+    public static int DOUBLE_SOLENOID_REVERSE_CHANNEL = 2;
 }
