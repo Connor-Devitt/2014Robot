@@ -309,12 +309,12 @@ public class CameraVision {
      }
      
      public boolean isHot() {
-         captureImage();
+         //captureImage();
          return target.Hot;
      }
      
      public double getDistance() {
-         captureImage();
+         //captureImage();
          return target.distance;
      }
     
