@@ -95,7 +95,7 @@ public class CameraVision {
          * on the cRIO. The file name in this case is "testImage.jpg"
          * 
          */
-    private void captureImage() {
+    public void captureImage() {
         
         try {
             ColorImage image = camera.getImage();     //comment if using stored images
