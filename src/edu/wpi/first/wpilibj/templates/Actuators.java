@@ -4,6 +4,8 @@ package edu.wpi.first.wpilibj.templates;
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 
 public class Actuators {
 
@@ -15,6 +17,9 @@ public class Actuators {
     private final Relay magLockRelay;
     private final Relay ballLoadRelay;
     
+    private final Compressor compressor;
+    private final DoubleSolenoid solenoid;
+    
     public Actuators() {
         
         frontLeft = new Talon(StaticVars.FRONT_LEFT_MOTOR);
@@ -24,6 +29,10 @@ public class Actuators {
         
         magLockRelay = new Relay(StaticVars.MAG_LOCK_RELAY_CHANNEL);
         ballLoadRelay = new Relay(StaticVars.BALL_LOAD_RELAY_CHENNEL);
+        
+        compressor = new Compressor(StaticVars.PRESSURE_SWITCH_CHANNEL, StaticVars.COMPRESSOR_RELAY_CHANNEL);
+        solenoid = new DoubleSolenoid(StaticVars.DOUBLE_SOLENOID_FORWARD_CHANNEL,
+                                      StaticVars.DOUBLE_SOLENOID_REVERSE_CHANNEL);
     }
     
     public void turnMagLockOff() {
@@ -44,6 +53,26 @@ public class Actuators {
     
     public void setballLoadRelayOff() {
         ballLoadRelay.set(Relay.Value.kOff);
+    }
+    
+    public void startCompressor() {
+        compressor.start();
+    }
+    
+    public void stopCompressor() {
+        compressor.stop();
+    }
+    
+    public void setSolenoidForward() {
+        solenoid.set(DoubleSolenoid.Value.kForward);
+    }
+    
+    public void setSolenoidReverse() {
+        solenoid.set(DoubleSolenoid.Value.kReverse);
+    }
+    
+    public void setSolenoidOff() {
+        solenoid.set(DoubleSolenoid.Value.kOff);
     }
     
     /**
