@@ -1,6 +1,7 @@
 
 package edu.wpi.first.wpilibj.templates;
 
+import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.RobotDrive;
 
 public class DriveTrain  {
@@ -15,6 +16,7 @@ public class DriveTrain  {
     }
     
     public void fieldDriveMecanumPolar(double gyroAngle, double magnitude, double direction, double rotation) {
+        //System.out.println(gyroAngle);
         direction = direction - (gyroAngle % 360);    //assume cw is +, ccw is -
         robotDrive.mecanumDrive_Polar(magnitude, direction, rotation);
     } 
