@@ -29,8 +29,7 @@ public class StaticVars {
     public static double AUTONOMOUS_DRIVE_TIMER = 3;
     
     //Gyro channel
-    public static int GYRO_CHANNEL = 1;
-    public static int GYRO_MODULE = 1;
+    public static int GYRO_CHANNEL = 2;
     
     //Rangefinder DigitalModule
     public static int RANGEFINDER_DIGITAL_MODULE = 1; //Can only be 1 or 2
@@ -43,13 +42,4 @@ public class StaticVars {
     //DigitalInput channels
     public static int BALL_LOAD_DOWN_LIMIT_CHANNEL = 6;
     public static int BALL_LOAD_UP_LIMIT_CHANNEL = 7;
-    
-    //Mag-Lock turn on delay
-    public static double MAG_LOCK_DELAY = 0.005; //delay for 5ms
-    
-    //Pneumatic System constants
-    public static int PRESSURE_SWITCH_CHANNEL = 8;
-    public static int COMPRESSOR_RELAY_CHANNEL = 2;
-    public static int DOUBLE_SOLENOID_FORWARD_CHANNEL = 1;
-    public static int DOUBLE_SOLENOID_REVERSE_CHANNEL = 2;
 }
