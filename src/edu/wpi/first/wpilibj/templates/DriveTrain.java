@@ -16,10 +16,13 @@ public class DriveTrain  {
     }
     
     public void fieldDriveMecanumPolar(double gyroAngle, double magnitude, double direction, double rotation) {
-        //System.out.println(gyroAngle);
         direction = direction - (gyroAngle % 360);    //assume cw is +, ccw is -
         robotDrive.mecanumDrive_Polar(magnitude, direction, rotation);
     } 
+    
+    public void driveMecanumPolar(double magnitude, double direction, double rotation) {
+        robotDrive.mecanumDrive_Polar(magnitude, direction, rotation);
+    }
     
     //DriveTrain testing method to be run during robotInitialization.
     public void testDriveTrain() {
