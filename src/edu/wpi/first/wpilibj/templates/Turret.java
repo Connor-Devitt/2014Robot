@@ -3,10 +3,14 @@ package edu.wpi.first.wpilibj.templates;
 
 public class Turret {
     
-    String state;
+    Actuators actuators;
     
-    public Turret() {
-        state = "stop";
+    public Turret(Actuators actuators) {
+        this.actuators = actuators;
+    }
+    
+    public void launch() {
+        actuators.turnMagLockOff();
     }
     
 }
