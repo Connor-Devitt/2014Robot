@@ -15,6 +15,7 @@ public class Actuators {
     
     private final Relay magLockRelay;
     private final Relay ballLoadRelay;
+    private final Relay reloadRelay;
     
     public Actuators() {
         
@@ -24,8 +25,9 @@ public class Actuators {
         rearRight = new Victor(StaticVars.REAR_RIGHT_MOTOR);
         
         magLockRelay = new Relay(StaticVars.MAG_LOCK_RELAY_CHANNEL);
-        ballLoadRelay = new Relay(StaticVars.BALL_LOAD_RELAY_CHENNEL);
+        ballLoadRelay = new Relay(StaticVars.BALL_LOAD_RELAY_CHANNEL);
         magLockRelay.set(Relay.Value.kOn);
+        reloadRelay = new Relay(StaticVars.RELOAD_RELAY_CHANNEL);
     }
     
     public void turnMagLockOff() {
