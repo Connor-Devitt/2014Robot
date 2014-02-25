@@ -7,6 +7,7 @@ public class Turret {
     boolean triggerPulled;
     boolean reloading;
     boolean pushTimerStarted;
+    boolean pullTimerStarted;
     Timer reloadTimer = new Timer();
     Actuators actuators;
     
@@ -27,9 +28,13 @@ public class Turret {
             reloading = true;
             reloadTimer.start();
             pushTimerStarted = true;
+            pullTimerStarted = false;
             actuators.setreloadRelayForward();
         }
-        actuators.turnMagLockOn();
+        else { 
+            
+        }
+        
         
     }
     
