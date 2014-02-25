@@ -25,8 +25,8 @@ public class Team5181Robot extends IterativeRobot {
     Actuators actuators;
     Sensors sensors;
     DriveTrain driveTrain;
-    //Turret turret;
     CustomJoystick joystick;
+    Turret turret;
     
     /**
      * This function is run when the robot is first started up and should be
@@ -79,9 +79,9 @@ public class Team5181Robot extends IterativeRobot {
             System.out.println(sensors.getRangefinderDistance());
         }
         
-        if (joystick.magLockTriggerButtonPressed()) {
-            actuators.turnMagLockOff();
-        } else actuators.turnMagLockOn();
+      
+     turret.setTriggerPull(joystick.magLockTriggerButtonPressed());
+       
         
         //Ball loading logic...
         if (joystick.getBallLoadValue() != 0) {
