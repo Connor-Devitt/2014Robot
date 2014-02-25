@@ -80,7 +80,7 @@ public class Team5181Robot extends IterativeRobot {
             
         }
         if (joystick.ReloadButtonPressed()) {
-            turret.reload();
+            turret.ReloadInit();
         }
         
       
@@ -98,6 +98,7 @@ public class Team5181Robot extends IterativeRobot {
         driveTrain.driveMecanumPolar(joystick.getMagnitude(),
                                      joystick.getDirectionDegrees(),
                                      joystick.getTwist());
+        turret.ReloadUpdate();
         //System.out.println(sensors.getGyroAngle());
     }
     
