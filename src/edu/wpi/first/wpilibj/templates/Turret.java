@@ -23,38 +23,8 @@ public class Turret {
     public void launch() {
         actuators.turnMagLockOff();
     }
-    public void reload() {
-        if(!reloading) {
-            reloading = true;
-            reloadTimer.start();
-            pushTimerStarted = true;
-            pullTimerStarted = false;
-            actuators.setreloadRelayForward();
-        }
-        else { 
-            if (pushTimerStarted == true){
-                if(reloadTimer.get() > StaticVars.PUSH_TIME_LIMIT) {
-                    actuators.setreloadRelayReverse();
-                    pushTimerStarted = false;
-                    pullTimerStarted = true;
-                    reloadTimer.reset();
-                    reloadTimer.start();
-                } else actuators.setreloadRelayForward();
-            } else {
-                    if (pullTimerStarted ==true){
-                        if(reloadTimer.get() > StaticVars.PULL_TIME_LIMIT){
-                            actuators.setreloadRelayStop();
-                            pushTimerStarted = false;
-                            pullTimerStarted = false;
-                            reloading =false;
-                       } else actuators.setBallLoadRelayReverse();
-                        
-                    }
-           }
-        }
-        
-        
-    }
+   
+    
     public void ReloadInit() {
         if(!reloading) {
             reloading = true;
@@ -65,7 +35,8 @@ public class Turret {
         }
     }
     public void ReloadUpdate() {
-         if (pushTimerStarted == true){
+        if (reloading){
+            if (pushTimerStarted == true){
                 if(reloadTimer.get() > StaticVars.PUSH_TIME_LIMIT) {
                     actuators.setreloadRelayReverse();
                     pushTimerStarted = false;
@@ -83,6 +54,7 @@ public class Turret {
                        } else actuators.setBallLoadRelayReverse();
                 
                     }
-         }
+               }
+        }
     }
 }
