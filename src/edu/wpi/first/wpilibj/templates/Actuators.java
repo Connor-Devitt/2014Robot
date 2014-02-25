@@ -49,6 +49,12 @@ public class Actuators {
     public void setballLoadRelayOff() {
         ballLoadRelay.set(Relay.Value.kOff);
     }
+    public void setreloadRelayForward() {
+        reloadRelay.set(Relay.Value.kForward);
+    }
+    public void setreloadRelayReverse() {
+        reloadRelay.set(Relay.Value.kReverse);
+    }
     
     /**
      * I decided to use nested if-else statements to better encapsulate motor channels.
