@@ -10,16 +10,15 @@ public class Turret {
     Timer reloadTimer = new Timer();
     Actuators actuators;
     
-    public void setTriggerPull(boolean isPulled){
-        if (isPulled = true)
-            actuators.turnMagLockOff();
-        else if (isPulled = false)
-                actuators.turnMagLockOn();
-    }
     public Turret(Actuators actuators) {
         this.actuators = actuators;
     }
-    
+    public void setTriggerPull(boolean isPulled){
+        if (isPulled)
+            actuators.turnMagLockOff();
+        else actuators.turnMagLockOn();
+    }
+        
     public void launch() {
         actuators.turnMagLockOff();
     }
@@ -28,7 +27,7 @@ public class Turret {
             reloading = true;
             reloadTimer.start();
             pushTimerStarted = true;
-            
+            actuators.setreloadRelayForward();
         }
         actuators.turnMagLockOn();
         
