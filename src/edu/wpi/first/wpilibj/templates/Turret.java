@@ -32,7 +32,24 @@ public class Turret {
             actuators.setreloadRelayForward();
         }
         else { 
-            
+            if (pushTimerStarted == true){
+                if(reloadTimer.get() > StaticVars.PUSH_TIME_LIMIT) {
+                    actuators.setreloadRelayReverse();
+                    pushTimerStarted = false;
+                    pullTimerStarted = true;
+                    reloadTimer.reset();
+                    reloadTimer.start();
+                } else actuators.setreloadRelayForward();
+            } else {
+                    if (pullTimerStarted ==true){
+                        if(reloadTimer.get() > StaticVars.PULL_TIME_LIMIT){
+                            actuators.setreloadRelayStop();
+                            pushTimerStarted = false;
+                            pullTimerStarted = false;
+                       } else actuators.setBallLoadRelayReverse();
+                        
+                    }
+           }
         }
         
         

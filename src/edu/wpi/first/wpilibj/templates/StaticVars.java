@@ -43,4 +43,9 @@ public class StaticVars {
     //DigitalInput channels
     public static int BALL_LOAD_DOWN_LIMIT_CHANNEL = 6;
     public static int BALL_LOAD_UP_LIMIT_CHANNEL = 7;
+    
+    //Timer
+    public static double PUSH_TIME_LIMIT =2;
+    public static double PULL_TIME_LIMIT =2;
+    
 }
