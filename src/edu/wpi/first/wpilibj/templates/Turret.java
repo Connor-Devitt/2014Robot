@@ -46,6 +46,7 @@ public class Turret {
                             actuators.setreloadRelayStop();
                             pushTimerStarted = false;
                             pullTimerStarted = false;
+                            reloading =false;
                        } else actuators.setBallLoadRelayReverse();
                         
                     }
