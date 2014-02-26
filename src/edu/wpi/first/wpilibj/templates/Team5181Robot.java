@@ -63,28 +63,28 @@ public class Team5181Robot extends IterativeRobot {
         */
         if (joystick.rangeButtonPressed()) {
             System.out.println(sensors.getRangefinderDistance());
-            
         }
+        
         if (joystick.ReloadButtonPressed()) {
-            turret.ReloadInit();
+            turret.reloadInit();
         }
         
       
-     turret.setTriggerPull(joystick.magLockTriggerButtonPressed());
+        turret.setTriggerPull(joystick.magLockTriggerButtonPressed());
        
         
         //Ball loading logic...
         if (joystick.getBallLoadValue() != 0) {
-            if (joystick.getBallLoadValue() == -1 /*&& sensors.ballLoadUpLimitReached()*/)
+            if (joystick.getBallLoadValue() == -1)
                 actuators.setBallLoadRelayReverse();
-            if (joystick.getBallLoadValue() == 1 /*&& sensors.ballLoadDownLimitReached()*/)
+            if (joystick.getBallLoadValue() == 1)
                 actuators.setBallLoadRelayForward();
         } else actuators.setballLoadRelayOff();
         
         driveTrain.driveMecanumPolar(joystick.getMagnitude(),
                                      joystick.getDirectionDegrees(),
                                      joystick.getTwist());
-        turret.ReloadUpdate();
+        turret.reloadUpdate();
         //System.out.println(sensors.getGyroAngle());
     }
     
