@@ -8,7 +8,6 @@
 package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 /**
@@ -75,10 +74,12 @@ public class Team5181Robot extends IterativeRobot {
         //Ball loading logic...
         if (joystick.getBallLoadValue() != 0) {
             if (joystick.getBallLoadValue() == -1)
-                actuators.setBallLoadRelayReverse();
+                actuators.setBallLoadUp();
+                //actuators.setBallLoadRelayReverse();
             if (joystick.getBallLoadValue() == 1)
-                actuators.setBallLoadRelayForward();
-        } else actuators.setballLoadRelayOff();
+                actuators.setBallLoadDown();
+                //actuators.setBallLoadRelayForward();
+        } else actuators.setBallLoadStop();//actuators.setballLoadRelayOff();
         
         driveTrain.driveMecanumPolar(joystick.getMagnitude(),
                                      joystick.getDirectionDegrees(),
