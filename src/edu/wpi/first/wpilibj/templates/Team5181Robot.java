@@ -33,11 +33,11 @@ public class Team5181Robot extends IterativeRobot {
      */
     public void robotInit() {
            
-        actuators = new Actuators();
-        sensors = new Sensors();
+        actuators  = new Actuators();
+        sensors    = new Sensors();
         driveTrain = new DriveTrain(actuators);
-        joystick = new CustomJoystick();
-        turret = new Turret(actuators);
+        joystick   = new CustomJoystick();
+        turret     = new Turret(actuators);
     }
     
     public void autonomousInit() {
