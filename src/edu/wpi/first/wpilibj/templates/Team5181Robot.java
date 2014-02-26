@@ -38,20 +38,6 @@ public class Team5181Robot extends IterativeRobot {
         sensors = new Sensors();
         driveTrain = new DriveTrain(actuators);
         joystick = new CustomJoystick();
-        /*
-        LiveWindow.addActuator("Drive train", 
-                             "front left motor", 
-                             frontLeft);
-        LiveWindow.addActuator("Drive train",
-                             "front right motor",
-                             frontRight);
-        LiveWindow.addActuator("Drive train", 
-                             "back left motor", 
-                             rearLeft);
-        LiveWindow.addActuator("Drive train", 
-                             "back right motor",
-                             rearRight);
-        */
     }
     
     public void autonomousInit() {
