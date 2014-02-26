@@ -50,4 +50,8 @@ public class StaticVars {
     public static double PUSH_TIME_LIMIT =2;
     public static double PULL_TIME_LIMIT =2;
     
+    //Ball Load speeds
+    public static double BALL_LIFT_SPEED_DOWN = 1;
+    public static double BALL_LIFT_SPEED_UP = -.75;
+    
 }
