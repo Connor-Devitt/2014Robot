@@ -12,6 +12,7 @@ public class Actuators {
     private final Talon rearLeft;
     private final Talon frontRight;
     private final Victor rearRight;
+    private final Victor ballLift;
     
     private final Relay magLockRelay;
     private final Relay ballLoadRelay;
@@ -23,6 +24,7 @@ public class Actuators {
         rearLeft = new Talon(StaticVars.REAR_LEFT_MOTOR);
         frontRight = new Talon(StaticVars.FRONT_RIGHT_MOTOR);
         rearRight = new Victor(StaticVars.REAR_RIGHT_MOTOR);
+        ballLift = new Victor(StaticVars.BALL_LIFT_MOTOR);
         
         magLockRelay = new Relay(StaticVars.MAG_LOCK_RELAY_CHANNEL);
         ballLoadRelay = new Relay(StaticVars.BALL_LOAD_RELAY_CHANNEL);
