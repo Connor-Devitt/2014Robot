@@ -4,28 +4,25 @@ package edu.wpi.first.wpilibj.templates;
 import edu.wpi.first.wpilibj.Timer;
 
 public class Turret {
+    
     boolean triggerPulled;
     boolean reloading;
     boolean pushTimerStarted;
     boolean pullTimerStarted;
-    Timer reloadTimer = new Timer();
+    Timer reloadTimer;
     Actuators actuators;
     
     public Turret(Actuators actuators) {
         this.actuators = actuators;
+        reloadTimer = new Timer();
     }
     public void setTriggerPull(boolean isPulled){
         if (isPulled)
             actuators.turnMagLockOff();
         else actuators.turnMagLockOn();
     }
-        
-    public void launch() {
-        actuators.turnMagLockOff();
-    }
-   
     
-    public void ReloadInit() {
+    public void reloadInit() {
         if(!reloading) {
             reloading = true;
             reloadTimer.start();
@@ -34,7 +31,7 @@ public class Turret {
             actuators.setreloadRelayForward();
         }
     }
-    public void ReloadUpdate() {
+    public void reloadUpdate() {
         if (reloading){
             if (pushTimerStarted == true){
                 if(reloadTimer.get() > StaticVars.PUSH_TIME_LIMIT) {
