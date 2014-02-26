@@ -38,6 +38,7 @@ public class Team5181Robot extends IterativeRobot {
         sensors = new Sensors();
         driveTrain = new DriveTrain(actuators);
         joystick = new CustomJoystick();
+        turret = new Turret(actuators);
     }
     
     public void autonomousInit() {
@@ -69,10 +70,8 @@ public class Team5181Robot extends IterativeRobot {
             turret.reloadInit();
         }
         
-      
         turret.setTriggerPull(joystick.magLockTriggerButtonPressed());
        
-        
         //Ball loading logic...
         if (joystick.getBallLoadValue() != 0) {
             if (joystick.getBallLoadValue() == -1)
