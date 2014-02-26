@@ -4,35 +4,32 @@ package edu.wpi.first.wpilibj.templates;
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.SpeedController;
-import edu.wpi.first.wpilibj.Compressor;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.Victor;
 
 public class Actuators {
 
     private final Talon frontLeft;
     private final Talon rearLeft;
     private final Talon frontRight;
-    private final Talon rearRight;
+    private final Victor rearRight;
+    private final Victor ballLift;
     
     private final Relay magLockRelay;
     private final Relay ballLoadRelay;
-    
-    private final Compressor compressor;
-    private final DoubleSolenoid solenoid;
+    private final Relay reloadRelay;
     
     public Actuators() {
         
         frontLeft = new Talon(StaticVars.FRONT_LEFT_MOTOR);
         rearLeft = new Talon(StaticVars.REAR_LEFT_MOTOR);
         frontRight = new Talon(StaticVars.FRONT_RIGHT_MOTOR);
-        rearRight = new Talon(StaticVars.REAR_RIGHT_MOTOR);
+        rearRight = new Victor(StaticVars.REAR_RIGHT_MOTOR);
+        ballLift = new Victor(StaticVars.BALL_LIFT_MOTOR);
         
         magLockRelay = new Relay(StaticVars.MAG_LOCK_RELAY_CHANNEL);
-        ballLoadRelay = new Relay(StaticVars.BALL_LOAD_RELAY_CHENNEL);
-        
-        compressor = new Compressor(StaticVars.PRESSURE_SWITCH_CHANNEL, StaticVars.COMPRESSOR_RELAY_CHANNEL);
-        solenoid = new DoubleSolenoid(StaticVars.DOUBLE_SOLENOID_FORWARD_CHANNEL,
-                                      StaticVars.DOUBLE_SOLENOID_REVERSE_CHANNEL);
+        ballLoadRelay = new Relay(StaticVars.BALL_LOAD_RELAY_CHANNEL);
+        magLockRelay.set(Relay.Value.kOn);
+        reloadRelay = new Relay(StaticVars.RELOAD_RELAY_CHANNEL);
     }
     
     public void turnMagLockOff() {
@@ -54,25 +51,14 @@ public class Actuators {
     public void setballLoadRelayOff() {
         ballLoadRelay.set(Relay.Value.kOff);
     }
-    
-    public void startCompressor() {
-        compressor.start();
+    public void setreloadRelayForward() {
+        reloadRelay.set(Relay.Value.kForward);
     }
-    
-    public void stopCompressor() {
-        compressor.stop();
+    public void setreloadRelayReverse() {
+        reloadRelay.set(Relay.Value.kReverse);
     }
-    
-    public void setSolenoidForward() {
-        solenoid.set(DoubleSolenoid.Value.kForward);
-    }
-    
-    public void setSolenoidReverse() {
-        solenoid.set(DoubleSolenoid.Value.kReverse);
-    }
-    
-    public void setSolenoidOff() {
-        solenoid.set(DoubleSolenoid.Value.kOff);
+    public void setreloadRelayStop() {
+        reloadRelay.set(Relay.Value.kOff);
     }
     
     /**

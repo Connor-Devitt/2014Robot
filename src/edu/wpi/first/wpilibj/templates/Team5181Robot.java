@@ -25,8 +25,8 @@ public class Team5181Robot extends IterativeRobot {
     Actuators actuators;
     Sensors sensors;
     DriveTrain driveTrain;
-    //Turret turret;
     CustomJoystick joystick;
+    Turret turret;
     
     /**
      * This function is run when the robot is first started up and should be
@@ -38,7 +38,6 @@ public class Team5181Robot extends IterativeRobot {
         sensors = new Sensors();
         driveTrain = new DriveTrain(actuators);
         joystick = new CustomJoystick();
-        
         /*
         LiveWindow.addActuator("Drive train", 
                              "front left motor", 
@@ -65,42 +64,42 @@ public class Team5181Robot extends IterativeRobot {
     public void autonomousPeriodic() {
         
         
-        //autonomous.runAuto(-1); //negative value because we only have 1 auto function.
+        autonomous.runAuto(-1); //negative value because we only have 1 auto function.
         
     }
     /**
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
-        
+        /*
         if (joystick.gyroResetButtonPressed())
             sensors.resetGyro();
-        
-        
+        */
         if (joystick.rangeButtonPressed()) {
             System.out.println(sensors.getRangefinderDistance());
+            
+        }
+        if (joystick.ReloadButtonPressed()) {
+            turret.ReloadInit();
         }
         
-        if (joystick.magLockTriggerButtonPressed()) {
-            actuators.turnMagLockOff();
-            Timer.delay(StaticVars.MAG_LOCK_DELAY); // delay for 5ms to allow for release.
-            actuators.turnMagLockOn();    //turn mag lock back on right away...
-        }
+      
+     turret.setTriggerPull(joystick.magLockTriggerButtonPressed());
+       
         
         //Ball loading logic...
         if (joystick.getBallLoadValue() != 0) {
-            if (joystick.getBallLoadValue() == -1 && sensors.ballLoadUpLimitReached())
+            if (joystick.getBallLoadValue() == -1 /*&& sensors.ballLoadUpLimitReached()*/)
                 actuators.setBallLoadRelayReverse();
-            if (joystick.getBallLoadValue() == 1 && sensors.ballLoadDownLimitReached())
+            if (joystick.getBallLoadValue() == 1 /*&& sensors.ballLoadDownLimitReached()*/)
                 actuators.setBallLoadRelayForward();
         } else actuators.setballLoadRelayOff();
         
-        //sensors.updateRangefinder();    //update rangefinder to get another distance
-        
-        driveTrain.fieldDriveMecanumPolar(sensors.getGyroAngle(),
-                                          joystick.getMagnitude(),
-                                          joystick.getDirectionDegrees(),
-                                          joystick.getTwist());
+        driveTrain.driveMecanumPolar(joystick.getMagnitude(),
+                                     joystick.getDirectionDegrees(),
+                                     joystick.getTwist());
+        turret.ReloadUpdate();
+        //System.out.println(sensors.getGyroAngle());
     }
     
     /**

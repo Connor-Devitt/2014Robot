@@ -1,6 +1,7 @@
 
 package edu.wpi.first.wpilibj.templates;
 
+import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.RobotDrive;
 
 public class DriveTrain  {
@@ -18,6 +19,10 @@ public class DriveTrain  {
         direction = direction - (gyroAngle % 360);    //assume cw is +, ccw is -
         robotDrive.mecanumDrive_Polar(magnitude, direction, rotation);
     } 
+    
+    public void driveMecanumPolar(double magnitude, double direction, double rotation) {
+        robotDrive.mecanumDrive_Polar(magnitude, direction, rotation);
+    }
     
     //DriveTrain testing method to be run during robotInitialization.
     public void testDriveTrain() {
