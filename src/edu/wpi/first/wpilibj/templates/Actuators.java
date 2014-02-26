@@ -40,6 +40,15 @@ public class Actuators {
         magLockRelay.set(Relay.Value.kOn);
     }
     
+    public void setBallLoadDown() {
+        ballLift.set(StaticVars.BALL_LIFT_SPEED_DOWN);
+    }
+    
+    public void setBallLoadUp() {
+        ballLift.set(StaticVars.BALL_LIFT_SPEED_UP);
+    }
+    
+    /*
     public void setBallLoadRelayForward() {
         ballLoadRelay.set(Relay.Value.kForward);
     }
@@ -51,13 +60,17 @@ public class Actuators {
     public void setballLoadRelayOff() {
         ballLoadRelay.set(Relay.Value.kOff);
     }
-    public void setreloadRelayForward() {
+    */
+    
+    public void setReloadRelayForward() {
         reloadRelay.set(Relay.Value.kForward);
     }
-    public void setreloadRelayReverse() {
+    
+    public void setReloadRelayReverse() {
         reloadRelay.set(Relay.Value.kReverse);
     }
-    public void setreloadRelayStop() {
+    
+    public void setReloadRelayStop() {
         reloadRelay.set(Relay.Value.kOff);
     }
     
@@ -79,7 +92,11 @@ public class Actuators {
                     if (motorChannel == StaticVars.REAR_RIGHT_MOTOR) {
                         return rearRight;
                     } else {
-                        return null;
+                        if (motorChannel == StaticVars.BALL_LIFT_MOTOR) {
+                            return ballLift;
+                        } else {
+                            return null;
+                        }
                     }
                 }
             }
