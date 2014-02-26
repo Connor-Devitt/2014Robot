@@ -48,6 +48,9 @@ public class Actuators {
         ballLift.set(StaticVars.BALL_LIFT_SPEED_UP);
     }
     
+    public void setBallLoadStop() {
+        ballLift.set(0.0);
+    }
     /*
     public void setBallLoadRelayForward() {
         ballLoadRelay.set(Relay.Value.kForward);
