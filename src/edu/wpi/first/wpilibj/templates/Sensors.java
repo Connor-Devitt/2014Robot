@@ -9,8 +9,6 @@ public class Sensors {
 
     //private final Gyro gyro;
     private final Rangefinder rangefinder;
-    //private final DigitalInput ballLoadDownLimit;
-    //private final DigitalInput ballLoadUpLimit;
     //private final AnalogChannel gyroChannel;
     
     public Sensors() {
@@ -25,9 +23,6 @@ public class Sensors {
         rangefinder.checkRangefinder();
         rangefinder.startThread();
         
-                
-        //ballLoadDownLimit = new DigitalInput(StaticVars.BALL_LOAD_DOWN_LIMIT_CHANNEL);
-        //ballLoadUpLimit = new DigitalInput(StaticVars.BALL_LOAD_UP_LIMIT_CHANNEL);
     }
     /*
     public double getGyroAngle() {
@@ -42,8 +37,10 @@ public class Sensors {
         gyro.reset();
     }
     */
-    //Returns int, measured in centimeters...
     
+    /*
+    * Returns int, measured in centimeters.
+    */
     public int getRangefinderDistance() {
         return rangefinder.getDistance();
     }
@@ -51,13 +48,4 @@ public class Sensors {
    public void updateRangefinder() {
         rangefinder.update();
    }
-    /*
-    public boolean ballLoadDownLimitReached() {
-        return ballLoadDownLimit.get();
-    }
-    
-    public boolean ballLoadUpLimitReached() {
-        return ballLoadUpLimit.get();
-    }
-    */
 }
