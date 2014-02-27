@@ -41,7 +41,7 @@ public class Team5181Robot extends IterativeRobot {
     }
     
     public void autonomousInit() {
-        autonomous = new Autonomous(driveTrain, sensors);
+        autonomous = new Autonomous(driveTrain, sensors, turret);
     }
     
     /**
@@ -51,6 +51,7 @@ public class Team5181Robot extends IterativeRobot {
         
         
         autonomous.runAuto(-1); //negative value because we only have 1 auto function.
+        turret.reloadUpdate();
         
     }
     /**
