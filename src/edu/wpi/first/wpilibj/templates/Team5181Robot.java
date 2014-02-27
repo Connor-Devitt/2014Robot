@@ -8,7 +8,6 @@
 package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 /**
@@ -34,25 +33,11 @@ public class Team5181Robot extends IterativeRobot {
      */
     public void robotInit() {
            
-        actuators = new Actuators();
-        sensors = new Sensors();
+        actuators  = new Actuators();
+        sensors    = new Sensors();
         driveTrain = new DriveTrain(actuators);
-        joystick = new CustomJoystick();
-        turret = new Turret(actuators);
-        /*
-        LiveWindow.addActuator("Drive train", 
-                             "front left motor", 
-                             frontLeft);
-        LiveWindow.addActuator("Drive train",
-                             "front right motor",
-                             frontRight);
-        LiveWindow.addActuator("Drive train", 
-                             "back left motor", 
-                             rearLeft);
-        LiveWindow.addActuator("Drive train", 
-                             "back right motor",
-                             rearRight);
-        */
+        joystick   = new CustomJoystick();
+        turret     = new Turret(actuators);
     }
     
     public void autonomousInit() {
@@ -78,28 +63,28 @@ public class Team5181Robot extends IterativeRobot {
         */
         if (joystick.rangeButtonPressed()) {
             System.out.println(sensors.getRangefinderDistance());
-            
         }
+        
         if (joystick.ReloadButtonPressed()) {
-            turret.ReloadInit();
+            turret.reloadInit();
         }
         
-      
-     turret.setTriggerPull(joystick.magLockTriggerButtonPressed());
+        turret.setTriggerPull(joystick.magLockTriggerButtonPressed());
        
-        
         //Ball loading logic...
         if (joystick.getBallLoadValue() != 0) {
-            if (joystick.getBallLoadValue() == -1 /*&& sensors.ballLoadUpLimitReached()*/)
-                actuators.setBallLoadRelayReverse();
-            if (joystick.getBallLoadValue() == 1 /*&& sensors.ballLoadDownLimitReached()*/)
-                actuators.setBallLoadRelayForward();
-        } else actuators.setballLoadRelayOff();
+            if (joystick.getBallLoadValue() == -1)
+                actuators.setBallLoadUp();
+                //actuators.setBallLoadRelayReverse();
+            if (joystick.getBallLoadValue() == 1)
+                actuators.setBallLoadDown();
+                //actuators.setBallLoadRelayForward();
+        } else actuators.setBallLoadStop();//actuators.setballLoadRelayOff();
         
         driveTrain.driveMecanumPolar(joystick.getMagnitude(),
                                      joystick.getDirectionDegrees(),
                                      joystick.getTwist());
-        turret.ReloadUpdate();
+        turret.reloadUpdate();
         //System.out.println(sensors.getGyroAngle());
     }
     

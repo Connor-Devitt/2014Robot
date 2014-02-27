@@ -12,6 +12,7 @@ public class Actuators {
     private final Talon rearLeft;
     private final Talon frontRight;
     private final Victor rearRight;
+    private final Victor ballLift;
     
     private final Relay magLockRelay;
     private final Relay ballLoadRelay;
@@ -23,6 +24,7 @@ public class Actuators {
         rearLeft = new Talon(StaticVars.REAR_LEFT_MOTOR);
         frontRight = new Talon(StaticVars.FRONT_RIGHT_MOTOR);
         rearRight = new Victor(StaticVars.REAR_RIGHT_MOTOR);
+        ballLift = new Victor(StaticVars.BALL_LIFT_MOTOR);
         
         magLockRelay = new Relay(StaticVars.MAG_LOCK_RELAY_CHANNEL);
         ballLoadRelay = new Relay(StaticVars.BALL_LOAD_RELAY_CHANNEL);
@@ -38,6 +40,18 @@ public class Actuators {
         magLockRelay.set(Relay.Value.kOn);
     }
     
+    public void setBallLoadDown() {
+        ballLift.set(StaticVars.BALL_LIFT_SPEED_DOWN);
+    }
+    
+    public void setBallLoadUp() {
+        ballLift.set(StaticVars.BALL_LIFT_SPEED_UP);
+    }
+    
+    public void setBallLoadStop() {
+        ballLift.set(0.0);
+    }
+    /*
     public void setBallLoadRelayForward() {
         ballLoadRelay.set(Relay.Value.kForward);
     }
@@ -49,13 +63,17 @@ public class Actuators {
     public void setballLoadRelayOff() {
         ballLoadRelay.set(Relay.Value.kOff);
     }
-    public void setreloadRelayForward() {
+    */
+    
+    public void setReloadRelayForward() {
         reloadRelay.set(Relay.Value.kForward);
     }
-    public void setreloadRelayReverse() {
+    
+    public void setReloadRelayReverse() {
         reloadRelay.set(Relay.Value.kReverse);
     }
-    public void setreloadRelayStop() {
+    
+    public void setReloadRelayStop() {
         reloadRelay.set(Relay.Value.kOff);
     }
     
@@ -77,7 +95,11 @@ public class Actuators {
                     if (motorChannel == StaticVars.REAR_RIGHT_MOTOR) {
                         return rearRight;
                     } else {
-                        return null;
+                        if (motorChannel == StaticVars.BALL_LIFT_MOTOR) {
+                            return ballLift;
+                        } else {
+                            return null;
+                        }
                     }
                 }
             }

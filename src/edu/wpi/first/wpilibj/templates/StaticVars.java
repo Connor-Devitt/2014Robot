@@ -7,6 +7,7 @@ public class StaticVars {
     public static int REAR_LEFT_MOTOR = 1;
     public static int FRONT_RIGHT_MOTOR = 4;
     public static int REAR_RIGHT_MOTOR = 2;
+    public static int BALL_LIFT_MOTOR = 5;
     
     //joystick constants
     public static int JOYSTICK_PORT = 1;
@@ -48,5 +49,9 @@ public class StaticVars {
     //Timer
     public static double PUSH_TIME_LIMIT =2;
     public static double PULL_TIME_LIMIT =2;
+    
+    //Ball Load speeds
+    public static double BALL_LIFT_SPEED_DOWN = 1;
+    public static double BALL_LIFT_SPEED_UP = -.75;
     
 }
