@@ -58,10 +58,12 @@ public class Team5181Robot extends IterativeRobot {
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
-        /*
-        if (joystick.gyroResetButtonPressed())
+        
+        if (joystick.gyroResetButtonPressed()) {
+            System.out.println(sensors.getGyroAngle());
             sensors.resetGyro();
-        */
+        }
+        
         if (joystick.rangeButtonPressed()) {
             System.out.println(sensors.getRangefinderDistance());
         }
@@ -86,7 +88,7 @@ public class Team5181Robot extends IterativeRobot {
                                      joystick.getDirectionDegrees(),
                                      joystick.getTwist());
         turret.reloadUpdate();
-        //System.out.println(sensors.getGyroAngle());
+        
     }
     
     /**
