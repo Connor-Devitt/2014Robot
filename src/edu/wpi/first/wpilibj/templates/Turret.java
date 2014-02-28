@@ -15,6 +15,10 @@ public class Turret {
     public Turret(Actuators actuators) {
         this.actuators = actuators;
         reloadTimer = new Timer();
+        triggerPulled = false;
+        reloading = false;
+        pushTimerStarted = false;
+        pullTimerStarted = false;
     }
     public void setTriggerPull(boolean isPulled){
         if (isPulled)
