@@ -10,13 +10,15 @@ public class Autonomous {
     private static Timer timer;
     private final DriveTrain drivetrain;
     private final Sensors sensors;
+    private final Turret turret;
     
-    public Autonomous(DriveTrain drivetrain, Sensors sensors) {
+    public Autonomous(DriveTrain drivetrain, Sensors sensors, Turret turret) {
         status = "shoot";
         this.drivetrain = drivetrain;
         this.sensors = sensors;
         timerStarted = false;
         timer = new Timer();
+        this.turret = turret;
     }
     
     public void runAuto(int autoChoice) {
@@ -53,9 +55,13 @@ public class Autonomous {
         } else {
             if (status.equals("shoot")) {
                 //shoot robot
+                turret.setTriggerPull(true);
                 status = "drive";
+                turret.reloadInit();
             } else {
                 if (status.equals("stopped")) {
+                    turret.setTriggerPull(false);
+                    
                     //do nothing...
                 }
             }
