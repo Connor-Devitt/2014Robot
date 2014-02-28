@@ -31,7 +31,7 @@ public class StaticVars {
     public static double AUTONOMOUS_DRIVE_TIMER = 3;
     
     //Gyro channel
-    public static int GYRO_CHANNEL = 2;
+    public static int GYRO_CHANNEL = 1;
     
     //Rangefinder DigitalModule
     public static int RANGEFINDER_DIGITAL_MODULE = 1; //Can only be 1 or 2
@@ -47,8 +47,8 @@ public class StaticVars {
     public static int BALL_LOAD_UP_LIMIT_CHANNEL = 7;
     
     //Timer
-    public static double PUSH_TIME_LIMIT =2;
-    public static double PULL_TIME_LIMIT =2;
+    public static double PUSH_TIME_LIMIT =1.5;
+    public static double PULL_TIME_LIMIT =1.5;
     
     //Ball Load speeds
     public static double BALL_LIFT_SPEED_DOWN = 1;

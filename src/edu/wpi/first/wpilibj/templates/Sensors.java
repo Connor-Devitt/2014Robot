@@ -11,7 +11,7 @@ public class Sensors {
     public Sensors() {
         
         gyro = new Gyro(StaticVars.GYRO_CHANNEL);
-        gyro.setSensitivity(.007);
+        //gyro.setSensitivity(.007);
         gyro.reset();   //zero the gyro
         
         rangefinder = new Rangefinder();
