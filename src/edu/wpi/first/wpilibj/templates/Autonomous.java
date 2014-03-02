@@ -13,7 +13,7 @@ public class Autonomous {
     private final Turret turret;
     
     public Autonomous(DriveTrain drivetrain, Sensors sensors, Turret turret) {
-        status = "drive";
+        status = "turn";    //CAUTION!
         this.drivetrain = drivetrain;
         this.sensors = sensors;
         timerStarted = false;
