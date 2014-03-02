@@ -26,6 +26,7 @@ public class StaticVars {
     
     //Autonomous drive magnitude
     public static double AUTONOMOUS_DRIVE_MAGNITUDE = -0.5;
+    public static double AUTONOMOUS_TWIST_MAGNITUDE = 0.75;
     
     //Autonomous drive timer
     public static double AUTONOMOUS_DRIVE_TIMER = 3;
