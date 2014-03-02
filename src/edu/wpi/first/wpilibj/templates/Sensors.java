@@ -23,7 +23,6 @@ public class Sensors {
         
         reloadLimit = new DigitalInput(StaticVars.RELOAD_LIMIT_CHANNEL);
         camera = new CameraVision();
-        camera.captureImage();
     }
     
     public double getGyroAngle() {
@@ -55,5 +54,9 @@ public class Sensors {
    
    public boolean camTargetHot() {
        return camera.isHot();
+   }
+   
+   public double camDistanceToTarget(){
+       return camera.getDistance();
    }
 }

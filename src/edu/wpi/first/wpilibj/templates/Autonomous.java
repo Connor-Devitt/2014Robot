@@ -71,16 +71,18 @@ public class Autonomous {
         
     }
     
-    private void auto2() //vision processing
+    //Just like the other auto method, except it grabs an image every iteration (could be inefficient), then drives until
+    //either the timer is up or the camera finds that the target is hot and within half a foot of shooting distance (arbitrary)
+    private void auto2()
     {
-        //sensors.camLoadNewImg();
+        sensors.camLoadNewImg();
         if (status.equals("drive")) {
             //drive robot
             if (!isTimerStarted())
                 startTimer();
             
-            //Robot will drive while the timer is running and hot target not detected
-            if (timer.get() >= StaticVars.AUTONOMOUS_DRIVE_TIMER || sensors.camTargetHot()){
+            //Robot will drive while the timer is running.
+            if (timer.get() >= StaticVars.AUTONOMOUS_DRIVE_TIMER || (sensors.camTargetHot() && (Math.abs(StaticVars.SHOOTING_DISTANCE - sensors.camDistanceToTarget()) < 0.5))) {
                 //drivetrain.fieldDriveMecanumPolar(sensors.getGyroAngle(), 0.0, 0.0, 0.0);
                 drivetrain.driveMecanumPolar(0.0, 0.0, 0.0);
                 status = "shoot";
@@ -106,5 +108,4 @@ public class Autonomous {
             
         }
     }
-    
 }
