@@ -54,4 +54,6 @@ public class StaticVars {
     public static double BALL_LIFT_SPEED_DOWN = 1;
     public static double BALL_LIFT_SPEED_UP = .75;
     
+    public static double SHOOTING_DISTANCE = 6.00; //in feet, needs better estimate
+    
 }
