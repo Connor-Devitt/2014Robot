@@ -97,11 +97,11 @@ public class Autonomous {
     private void auto2()
     {
         //sensors.camLoadNewImg();
-        //dist = sensors.camDistanceToTarget();
+        sensors.updateRangefinder();
         double dist;
         dist = sensors.getRangefinderDistance();
         //dist = sensors.camDistanceToTarget();
-        sensors.updateRangefinder();
+        
         if (status.equals("drive")) {
             //drive robot
             if (!isTimerStarted())
