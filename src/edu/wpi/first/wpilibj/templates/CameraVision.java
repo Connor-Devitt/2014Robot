@@ -79,7 +79,7 @@ public class CameraVision {
     };
     
     public CameraVision() {
-        //camera = AxisCamera.getInstance();    //get an instance of the camera
+        camera = AxisCamera.getInstance();    //get an instance of the camera
         cc = new CriteriaCollection();          //create the criteria for the particle filter
         cc.addCriteria(MeasurementType.IMAQ_MT_AREA, AREA_MINIMUM, 65535, false);
         
