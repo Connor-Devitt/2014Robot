@@ -100,7 +100,7 @@ public class Autonomous {
         //dist = sensors.camDistanceToTarget();
         double dist;
         dist = sensors.getRangefinderDistance();
-        dist = sensors.camDistanceToTarget();
+        //dist = sensors.camDistanceToTarget();
         sensors.updateRangefinder();
         if (status.equals("drive")) {
             //drive robot
