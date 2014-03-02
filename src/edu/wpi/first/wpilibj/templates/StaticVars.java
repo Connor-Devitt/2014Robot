@@ -7,7 +7,7 @@ public class StaticVars {
     public static int REAR_LEFT_MOTOR = 1;
     public static int FRONT_RIGHT_MOTOR = 4;
     public static int REAR_RIGHT_MOTOR = 2;
-    public static int BALL_LIFT_MOTOR = 5;
+    //public static int BALL_LIFT_MOTOR = 5;
     
     //joystick constants
     public static int JOYSTICK_PORT = 1;
@@ -22,10 +22,10 @@ public class StaticVars {
     public static int MAG_LOCK_TRIGGER_BUTTON = 1;
     public static int RANGE_BUTTON = 4;
     public static int GYRO_RESET_BUTTON = 8;
-    public static int RELOAD_BUTTON = 6;
+    public static int RELOAD_BUTTON = 2;
     
     //Autonomous drive magnitude
-    public static double AUTONOMOUS_DRIVE_MAGNITUDE = 0.5;
+    public static double AUTONOMOUS_DRIVE_MAGNITUDE = -0.5;
     
     //Autonomous drive timer
     public static double AUTONOMOUS_DRIVE_TIMER = 3;
@@ -40,18 +40,17 @@ public class StaticVars {
     //Relay channels
     public static int MAG_LOCK_RELAY_CHANNEL = 2;
     public static int BALL_LOAD_RELAY_CHANNEL = 1;
-    public static int RELOAD_RELAY_CHANNEL = 3;
+    public static int RELOAD_RELAY_CHANNEL = 4;
     
     //DigitalInput channels
-    public static int BALL_LOAD_DOWN_LIMIT_CHANNEL = 6;
-    public static int BALL_LOAD_UP_LIMIT_CHANNEL = 7;
+    public static int RELOAD_LIMIT_CHANNEL = 6;
     
     //Timer
-    public static double PUSH_TIME_LIMIT =1.5;
-    public static double PULL_TIME_LIMIT =1.5;
+    public static double PUSH_TIME_LIMIT =1.70;
+    public static double PULL_TIME_LIMIT =5.0;
     
     //Ball Load speeds
     public static double BALL_LIFT_SPEED_DOWN = 1;
-    public static double BALL_LIFT_SPEED_UP = -.75;
+    public static double BALL_LIFT_SPEED_UP = .75;
     
 }

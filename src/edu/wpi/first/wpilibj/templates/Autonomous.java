@@ -13,12 +13,13 @@ public class Autonomous {
     private final Turret turret;
     
     public Autonomous(DriveTrain drivetrain, Sensors sensors, Turret turret) {
-        status = "shoot";
+        status = "drive";
         this.drivetrain = drivetrain;
         this.sensors = sensors;
         timerStarted = false;
         timer = new Timer();
         this.turret = turret;
+        
     }
     
     public void runAuto(int autoChoice) {
@@ -50,17 +51,17 @@ public class Autonomous {
             } else {
                 //drivetrain.fieldDriveMecanumPolar(sensors.getGyroAngle(), 0.0, 0.0, 0.0);
                 drivetrain.driveMecanumPolar(0.0, 0.0, 0.0);
-                status = "stopped";
+                status = "shoot";
             }
         } else {
             if (status.equals("shoot")) {
                 //shoot robot
                 turret.setTriggerPull(true);
-                status = "drive";
+                status = "stopped";
                 turret.reloadInit();
             } else {
                 if (status.equals("stopped")) {
-                    turret.setTriggerPull(false);
+                    turret.setTriggerPull(true);
                     
                     //do nothing...
                 }

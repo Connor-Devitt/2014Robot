@@ -22,7 +22,7 @@ public class CustomJoystick extends Joystick {
         //Necessary for Logitech 3D Joystick. Must specify 3rd axis as twist.
         setAxisChannel(Joystick.AxisType.kTwist, StaticVars.TWIST_AXIS);
         
-        rangeButton = new JoystickButton(this, StaticVars.RANGE_BUTTON);
+        rangeButton = new JoystickButton(this, StaticVars.RANGE_BUTTON); 
         gyroResetButton = new JoystickButton(this, StaticVars.GYRO_RESET_BUTTON);
         magLockTriggerButton = new JoystickButton(this, StaticVars.MAG_LOCK_TRIGGER_BUTTON);
         reloadButton = new JoystickButton(this, StaticVars.RELOAD_BUTTON);

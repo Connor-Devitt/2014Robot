@@ -11,9 +11,11 @@ public class Turret {
     boolean pullTimerStarted;
     Timer reloadTimer;
     Actuators actuators;
+    Sensors sensors;
     
-    public Turret(Actuators actuators) {
+    public Turret(Actuators actuators, Sensors sensors) {
         this.actuators = actuators;
+        this.sensors = sensors;
         reloadTimer = new Timer();
         triggerPulled = false;
         reloading = false;
@@ -47,7 +49,7 @@ public class Turret {
                 } else actuators.setReloadRelayForward();
             } else {
                 if (pullTimerStarted ==true){
-                    if(reloadTimer.get() > StaticVars.PULL_TIME_LIMIT){
+                    if(reloadTimer.get() > StaticVars.PULL_TIME_LIMIT || !sensors.reloadLimitReached()){
                         actuators.setReloadRelayStop();
                         pushTimerStarted = false;
                         pullTimerStarted = false;

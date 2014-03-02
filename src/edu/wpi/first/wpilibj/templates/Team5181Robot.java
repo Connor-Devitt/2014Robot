@@ -37,11 +37,12 @@ public class Team5181Robot extends IterativeRobot {
         sensors    = new Sensors();
         driveTrain = new DriveTrain(actuators);
         joystick   = new CustomJoystick();
-        turret     = new Turret(actuators);
+        turret     = new Turret(actuators, sensors);
     }
     
     public void autonomousInit() {
         autonomous = new Autonomous(driveTrain, sensors, turret);
+        turret.reloadInit();
     }
     
     /**
@@ -69,6 +70,7 @@ public class Team5181Robot extends IterativeRobot {
         }
         
         if (joystick.ReloadButtonPressed()) {
+            //System.out.println("Reloading....");
             turret.reloadInit();
         }
         
@@ -76,23 +78,29 @@ public class Team5181Robot extends IterativeRobot {
        
         //Ball loading logic...
         if (joystick.getBallLoadValue() != 0) {
-            if (joystick.getBallLoadValue() == -1)
-                actuators.setBallLoadUp();
-                //actuators.setBallLoadRelayReverse();
-            if (joystick.getBallLoadValue() == 1)
-                actuators.setBallLoadDown();
-                //actuators.setBallLoadRelayForward();
-        } else actuators.setBallLoadStop();//actuators.setballLoadRelayOff();
+            if (joystick.getBallLoadValue() == -1) {
+                //actuators.setBallLoadUp();
+                actuators.setBallLoadRelayReverse();
+            }
+                
+            if (joystick.getBallLoadValue() == 1) {
+                actuators.setBallLoadRelayForward();
+                //actuators.setBallLoadDown();
+            }
+                
+        } else actuators.setballLoadRelayOff();/*actuators.setBallLoadStop();*/
         
-        /*
+        
         driveTrain.driveMecanumPolar(joystick.getMagnitude(),
                                      joystick.getDirectionDegrees(),
                                      joystick.getTwist());
-        */
+        
+        /*
         driveTrain.fieldDriveMecanumPolar(sensors.getGyroAngle(),
                                           joystick.getMagnitude(),
                                           joystick.getDirectionDegrees(),
                                           joystick.getTwist());
+        */
         turret.reloadUpdate();
         
     }
