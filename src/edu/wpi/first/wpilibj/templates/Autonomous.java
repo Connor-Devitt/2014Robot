@@ -42,7 +42,7 @@ public class Autonomous {
             if (!isTimerStarted())
                 startTimer();
             
-            //Robot will drive while the timer is running.
+            //Robot will drive while the timer is running and hot target not detected
             if (timer.get() < StaticVars.AUTONOMOUS_DRIVE_TIMER) {
                 //drivetrain.fieldDriveMecanumPolar(sensors.getGyroAngle(),
                 //                                  StaticVars.AUTONOMOUS_DRIVE_MAGNITUDE,
@@ -73,7 +73,7 @@ public class Autonomous {
     
     private void auto2() //vision processing
     {
-        sensors.camLoadNewImg();
+        //sensors.camLoadNewImg();
         if (status.equals("drive")) {
             //drive robot
             if (!isTimerStarted())
