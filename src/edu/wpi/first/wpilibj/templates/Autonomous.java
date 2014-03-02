@@ -5,6 +5,8 @@ import edu.wpi.first.wpilibj.Timer;
 
 public class Autonomous {
     
+    //DO NOT FORGET TO UNCOMMENT FIELD ORIENTED DRIVE IF DESIRED!
+    
     private String status;
     private boolean timerStarted;
     private static Timer timer;
@@ -13,7 +15,7 @@ public class Autonomous {
     private final Turret turret;
     
     public Autonomous(DriveTrain drivetrain, Sensors sensors, Turret turret) {
-        status = "drive";
+        status = "turn";    //CAUTION!
         this.drivetrain = drivetrain;
         this.sensors = sensors;
         timerStarted = false;
@@ -35,6 +37,7 @@ public class Autonomous {
         timerStarted = true;
     }
     
+    //Drives forward for 3 seconds and then shoots
     private void auto1() {
         
         if (status.equals("drive")) {
@@ -64,6 +67,24 @@ public class Autonomous {
                     turret.setTriggerPull(true);
                     
                     //do nothing...
+                } else {
+                    if (status.equals("turn")) {
+                        if (Math.abs(sensors.getGyroAngle()) >= 180) {
+                            //stop turning
+                            drivetrain.driveMecanumPolar(0.0, 0.0, 0.0);
+                            //drivetrain.fieldDriveMecanumPolar(sensors.getGyroAngle(), 0.0, 0.0, 0.0);
+                            status = "drive";
+                        } else {
+                            //keep turning
+                            drivetrain.driveMecanumPolar(0.0, 0.0, StaticVars.AUTONOMOUS_TWIST_MAGNITUDE);
+                            /*
+                            drivetrain.fieldDriveMecanumPolar(sensors.getGyroAngle(),
+                                                              0.0, 
+                                                              0.0, 
+                                                              StaticVars.AUTONOMOUS_TWIST_MAGNITUDE);
+                            */
+                        }
+                    }
                 }
             }
             
