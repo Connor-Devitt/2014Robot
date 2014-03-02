@@ -61,7 +61,7 @@ public class Team5181Robot extends IterativeRobot {
     public void teleopPeriodic() {
         
         if (joystick.gyroResetButtonPressed()) {
-            System.out.println(sensors.getGyroAngle());
+            //System.out.println(sensors.getGyroAngle());
             sensors.resetGyro();
         }
         
