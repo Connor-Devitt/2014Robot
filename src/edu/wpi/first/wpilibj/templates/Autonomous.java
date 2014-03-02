@@ -5,6 +5,8 @@ import edu.wpi.first.wpilibj.Timer;
 
 public class Autonomous {
     
+    //DO NOT FORGET TO UNCOMMENT FIELD ORIENTED DRIVE IF DESIRED!
+    
     private String status;
     private boolean timerStarted;
     private static Timer timer;
