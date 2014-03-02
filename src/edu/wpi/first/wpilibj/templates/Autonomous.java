@@ -71,5 +71,40 @@ public class Autonomous {
         
     }
     
+    private void auto2() //vision processing
+    {
+        sensors.camLoadNewImg();
+        if (status.equals("drive")) {
+            //drive robot
+            if (!isTimerStarted())
+                startTimer();
+            
+            //Robot will drive while the timer is running.
+            if (timer.get() >= StaticVars.AUTONOMOUS_DRIVE_TIMER || sensors.camTargetHot()){
+                //drivetrain.fieldDriveMecanumPolar(sensors.getGyroAngle(), 0.0, 0.0, 0.0);
+                drivetrain.driveMecanumPolar(0.0, 0.0, 0.0);
+                status = "shoot";
+            } else {
+                //drivetrain.fieldDriveMecanumPolar(sensors.getGyroAngle(),
+                //                                  StaticVars.AUTONOMOUS_DRIVE_MAGNITUDE,
+                //                                  0, 0);
+                drivetrain.driveMecanumPolar(StaticVars.AUTONOMOUS_DRIVE_MAGNITUDE, 0, 0);
+            }
+        } else {
+            if (status.equals("shoot")) {
+                //shoot robot
+                turret.setTriggerPull(true);
+                status = "stopped";
+                turret.reloadInit();
+            } else {
+                if (status.equals("stopped")) {
+                    turret.setTriggerPull(true);
+                    
+                    //do nothing...
+                }
+            }
+            
+        }
+    }
     
 }
