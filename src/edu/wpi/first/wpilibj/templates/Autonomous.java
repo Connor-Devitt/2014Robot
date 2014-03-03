@@ -96,11 +96,14 @@ public class Autonomous {
     //either the timer is up or the camera finds that the target is hot and within half a foot of shooting distance (arbitrary)
     private void auto2()
     {
-        //sensors.camLoadNewImg();
-        sensors.updateRangefinder();
         double dist;
-        dist = sensors.getRangefinderDistance();
+        double distanceoffset;
+        //sensors.camLoadNewImg();
         //dist = sensors.camDistanceToTarget();
+        sensors.updateRangefinder();
+        dist = sensors.getRangefinderDistance();
+        distanceoffset = 15.34;
+        //distanceoffset = .5;
         
         if (status.equals("drive")) {
             //drive robot
@@ -108,7 +111,7 @@ public class Autonomous {
                 startTimer();
             
             //Robot will drive while the timer is running.
-            if (timer.get() >= StaticVars.AUTONOMOUS_DRIVE_TIMER || (sensors.camTargetHot() && (Math.abs(StaticVars.SHOOTING_DISTANCE - dist) < 15.24))) {
+            if (timer.get() >= StaticVars.AUTONOMOUS_DRIVE_TIMER || (sensors.camTargetHot() && (Math.abs(StaticVars.SHOOTING_DISTANCE - dist) < distanceoffset))) {
                 //drivetrain.fieldDriveMecanumPolar(sensors.getGyroAngle(), 0.0, 0.0, 0.0);
                 drivetrain.driveMecanumPolar(0.0, 0.0, 0.0);
                 status = "shoot";
@@ -125,13 +128,27 @@ public class Autonomous {
                 status = "stopped";
                 turret.reloadInit();
             } else {
-                if (status.equals("stopped")) {
-                    turret.setTriggerPull(true);
-                    
-                    //do nothing...
+                if (status.equals("turn")){
+                    if (sensors.getGyroAngle() >= 180){
+                        //stop
+                        drivetrain.driveMecanumPolar(0, 0, 0);
+                        status = "drive";
+                    } else {
+                        //keep turning
+                        drivetrain.driveMecanumPolar(0, 0, StaticVars.AUTONOMOUS_TWIST_MAGNITUDE);
+                        /*drivetrain.fieldDriveMecanumPolar(sensors.getGyroAngle(),
+                                                            0, 
+                                                            0, 
+                                                            StaticVars.AUTONOMOUS_TWIST_MAGNITUDE);*/
+                    }
+                } else {
+                    if (status.equals("stopped")) {
+                        turret.setTriggerPull(true);
+                        
+                        //do nothing...
+                    }
                 }
             }
-            
         }
     }
 }
