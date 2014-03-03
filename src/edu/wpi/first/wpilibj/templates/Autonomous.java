@@ -116,48 +116,49 @@ public class Autonomous {
             else {
                 timer.start();
             }
-        }
-        if (status.equals("drive")) {
-            //drive robot
-            if (!isTimerStarted())
-                startTimer();
-            
-            //Robot will drive while the timer is running.
-            if (timer.get() >= StaticVars.AUTONOMOUS_DRIVE_TIMER || Math.abs(StaticVars.SHOOTING_DISTANCE - dist) < distanceoffset) {
-                //drivetrain.fieldDriveMecanumPolar(sensors.getGyroAngle(), 0.0, 0.0, 0.0);
-                drivetrain.driveMecanumPolar(0.0, 0.0, 0.0);
-                status = "shoot";
-            } else {
-                //drivetrain.fieldDriveMecanumPolar(sensors.getGyroAngle(),
-                //                                  StaticVars.AUTONOMOUS_DRIVE_MAGNITUDE,
-                //                                  0, 0);
-                drivetrain.driveMecanumPolar(StaticVars.AUTONOMOUS_DRIVE_MAGNITUDE, 0, 0);
-            }
         } else {
-            if (status.equals("shoot")) {
-                //shoot robot
-                turret.setTriggerPull(true);
-                status = "stopped";
-                turret.reloadInit();
-            } else {
-                if (status.equals("turn")){
-                    if (sensors.getGyroAngle() >= 180){
-                        //stop
-                        drivetrain.driveMecanumPolar(0, 0, 0);
-                        status = "drive";
-                    } else {
-                        //keep turning
-                        drivetrain.driveMecanumPolar(0, 0, StaticVars.AUTONOMOUS_TWIST_MAGNITUDE);
-                        /*drivetrain.fieldDriveMecanumPolar(sensors.getGyroAngle(),
+                if (status.equals("drive")) {
+                //drive robot
+                if (!isTimerStarted())
+                    startTimer();
+            
+                //Robot will drive while the timer is running.
+                if (timer.get() >= StaticVars.AUTONOMOUS_DRIVE_TIMER || Math.abs(StaticVars.SHOOTING_DISTANCE - dist) < distanceoffset) {
+                    //drivetrain.fieldDriveMecanumPolar(sensors.getGyroAngle(), 0.0, 0.0, 0.0);
+                    drivetrain.driveMecanumPolar(0.0, 0.0, 0.0);
+                    status = "shoot";
+                } else {
+                    //drivetrain.fieldDriveMecanumPolar(sensors.getGyroAngle(),
+                    //                                  StaticVars.AUTONOMOUS_DRIVE_MAGNITUDE,
+                    //                                  0, 0);
+                    drivetrain.driveMecanumPolar(StaticVars.AUTONOMOUS_DRIVE_MAGNITUDE, 0, 0);
+                }
+                } else {
+                if (status.equals("shoot")) {
+                    //shoot robot
+                    turret.setTriggerPull(true);
+                    status = "stopped";
+                    turret.reloadInit();
+                } else {
+                    if (status.equals("turn")){
+                        if (sensors.getGyroAngle() >= 180){
+                            //stop
+                            drivetrain.driveMecanumPolar(0, 0, 0);
+                            status = "drive";
+                        } else {
+                            //keep turning
+                            drivetrain.driveMecanumPolar(0, 0, StaticVars.AUTONOMOUS_TWIST_MAGNITUDE);
+                            /*drivetrain.fieldDriveMecanumPolar(sensors.getGyroAngle(),
                                                             0, 
                                                             0, 
                                                             StaticVars.AUTONOMOUS_TWIST_MAGNITUDE);*/
-                    }
-                } else {
-                    if (status.equals("stopped")) {
-                        turret.setTriggerPull(true);
+                        }
+                    } else {
+                        if (status.equals("stopped")) {
+                            turret.setTriggerPull(true);
                         
-                        //do nothing...
+                            //do nothing...
+                        }
                     }
                 }
             }
