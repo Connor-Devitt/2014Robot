@@ -28,8 +28,9 @@ public class StaticVars {
     public static double AUTONOMOUS_DRIVE_MAGNITUDE = -0.5;
     public static double AUTONOMOUS_TWIST_MAGNITUDE = 0.65;
     
-    //Autonomous drive timer
+    //Autonomous timing
     public static double AUTONOMOUS_DRIVE_TIMER = 3;
+    public static double AUTO_TARGET_HOT_WAIT_TIME = 5.00;
     
     //Gyro channel
     public static int GYRO_CHANNEL = 1;
@@ -47,8 +48,8 @@ public class StaticVars {
     public static int RELOAD_LIMIT_CHANNEL = 6;
     
     //Timer
-    public static double PUSH_TIME_LIMIT =1.70;
-    public static double PULL_TIME_LIMIT =5.0;
+    public static double PUSH_TIME_LIMIT =4.0;
+    public static double PULL_TIME_LIMIT =6.0;
     
     //Ball Load speeds
     public static double BALL_LIFT_SPEED_DOWN = 1;
