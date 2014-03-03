@@ -16,6 +16,7 @@ public class Autonomous {
     
     public Autonomous(DriveTrain drivetrain, Sensors sensors, Turret turret) {
         status = "turn";    //CAUTION!
+        //status = "imgprocess"; //ONLY WHEN USING AUTO2
         this.drivetrain = drivetrain;
         this.sensors = sensors;
         timerStarted = false;
@@ -104,14 +105,25 @@ public class Autonomous {
         dist = sensors.getRangefinderDistance();
         distanceoffset = 15.34;
         //distanceoffset = .5;
-        
+        if (status.equals("imgprocess")){
+            if (isTimerStarted() && timer.get() >= StaticVars.AUTO_TARGET_HOT_WAIT_TIME ){
+                status = "drive";
+                timer.reset();
+                return;
+            }
+            sensors.camLoadNewImg();
+            if (sensors.camTargetHot()) status = "drive";
+            else {
+                timer.start();
+            }
+        }
         if (status.equals("drive")) {
             //drive robot
             if (!isTimerStarted())
                 startTimer();
             
             //Robot will drive while the timer is running.
-            if (timer.get() >= StaticVars.AUTONOMOUS_DRIVE_TIMER || (sensors.camTargetHot() && (Math.abs(StaticVars.SHOOTING_DISTANCE - dist) < distanceoffset))) {
+            if (timer.get() >= StaticVars.AUTONOMOUS_DRIVE_TIMER || Math.abs(StaticVars.SHOOTING_DISTANCE - dist) < distanceoffset) {
                 //drivetrain.fieldDriveMecanumPolar(sensors.getGyroAngle(), 0.0, 0.0, 0.0);
                 drivetrain.driveMecanumPolar(0.0, 0.0, 0.0);
                 status = "shoot";

@@ -28,8 +28,9 @@ public class StaticVars {
     public static double AUTONOMOUS_DRIVE_MAGNITUDE = -0.5;
     public static double AUTONOMOUS_TWIST_MAGNITUDE = 0.65;
     
-    //Autonomous drive timer
+    //Autonomous timing
     public static double AUTONOMOUS_DRIVE_TIMER = 3;
+    public static double AUTO_TARGET_HOT_WAIT_TIME = 5.00;
     
     //Gyro channel
     public static int GYRO_CHANNEL = 1;
