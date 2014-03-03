@@ -15,7 +15,7 @@ public class Autonomous {
     private final Turret turret;
     
     public Autonomous(DriveTrain drivetrain, Sensors sensors, Turret turret) {
-        status = "drive";    //CAUTION!
+        status = "turn";    //CAUTION!
         this.drivetrain = drivetrain;
         this.sensors = sensors;
         timerStarted = false;
@@ -68,8 +68,7 @@ public class Autonomous {
                     
                     //do nothing...
                 } else {
-                    
-                    /*if (status.equals("turn")) {
+                    if (status.equals("turn")) {
                         if (Math.abs(sensors.getGyroAngle()) >= 180) {
                             //stop turning
                             drivetrain.driveMecanumPolar(0.0, 0.0, 0.0);
@@ -78,16 +77,14 @@ public class Autonomous {
                         } else {
                             //keep turning
                             drivetrain.driveMecanumPolar(0.0, 0.0, StaticVars.AUTONOMOUS_TWIST_MAGNITUDE);
-                            
-                            //drivetrain.fieldDriveMecanumPolar(sensors.getGyroAngle(),
-                            //                                  0.0, 
-                            //                                  0.0, 
-                            //                                  StaticVars.AUTONOMOUS_TWIST_MAGNITUDE);
-                           
-                            
+                            /*
+                            drivetrain.fieldDriveMecanumPolar(sensors.getGyroAngle(),
+                                                              0.0, 
+                                                              0.0, 
+                                                              StaticVars.AUTONOMOUS_TWIST_MAGNITUDE);
+                            */
                         }
-                     
-                    }*/
+                    }
                 }
             }
             
@@ -97,7 +94,6 @@ public class Autonomous {
     
     //Just like the other auto method, except it drives until
     //either the timer is up or the camera finds that the target is hot and within half a foot of shooting distance (arbitrary)
-    /*
     private void auto2()
     {
         //sensors.camLoadNewImg();
@@ -138,5 +134,4 @@ public class Autonomous {
             
         }
     }
-    */
 }

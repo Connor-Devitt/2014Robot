@@ -47,8 +47,8 @@ public class StaticVars {
     public static int RELOAD_LIMIT_CHANNEL = 6;
     
     //Timer
-    public static double PUSH_TIME_LIMIT =4.0;//4.0
-    public static double PULL_TIME_LIMIT =6.0;//6.0
+    public static double PUSH_TIME_LIMIT =1.70;
+    public static double PULL_TIME_LIMIT =5.0;
     
     //Ball Load speeds
     public static double BALL_LIFT_SPEED_DOWN = 1;

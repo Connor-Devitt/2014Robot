@@ -90,18 +90,17 @@ public class Team5181Robot extends IterativeRobot {
                 
         } else actuators.setballLoadRelayOff();/*actuators.setBallLoadStop();*/
         
-        /*
+        
         driveTrain.driveMecanumPolar(joystick.getMagnitude(),
                                      joystick.getDirectionDegrees(),
                                      joystick.getTwist());
         
-        */
-        
+        /*
         driveTrain.fieldDriveMecanumPolar(sensors.getGyroAngle(),
                                           joystick.getMagnitude(),
                                           joystick.getDirectionDegrees(),
                                           joystick.getTwist());
-        
+        */
         turret.reloadUpdate();
         
     }

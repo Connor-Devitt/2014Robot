@@ -9,7 +9,7 @@ public class Sensors {
     private final Gyro gyro;
     private final Rangefinder rangefinder;
     private final DigitalInput reloadLimit;
-    //private final CameraVision camera;
+    private final CameraVision camera;
     
     public Sensors() {
         
@@ -22,7 +22,7 @@ public class Sensors {
         rangefinder.startThread();
         
         reloadLimit = new DigitalInput(StaticVars.RELOAD_LIMIT_CHANNEL);
-        //camera = new CameraVision();
+        camera = new CameraVision();
     }
     
     public double getGyroAngle() {
@@ -48,7 +48,6 @@ public class Sensors {
        return reloadLimit.get();
    }
    
-   /*
    public void camLoadNewImg() {
        camera.captureImage();
    }
@@ -60,5 +59,4 @@ public class Sensors {
    public double camDistanceToTarget(){
        return camera.getDistance();
    }
-   */
 }
