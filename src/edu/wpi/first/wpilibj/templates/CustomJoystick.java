@@ -16,6 +16,8 @@ public class CustomJoystick extends Joystick {
     private final JoystickButton gyroResetButton;
     private final JoystickButton magLockTriggerButton;
     private final JoystickButton reloadButton;
+    private final JoystickButton pushReloadButton;
+    private final JoystickButton pullReloadButton;
     
     public CustomJoystick() {
         super(StaticVars.JOYSTICK_PORT);
@@ -26,6 +28,8 @@ public class CustomJoystick extends Joystick {
         gyroResetButton = new JoystickButton(this, StaticVars.GYRO_RESET_BUTTON);
         magLockTriggerButton = new JoystickButton(this, StaticVars.MAG_LOCK_TRIGGER_BUTTON);
         reloadButton = new JoystickButton(this, StaticVars.RELOAD_BUTTON);
+        pushReloadButton = new JoystickButton(this, StaticVars.PUSH_RELOAD_BUTTON);
+        pullReloadButton = new JoystickButton(this, StaticVars.PULL_RELOAD_BUTTON);
     }
     
     /**
@@ -85,8 +89,16 @@ public class CustomJoystick extends Joystick {
     public boolean magLockTriggerButtonPressed() {
         return magLockTriggerButton.get();
     }
-    public boolean ReloadButtonPressed() {
+    public boolean reloadButtonPressed() {
         return reloadButton.get();
+    }
+    
+    public boolean pushReloadButtonPressed() {
+        return pushReloadButton.get();
+    }
+    
+    public boolean pullReloadButtonPressed() {
+        return pullReloadButton.get();
     }
     
     public int getBallLoadValue() {
