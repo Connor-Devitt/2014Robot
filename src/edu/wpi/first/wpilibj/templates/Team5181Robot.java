@@ -69,10 +69,19 @@ public class Team5181Robot extends IterativeRobot {
             System.out.println(sensors.getRangefinderDistance());
         }
         
-        if (joystick.ReloadButtonPressed()) {
-            //System.out.println("Reloading....");
+        if (joystick.pushReloadButtonPressed()) {
+            turret.pushInit();
+        }
+        
+        if (joystick.pullReloadButtonPressed()) {
+            turret.pullInit();
+        }
+        
+        /*
+        if (joystick.reloadButtonPressed()) {
             turret.reloadInit();
         }
+        */
         
         turret.setTriggerPull(joystick.magLockTriggerButtonPressed());
        
