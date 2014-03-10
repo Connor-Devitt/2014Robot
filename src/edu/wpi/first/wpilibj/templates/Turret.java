@@ -7,6 +7,8 @@ public class Turret {
     
     boolean triggerPulled;
     boolean reloading;
+    boolean pulling;
+    boolean pushing;
     boolean pushTimerStarted;
     boolean pullTimerStarted;
     Timer reloadTimer;
@@ -37,7 +39,50 @@ public class Turret {
             actuators.setReloadRelayForward();
         }
     }
+    
+    public void pullInit() {
+        if (!pulling) {
+            pulling = true;
+            pushing = false;
+            reloadTimer.start();
+            pullTimerStarted = true;
+            pushTimerStarted = false;
+            actuators.setReloadRelayReverse();
+        }
+    }
+    
+    public void pushInit() {
+        if (!pushing) {
+            pulling = false;
+            pushing = true;
+            reloadTimer.start();
+            pullTimerStarted = false;
+            pullTimerStarted = true;
+            actuators.setReloadRelayForward();
+        }
+    }
+    
     public void reloadUpdate() {
+        if (pulling) {
+            if (reloadTimer.get() > StaticVars.PULL_TIME_LIMIT) {
+                actuators.setReloadRelayStop();
+                pushTimerStarted = false;
+                pullTimerStarted = false;
+                reloadTimer.reset();
+            } else actuators.setReloadRelayReverse();
+        } else {
+            if (pushing) {
+                if (reloadTimer.get() > StaticVars.PUSH_TIME_LIMIT) {
+                    actuators.setReloadRelayStop();
+                    pushTimerStarted = false;
+                    pullTimerStarted = false;
+                    reloadTimer.reset();
+                } else actuators.setReloadRelayForward();
+            }
+        }
+    }
+    
+    public void reloadUpdateOld() {
         if (reloading){
             if (pushTimerStarted == true){
                 if(reloadTimer.get() > StaticVars.PUSH_TIME_LIMIT) {
