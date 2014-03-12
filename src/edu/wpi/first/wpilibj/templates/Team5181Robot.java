@@ -51,7 +51,7 @@ public class Team5181Robot extends IterativeRobot {
     public void autonomousPeriodic() {
         
         
-        autonomous.runAuto(-1); //negative value because we only have 1 auto function.
+        autonomous.runAuto(2); //negative value because we only have 1 auto function.
         turret.reloadUpdate();
         
     }
@@ -76,12 +76,6 @@ public class Team5181Robot extends IterativeRobot {
         if (joystick.pullReloadButtonPressed()) {
             turret.pullInit();
         }
-        
-        /*
-        if (joystick.reloadButtonPressed()) {
-            turret.reloadInit();
-        }
-        */
         
         turret.setTriggerPull(joystick.magLockTriggerButtonPressed());
        
