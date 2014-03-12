@@ -33,6 +33,7 @@ public class StaticVars {
     //Autonomous timing
     public static double AUTONOMOUS_DRIVE_TIMER = 3;
     public static double AUTO_TARGET_HOT_WAIT_TIME = 5.00;
+    public static double AUTO_SHOOT_DIST_FEET = 3.0;
     
     //Gyro channel
     public static int GYRO_CHANNEL = 1;
