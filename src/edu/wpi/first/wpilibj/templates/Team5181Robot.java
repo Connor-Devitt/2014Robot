@@ -70,7 +70,8 @@ public class Team5181Robot extends IterativeRobot {
         
         if (joystick.rangeButtonPressed()) {
             System.out.println(sensors.getRangefinderDistance());
-            station.println(DriverStationLCD.Line.kUser1, ROBOT_TASK_PRIORITY, "Rangefinder distance in feet: "  + sensors.getRangefinderDistanceFeet());
+            station.println(DriverStationLCD.Line.kUser1, 1, "Rangefinder distance in feet: "  + sensors.getRangefinderDistanceFeet());
+            station.updateLCD();
         }
         
         
