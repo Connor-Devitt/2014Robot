@@ -40,6 +40,10 @@ public class Sensors {
         return rangefinder.getDistance();
     }
     
+    public double getRangefinderDistanceFeet() {
+        return ((double) getRangefinderDistance())/30.48;
+    }
+    
    public void updateRangefinder() {
         rangefinder.update();
    }
