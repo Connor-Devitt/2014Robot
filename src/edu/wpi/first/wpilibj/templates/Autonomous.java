@@ -27,7 +27,16 @@ public class Autonomous {
     }
     
     public void runAuto(int autoChoice) {
-        auto2();
+        switch (autoChoice) {
+            case 1: 
+                auto1();
+                break;
+            case 2:
+                auto2();
+                break;
+            default:
+                break;
+        }
     }
     
     public boolean isTimerStarted() {
