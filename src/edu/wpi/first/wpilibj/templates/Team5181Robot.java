@@ -111,6 +111,7 @@ public class Team5181Robot extends IterativeRobot {
                                           joystick.getTwist());
         */
         turret.reloadUpdate();
+        sensors.updateRangefinder();
         
     }
     
