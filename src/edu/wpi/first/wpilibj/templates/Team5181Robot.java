@@ -9,6 +9,7 @@ package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.DriverStationLCD;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -26,6 +27,7 @@ public class Team5181Robot extends IterativeRobot {
     DriveTrain driveTrain;
     CustomJoystick joystick;
     Turret turret;
+    DriverStationLCD station;
     
     /**
      * This function is run when the robot is first started up and should be
@@ -38,6 +40,7 @@ public class Team5181Robot extends IterativeRobot {
         driveTrain = new DriveTrain(actuators);
         joystick   = new CustomJoystick();
         turret     = new Turret(actuators, sensors);
+        station = DriverStationLCD.getInstance();
     }
     
     public void autonomousInit() {
@@ -67,7 +70,10 @@ public class Team5181Robot extends IterativeRobot {
         
         if (joystick.rangeButtonPressed()) {
             System.out.println(sensors.getRangefinderDistance());
+            station.println(DriverStationLCD.Line.kUser1, ROBOT_TASK_PRIORITY, "Rangefinder distance in feet: "  + sensors.getRangefinderDistanceFeet());
         }
+        
+        
         
         if (joystick.pushReloadButtonPressed()) {
             turret.pushInit();
