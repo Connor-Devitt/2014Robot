@@ -94,7 +94,7 @@ public class Turret {
                 } else actuators.setReloadRelayForward();
             } else {
                 if (pullTimerStarted ==true){
-                    if(reloadTimer.get() > StaticVars.PULL_TIME_LIMIT || !sensors.reloadLimitReached()){
+                    if(reloadTimer.get() > StaticVars.PULL_TIME_LIMIT /*|| !sensors.reloadLimitReached()*/){
                         actuators.setReloadRelayStop();
                         pushTimerStarted = false;
                         pullTimerStarted = false;
