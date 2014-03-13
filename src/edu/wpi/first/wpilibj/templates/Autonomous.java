@@ -36,6 +36,9 @@ public class Autonomous {
             case 2:
                 auto2();
                 break;
+            case 3:
+                auto3();
+                break;        
             default:
                 break;
         }
@@ -145,6 +148,33 @@ public class Autonomous {
             if (timer.get() > StaticVars.AUTO_TARGET_HOT_WAIT_TIME) {
                 status = "drive";
             }
+        }
+    }
+    
+    //does not use camera, just rangefinder, start status must equal "drive"
+    private void auto3() {
+        
+        sensors.updateRangefinder();
+        
+        if (status.equals("drive")) {
+            //drive robot
+            //Robot will drive while the timer is running.
+            turret.pullInit();
+            if (sensors.getRangefinderDistanceFeet() < StaticVars.AUTO_SHOOT_DIST_FEET) {
+                drivetrain.driveMecanumPolar(0.0, 0.0, 0.0);
+                status = "shoot";
+            } else drivetrain.driveMecanumPolar(StaticVars.AUTONOMOUS_DRIVE_MAGNITUDE, 0, 0);
+        }
+        
+        if (status.equals("shoot")) {
+                //shoot robot
+                turret.setTriggerPull(true);
+                status = "stopped";
+        }
+        
+        if (status.equals("stopped")) {
+            //do nothing
+            //turret.setTriggerPull(true);
         }
     }
 }
