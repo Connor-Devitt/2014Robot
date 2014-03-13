@@ -91,7 +91,6 @@ public class Team5181Robot extends IterativeRobot {
                     ballRetriever.stopIntakeWheels();
                 ballRetriever.startIntakeWheelsReverse();
             }
-            
         }
         
         turret.setTriggerPull(joystick.magLockTriggerButtonPressed());
