@@ -18,18 +18,22 @@ public class CustomJoystick extends Joystick {
     private final JoystickButton reloadButton;
     private final JoystickButton pushReloadButton;
     private final JoystickButton pullReloadButton;
+    private final JoystickButton intakeWheelsForwardButton;
+    private final JoystickButton intakeWheelsReverseButton;
     
     public CustomJoystick() {
         super(StaticVars.JOYSTICK_PORT);
         //Necessary for Logitech 3D Joystick. Must specify 3rd axis as twist.
         setAxisChannel(Joystick.AxisType.kTwist, StaticVars.TWIST_AXIS);
         
-        rangeButton = new JoystickButton(this, StaticVars.RANGE_BUTTON); 
-        gyroResetButton = new JoystickButton(this, StaticVars.GYRO_RESET_BUTTON);
-        magLockTriggerButton = new JoystickButton(this, StaticVars.MAG_LOCK_TRIGGER_BUTTON);
-        reloadButton = new JoystickButton(this, StaticVars.RELOAD_BUTTON);
-        pushReloadButton = new JoystickButton(this, StaticVars.PUSH_RELOAD_BUTTON);
-        pullReloadButton = new JoystickButton(this, StaticVars.PULL_RELOAD_BUTTON);
+        rangeButton               = new JoystickButton(this, StaticVars.RANGE_BUTTON); 
+        gyroResetButton           = new JoystickButton(this, StaticVars.GYRO_RESET_BUTTON);
+        magLockTriggerButton      = new JoystickButton(this, StaticVars.MAG_LOCK_TRIGGER_BUTTON);
+        reloadButton              = new JoystickButton(this, StaticVars.RELOAD_BUTTON);
+        pushReloadButton          = new JoystickButton(this, StaticVars.PUSH_RELOAD_BUTTON);
+        pullReloadButton          = new JoystickButton(this, StaticVars.PULL_RELOAD_BUTTON);
+        intakeWheelsForwardButton = new JoystickButton(this, StaticVars.INTAKE_WHEELS_FORWARD_BUTTON);
+        intakeWheelsReverseButton = new JoystickButton(this, StaticVars.INTAKE_WHEELS_REVERSE_BUTTON);
     }
     
     /**
@@ -99,6 +103,14 @@ public class CustomJoystick extends Joystick {
     
     public boolean pullReloadButtonPressed() {
         return pullReloadButton.get();
+    }
+    
+    public boolean intakeWheelsForwardButtonPressed() {
+        return intakeWheelsForwardButton.get();
+    }
+    
+    public boolean intakeWheelsReverseButtonPressed() {
+        return intakeWheelsReverseButton.get();
     }
     
     public int getBallLoadValue() {
