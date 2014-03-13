@@ -28,7 +28,6 @@ public class StaticVars {
     public static int GYRO_RESET_BUTTON = 11;
     public static int RANGE_BUTTON = 12;
     
-    
     //Autonomous drive magnitude
     public static double AUTONOMOUS_DRIVE_MAGNITUDE = -0.5;
     public static double AUTONOMOUS_TWIST_MAGNITUDE = 0.65;
