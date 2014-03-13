@@ -21,10 +21,13 @@ public class StaticVars {
     //Joystick Button Mapping
     public static int MAG_LOCK_TRIGGER_BUTTON = 1;
     public static int RELOAD_BUTTON = 2;
-    public static int PUSH_RELOAD_BUTTON = 3;
-    public static int PULL_RELOAD_BUTTON = 4;
+    public static int INTAKE_WHEELS_FORWARD_BUTTON = 3;
+    public static int INTAKE_WHEELS_REVERSE_BUTTON = 4;
+    public static int PUSH_RELOAD_BUTTON = 5;
+    public static int PULL_RELOAD_BUTTON = 6;
     public static int GYRO_RESET_BUTTON = 11;
     public static int RANGE_BUTTON = 12;
+    
     
     //Autonomous drive magnitude
     public static double AUTONOMOUS_DRIVE_MAGNITUDE = -0.5;
