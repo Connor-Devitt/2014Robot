@@ -25,21 +25,26 @@ public class BallRetriever {
     
     public void startIntakeWheels() {
         actuators.setBallLoadWheelRelayForward();
+        intakeWheelsOn = true;
+        intakeWheelsForward = true;
     }
     
     public void stopIntakeWheels() {
         actuators.setBallLoadWheelRelayOff();
+        intakeWheelsOn = false;
     }
     
     public void startIntakeWheelsReverse() {
         actuators.setBallLoadWheelRelayReverse();
+        intakeWheelsOn = true;
+        intakeWheelsForward = false;
     }
     
-    public boolean intakeWheelsForward() {
+    public boolean isIntakeWheelsForward() {
         return intakeWheelsForward;
     }
     
-    public boolean intakeWheelsOn() {
+    public boolean isIntakeWheelsOn() {
         return intakeWheelsOn;
     }
     
