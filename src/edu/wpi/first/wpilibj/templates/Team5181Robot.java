@@ -47,7 +47,7 @@ public class Team5181Robot extends IterativeRobot {
     
     public void autonomousPeriodic() {
     
-        autonomous.runAuto(2); //negative value because we only have 1 auto function.
+        autonomous.runAuto(3); //negative value because we only have 1 auto function.
         turret.reloadUpdate();
         
     }
