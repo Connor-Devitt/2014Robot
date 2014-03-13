@@ -23,9 +23,9 @@ public class Autonomous {
         timer = new Timer();
         
         timerStarted = false;
-        status = "imgprocess"; //CAUTION THIS IS STARTING STATUS
+        status = "drive"; //CAUTION THIS IS STARTING STATUS
         turret.setTriggerPull(false);
-        sensors.camLoadNewImg();
+        //sensors.camLoadNewImg();
     }
     
     public void runAuto(int autoChoice) {
@@ -115,6 +115,7 @@ public class Autonomous {
         sensors.updateRangefinder();
         
         if (status.equals("imgprocess")){
+            /*
             if (sensors.camTargetHot()) {
                 status = "drive";
             } else {
@@ -122,6 +123,7 @@ public class Autonomous {
                 timer.start();
                 status = "wait";
             }
+                    */
         }
         if (status.equals("drive")) {
             //drive robot
