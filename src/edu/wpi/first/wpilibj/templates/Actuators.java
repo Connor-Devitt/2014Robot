@@ -15,8 +15,9 @@ public class Actuators {
     //private final Victor ballLift;
     
     private final Relay magLockRelay;
-    private final Relay ballLoadRelay;
+    private final Relay ballLoadPivotRelay;
     private final Relay reloadRelay;
+    private final Relay ballLoadWheelRelay;
     
     public Actuators() {
         
@@ -28,9 +29,10 @@ public class Actuators {
         
         magLockRelay = new Relay(StaticVars.MAG_LOCK_RELAY_CHANNEL);
         magLockRelay.set(Relay.Value.kOn);
-        ballLoadRelay = new Relay(StaticVars.BALL_LOAD_RELAY_CHANNEL);
+        ballLoadPivotRelay = new Relay(StaticVars.BALL_LOAD_PIVOT_RELAY);
+        ballLoadWheelRelay = new Relay(StaticVars.BALL_LOAD_WHEEL_RELAY);
         reloadRelay = new Relay(StaticVars.RELOAD_RELAY_CHANNEL);
-        //System.out.println("Relay init");
+        
     }
     
     public void turnMagLockOff() {
@@ -54,19 +56,29 @@ public class Actuators {
     }
     */
     
-    public void setBallLoadRelayForward() {
-        ballLoadRelay.set(Relay.Value.kForward);
+    public void setBallLoadPivotRelayForward() {
+        ballLoadPivotRelay.set(Relay.Value.kForward);
     }
     
-    public void setBallLoadRelayReverse() {
-        ballLoadRelay.set(Relay.Value.kReverse);
+    public void setBallLoadPivotRelayReverse() {
+        ballLoadPivotRelay.set(Relay.Value.kReverse);
     }
     
-    public void setballLoadRelayOff() {
-        ballLoadRelay.set(Relay.Value.kOff);
+    public void setBallLoadPivotRelayOff() {
+        ballLoadPivotRelay.set(Relay.Value.kOff);
     }
     
+    public void setBallLoadWheelRelayForward() {
+        ballLoadWheelRelay.set(Relay.Value.kForward);
+    }
     
+    public void setBallLoadWheelRelayReverse() {
+        ballLoadWheelRelay.set(Relay.Value.kReverse);
+    }
+    
+    public void setBallLoadWheelRelayOff() {
+        ballLoadWheelRelay.set(Relay.Value.kOff);
+    }
     
     public void setReloadRelayForward() {
         reloadRelay.set(Relay.Value.kForward);

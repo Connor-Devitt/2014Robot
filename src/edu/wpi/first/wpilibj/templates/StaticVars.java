@@ -16,15 +16,17 @@ public class StaticVars {
     
     //Joystick Axis Mapping
     public static int TWIST_AXIS = 3;
-    public static int BALL_LOAD_AXIS = 6;
+    public static int BALL_LOAD_PIVOT_AXIS = 6;
     
     //Joystick Button Mapping
     public static int MAG_LOCK_TRIGGER_BUTTON = 1;
-    public static int RANGE_BUTTON = 12;
-    public static int GYRO_RESET_BUTTON = 11;
     public static int RELOAD_BUTTON = 2;
-    public static int PUSH_RELOAD_BUTTON = 3;
-    public static int PULL_RELOAD_BUTTON = 4;
+    public static int INTAKE_WHEELS_FORWARD_BUTTON = 3;
+    public static int INTAKE_WHEELS_REVERSE_BUTTON = 4;
+    public static int PUSH_RELOAD_BUTTON = 5;
+    public static int PULL_RELOAD_BUTTON = 6;
+    public static int GYRO_RESET_BUTTON = 11;
+    public static int RANGE_BUTTON = 12;
     
     //Autonomous drive magnitude
     public static double AUTONOMOUS_DRIVE_MAGNITUDE = -0.5;
@@ -44,20 +46,16 @@ public class StaticVars {
     
     //Relay channels
     public static int MAG_LOCK_RELAY_CHANNEL = 2;
-    public static int BALL_LOAD_RELAY_CHANNEL = 1;
+    public static int BALL_LOAD_PIVOT_RELAY = 1;
+    public static int BALL_LOAD_WHEEL_RELAY = 3;
     public static int RELOAD_RELAY_CHANNEL = 4;
     
-    //DigitalInput channels
-    public static int RELOAD_LIMIT_CHANNEL = 6;
-    
     //Timer
-    public static double PUSH_TIME_LIMIT =4.0;
+    public static double PUSH_TIME_LIMIT =2.0;
     public static double PULL_TIME_LIMIT =6.0;
     
     //Ball Load speeds
     public static double BALL_LIFT_SPEED_DOWN = 1;
     public static double BALL_LIFT_SPEED_UP = .75;
-    
-    public static double SHOOTING_DISTANCE = 60.96; //in centimeters, needs better estimate
     
 }

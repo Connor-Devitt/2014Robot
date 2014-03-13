@@ -1,14 +1,12 @@
 
 package edu.wpi.first.wpilibj.templates;
 
-import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Gyro;
 
 public class Sensors {
 
     private final Gyro gyro;
     private final Rangefinder rangefinder;
-    private final DigitalInput reloadLimit;
     private final CameraVision camera;
     
     public Sensors() {
@@ -20,7 +18,6 @@ public class Sensors {
         rangefinder.checkRangefinder();
         rangefinder.startThread();
         
-        reloadLimit = new DigitalInput(StaticVars.RELOAD_LIMIT_CHANNEL);
         camera = new CameraVision();
         
     }
@@ -46,10 +43,6 @@ public class Sensors {
     
    public void updateRangefinder() {
         rangefinder.update();
-   }
-   
-   public boolean reloadLimitReached() {
-       return reloadLimit.get();
    }
    
    public void camLoadNewImg() {

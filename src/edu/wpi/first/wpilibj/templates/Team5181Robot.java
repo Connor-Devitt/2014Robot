@@ -20,27 +20,24 @@ import edu.wpi.first.wpilibj.DriverStationLCD;
  */
 public class Team5181Robot extends IterativeRobot {
     
-    //Global Declarations
     Autonomous autonomous;
     Actuators actuators;
     Sensors sensors;
     DriveTrain driveTrain;
     CustomJoystick joystick;
     Turret turret;
+    BallRetriever ballRetriever;
     DriverStationLCD station;
     
-    /**
-     * This function is run when the robot is first started up and should be
-     * used for any initialization code.
-     */
     public void robotInit() {
            
-        actuators  = new Actuators();
-        sensors    = new Sensors();
-        driveTrain = new DriveTrain(actuators);
-        joystick   = new CustomJoystick();
-        turret     = new Turret(actuators, sensors);
-        station = DriverStationLCD.getInstance();
+        actuators     = new Actuators();
+        sensors       = new Sensors();
+        driveTrain    = new DriveTrain(actuators);
+        joystick      = new CustomJoystick();
+        turret        = new Turret(actuators, sensors);
+        ballRetriever = new BallRetriever(actuators);
+        station       = DriverStationLCD.getInstance();
     }
     
     public void autonomousInit() {
@@ -48,19 +45,13 @@ public class Team5181Robot extends IterativeRobot {
         turret.reloadInit();
     }
     
-    /**
-     * This function is called periodically during autonomous
-     */
     public void autonomousPeriodic() {
-        
-        
+    
         autonomous.runAuto(2); //negative value because we only have 1 auto function.
         turret.reloadUpdate();
         
     }
-    /**
-     * This function is called periodically during operator control
-     */
+    
     public void teleopPeriodic() {
         
         if (joystick.gyroResetButtonPressed()) {
@@ -69,12 +60,10 @@ public class Team5181Robot extends IterativeRobot {
         }
         
         if (joystick.rangeButtonPressed()) {
-            System.out.println(sensors.getRangefinderDistance());
+            //System.out.println(sensors.getRangefinderDistance());
             station.println(DriverStationLCD.Line.kUser1, 1, "Rangefinder distance in feet: "  + sensors.getRangefinderDistanceFeet());
             station.updateLCD();
         }
-        
-        
         
         if (joystick.pushReloadButtonPressed()) {
             turret.pushInit();
@@ -84,43 +73,54 @@ public class Team5181Robot extends IterativeRobot {
             turret.pullInit();
         }
         
+        if (joystick.intakeWheelsForwardButtonPressed()) {
+            if (ballRetriever.isIntakeWheelsOn() && ballRetriever.isIntakeWheelsForward())
+                ballRetriever.stopIntakeWheels();
+            else {
+                if (ballRetriever.isIntakeWheelsOn())     //rev direction 1st stop then strt crrct dir
+                    ballRetriever.stopIntakeWheels();
+                ballRetriever.startIntakeWheels();
+            }
+        }
+        
+        if (joystick.intakeWheelsReverseButtonPressed()) {
+            if (ballRetriever.isIntakeWheelsOn() && !ballRetriever.isIntakeWheelsForward())
+                ballRetriever.stopIntakeWheels();
+            else {
+                if (ballRetriever.isIntakeWheelsOn())
+                    ballRetriever.stopIntakeWheels();
+                ballRetriever.startIntakeWheelsReverse();
+            }
+            
+        }
+        
         turret.setTriggerPull(joystick.magLockTriggerButtonPressed());
        
         //Ball loading logic...
         if (joystick.getBallLoadValue() != 0) {
-            if (joystick.getBallLoadValue() == -1) {
-                //actuators.setBallLoadUp();
-                actuators.setBallLoadRelayReverse();
-            }
-                
-            if (joystick.getBallLoadValue() == 1) {
-                actuators.setBallLoadRelayForward();
-                //actuators.setBallLoadDown();
-            }
-                
-        } else actuators.setballLoadRelayOff();/*actuators.setBallLoadStop();*/
+            if (joystick.getBallLoadValue() == -1)
+                 ballRetriever.setBallRetrieverUp();
+            else ballRetriever.setBallRetrieverDown();
+        } else   ballRetriever.setBallRetriverStop();
         
-        
+        /*
         driveTrain.driveMecanumPolar(joystick.getMagnitude(),
                                      joystick.getDirectionDegrees(),
                                      joystick.getTwist());
+        */
         
-        /*
         driveTrain.fieldDriveMecanumPolar(sensors.getGyroAngle(),
                                           joystick.getMagnitude(),
                                           joystick.getDirectionDegrees(),
                                           joystick.getTwist());
-        */
+        
         turret.reloadUpdate();
         sensors.updateRangefinder();
         
     }
     
-    /**
-     * This function is called periodically during test mode
-     */
     public void testPeriodic() {
-        LiveWindow.run();
+    
     }
     
 }
