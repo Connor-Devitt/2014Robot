@@ -7,7 +7,7 @@ public class Sensors {
 
     private final Gyro gyro;
     private final Rangefinder rangefinder;
-    private final CameraVision camera;
+    //private final CameraVision camera;
     
     public Sensors() {
         gyro = new Gyro(StaticVars.GYRO_CHANNEL);
@@ -18,7 +18,7 @@ public class Sensors {
         rangefinder.checkRangefinder();
         rangefinder.startThread();
         
-        camera = new CameraVision();
+        //camera = new CameraVision();
         
     }
     
@@ -44,7 +44,7 @@ public class Sensors {
    public void updateRangefinder() {
         rangefinder.update();
    }
-   
+   /*
    public void camLoadNewImg() {
        camera.captureImage();
    }
@@ -55,5 +55,5 @@ public class Sensors {
    
    public double camDistanceToTarget(){
        return camera.getDistance();
-   }
+   }*/
 }
