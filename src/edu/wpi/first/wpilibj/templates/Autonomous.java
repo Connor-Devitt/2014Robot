@@ -36,6 +36,9 @@ public class Autonomous {
             case 2:
                 auto2();
                 break;
+            case 3:
+                auto3();
+                break;        
             default:
                 break;
         }
@@ -150,6 +153,7 @@ public class Autonomous {
     
     //does not use camera, just rangefinder, start status must equal "drive"
     private void auto3() {
+        
         sensors.updateRangefinder();
         
         if (status.equals("drive")) {
