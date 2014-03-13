@@ -20,9 +20,11 @@ public class StaticVars {
     
     //Joystick Button Mapping
     public static int MAG_LOCK_TRIGGER_BUTTON = 1;
-    public static int RANGE_BUTTON = 4;
-    public static int GYRO_RESET_BUTTON = 8;
+    public static int RANGE_BUTTON = 12;
+    public static int GYRO_RESET_BUTTON = 11;
     public static int RELOAD_BUTTON = 2;
+    public static int PUSH_RELOAD_BUTTON = 3;
+    public static int PULL_RELOAD_BUTTON = 4;
     
     //Autonomous drive magnitude
     public static double AUTONOMOUS_DRIVE_MAGNITUDE = -0.5;
@@ -31,6 +33,7 @@ public class StaticVars {
     //Autonomous timing
     public static double AUTONOMOUS_DRIVE_TIMER = 3;
     public static double AUTO_TARGET_HOT_WAIT_TIME = 5.00;
+    public static double AUTO_SHOOT_DIST_FEET = 3.0;
     
     //Gyro channel
     public static int GYRO_CHANNEL = 1;

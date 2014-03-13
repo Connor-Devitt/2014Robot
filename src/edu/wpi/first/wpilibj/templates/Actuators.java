@@ -27,8 +27,8 @@ public class Actuators {
         //ballLift = new Victor(StaticVars.BALL_LIFT_MOTOR);
         
         magLockRelay = new Relay(StaticVars.MAG_LOCK_RELAY_CHANNEL);
-        ballLoadRelay = new Relay(StaticVars.BALL_LOAD_RELAY_CHANNEL);
         magLockRelay.set(Relay.Value.kOn);
+        ballLoadRelay = new Relay(StaticVars.BALL_LOAD_RELAY_CHANNEL);
         reloadRelay = new Relay(StaticVars.RELOAD_RELAY_CHANNEL);
         //System.out.println("Relay init");
     }

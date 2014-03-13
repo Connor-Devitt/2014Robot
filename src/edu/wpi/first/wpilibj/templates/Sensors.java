@@ -12,7 +12,6 @@ public class Sensors {
     private final CameraVision camera;
     
     public Sensors() {
-        
         gyro = new Gyro(StaticVars.GYRO_CHANNEL);
         //gyro.setSensitivity(.007);
         gyro.reset();   //zero the gyro
@@ -23,6 +22,7 @@ public class Sensors {
         
         reloadLimit = new DigitalInput(StaticVars.RELOAD_LIMIT_CHANNEL);
         camera = new CameraVision();
+        
     }
     
     public double getGyroAngle() {
@@ -38,6 +38,10 @@ public class Sensors {
     */
     public int getRangefinderDistance() {
         return rangefinder.getDistance();
+    }
+    
+    public double getRangefinderDistanceFeet() {
+        return ((double) getRangefinderDistance())/30.48;
     }
     
    public void updateRangefinder() {

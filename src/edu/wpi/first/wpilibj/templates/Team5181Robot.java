@@ -9,6 +9,7 @@ package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.DriverStationLCD;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -26,6 +27,7 @@ public class Team5181Robot extends IterativeRobot {
     DriveTrain driveTrain;
     CustomJoystick joystick;
     Turret turret;
+    DriverStationLCD station;
     
     /**
      * This function is run when the robot is first started up and should be
@@ -38,6 +40,7 @@ public class Team5181Robot extends IterativeRobot {
         driveTrain = new DriveTrain(actuators);
         joystick   = new CustomJoystick();
         turret     = new Turret(actuators, sensors);
+        station = DriverStationLCD.getInstance();
     }
     
     public void autonomousInit() {
@@ -51,7 +54,7 @@ public class Team5181Robot extends IterativeRobot {
     public void autonomousPeriodic() {
         
         
-        autonomous.runAuto(-1); //negative value because we only have 1 auto function.
+        autonomous.runAuto(2); //negative value because we only have 1 auto function.
         turret.reloadUpdate();
         
     }
@@ -67,11 +70,18 @@ public class Team5181Robot extends IterativeRobot {
         
         if (joystick.rangeButtonPressed()) {
             System.out.println(sensors.getRangefinderDistance());
+            station.println(DriverStationLCD.Line.kUser1, 1, "Rangefinder distance in feet: "  + sensors.getRangefinderDistanceFeet());
+            station.updateLCD();
         }
         
-        if (joystick.ReloadButtonPressed()) {
-            //System.out.println("Reloading....");
-            turret.reloadInit();
+        
+        
+        if (joystick.pushReloadButtonPressed()) {
+            turret.pushInit();
+        }
+        
+        if (joystick.pullReloadButtonPressed()) {
+            turret.pullInit();
         }
         
         turret.setTriggerPull(joystick.magLockTriggerButtonPressed());
@@ -102,6 +112,7 @@ public class Team5181Robot extends IterativeRobot {
                                           joystick.getTwist());
         */
         turret.reloadUpdate();
+        sensors.updateRangefinder();
         
     }
     
