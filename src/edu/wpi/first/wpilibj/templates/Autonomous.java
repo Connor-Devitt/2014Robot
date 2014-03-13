@@ -9,19 +9,21 @@ public class Autonomous {
     
     private String status;
     private boolean timerStarted;
-    private static Timer timer;
+    
+    private final Timer timer;
     private final DriveTrain drivetrain;
     private final Sensors sensors;
     private final Turret turret;
     
     public Autonomous(DriveTrain drivetrain, Sensors sensors, Turret turret) {
-        //status = "turn";    //CAUTION!
-        status = "imgprocess"; //ONLY WHEN USING AUTO2
         this.drivetrain = drivetrain;
         this.sensors = sensors;
-        timerStarted = false;
-        timer = new Timer();
         this.turret = turret;
+        
+        timer = new Timer();
+        
+        timerStarted = false;
+        status = "imgprocess"; //CAUTION THIS IS STARTING STATUS
         turret.setTriggerPull(false);
         sensors.camLoadNewImg();
     }
@@ -39,11 +41,11 @@ public class Autonomous {
         }
     }
     
-    public boolean isTimerStarted() {
+    private boolean isTimerStarted() {
         return timerStarted;
     }
     
-    public void startTimer() {
+    private void startTimer() {
         timer.start();
         timerStarted = true;
     }
