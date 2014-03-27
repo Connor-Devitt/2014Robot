@@ -8,7 +8,6 @@
 package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.DriverStationLCD;
 
 /**
@@ -41,37 +40,43 @@ public class Team5181Robot extends IterativeRobot {
     }
     
     public void autonomousInit() {
-        autonomous = new Autonomous(driveTrain, sensors, turret);
-        turret.reloadInit();
+         autonomous = new Autonomous(driveTrain, sensors, turret, actuators, ballRetriever);
+        //turret.reloadInit();
     }
     
     public void autonomousPeriodic() {
     
-        autonomous.runAuto(3); //negative value because we only have 1 auto function.
+        autonomous.runAuto(4); 
         turret.reloadUpdate();
         
     }
     
     public void teleopPeriodic() {
-        
+        /*
         if (joystick.gyroResetButtonPressed()) {
             //System.out.println(sensors.getGyroAngle());
             sensors.resetGyro();
         }
-        
+        */
+        /*
         if (joystick.rangeButtonPressed()) {
             //System.out.println(sensors.getRangefinderDistance());
-            station.println(DriverStationLCD.Line.kUser1, 1, "Rangefinder distance in feet: "  + sensors.getRangefinderDistanceFeet());
+            station.println(DriverStationLCD.Line.kUser1, 1, "" + sensors.getRangefinderDistanceFeet());
             station.updateLCD();
         }
-        
+        */
         if (joystick.pushReloadButtonPressed()) {
             turret.pushInit();
+            //System.out.println("Pushing");
+            
         }
         
         if (joystick.pullReloadButtonPressed()) {
             turret.pullInit();
+            //System.out.println("pulling");
+            
         }
+        
         
         if (joystick.intakeWheelsForwardButtonPressed()) {
             if (ballRetriever.isIntakeWheelsOn() && ballRetriever.isIntakeWheelsForward())
@@ -102,19 +107,19 @@ public class Team5181Robot extends IterativeRobot {
             else ballRetriever.setBallRetrieverDown();
         } else   ballRetriever.setBallRetriverStop();
         
-        /*
+        
         driveTrain.driveMecanumPolar(joystick.getMagnitude(),
                                      joystick.getDirectionDegrees(),
                                      joystick.getTwist());
-        */
         
+        /*
         driveTrain.fieldDriveMecanumPolar(sensors.getGyroAngle(),
                                           joystick.getMagnitude(),
                                           joystick.getDirectionDegrees(),
                                           joystick.getTwist());
-        
+        */
         turret.reloadUpdate();
-        sensors.updateRangefinder();
+        //sensors.updateRangefinder();
         
     }
     

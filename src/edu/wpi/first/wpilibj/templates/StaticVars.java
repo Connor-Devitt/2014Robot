@@ -23,17 +23,17 @@ public class StaticVars {
     public static int RELOAD_BUTTON = 2;
     public static int INTAKE_WHEELS_FORWARD_BUTTON = 3;
     public static int INTAKE_WHEELS_REVERSE_BUTTON = 4;
-    public static int PUSH_RELOAD_BUTTON = 5;
-    public static int PULL_RELOAD_BUTTON = 6;
+    public static int PUSH_RELOAD_BUTTON = 6;
+    public static int PULL_RELOAD_BUTTON = 5;
     public static int GYRO_RESET_BUTTON = 11;
     public static int RANGE_BUTTON = 12;
     
     //Autonomous drive magnitude
-    public static double AUTONOMOUS_DRIVE_MAGNITUDE = -0.5;
+    public static double AUTONOMOUS_DRIVE_MAGNITUDE = 0.3;
     public static double AUTONOMOUS_TWIST_MAGNITUDE = 0.65;
     
     //Autonomous timing
-    public static double AUTONOMOUS_DRIVE_TIMER = 3;
+    public static double AUTONOMOUS_DRIVE_TIMER = 4;
     public static double AUTO_TARGET_HOT_WAIT_TIME = 5.00;
     public static double AUTO_SHOOT_DIST_FEET = 3.0;
     
@@ -45,17 +45,19 @@ public class StaticVars {
     public static double RANGE_DELAY = 0.08;    //delay in s -> 80ms
     
     //Relay channels
-    public static int MAG_LOCK_RELAY_CHANNEL = 2;
+    public static int MAG_LOCK_RELAY_CHANNEL = 8;
     public static int BALL_LOAD_PIVOT_RELAY = 1;
     public static int BALL_LOAD_WHEEL_RELAY = 3;
-    public static int RELOAD_RELAY_CHANNEL = 4;
+    public static int RELOAD_RELAY_CHANNEL = 6;
     
     //Timer
-    public static double PUSH_TIME_LIMIT =2.0;
-    public static double PULL_TIME_LIMIT =6.0;
+    public static double PUSH_TIME_LIMIT =4.5;
+    public static double PULL_TIME_LIMIT =2.0;
+    public static double BALL_LOAD_TIME = 1.0;
     
     //Ball Load speeds
     public static double BALL_LIFT_SPEED_DOWN = 1;
     public static double BALL_LIFT_SPEED_UP = .75;
+    
     
 }

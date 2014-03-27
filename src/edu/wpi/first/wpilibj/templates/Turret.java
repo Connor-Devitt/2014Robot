@@ -11,25 +11,31 @@ public class Turret {
     boolean pushing;
     boolean pushTimerStarted;
     boolean pullTimerStarted;
-    Timer reloadTimer;
+    //Timer reloadTimer;
+    Timer pullTimer;
+    Timer pushTimer;
     Actuators actuators;
     Sensors sensors;
     
     public Turret(Actuators actuators, Sensors sensors) {
         this.actuators = actuators;
         this.sensors = sensors;
-        reloadTimer = new Timer();
+        //reloadTimer = new Timer();
         triggerPulled = false;
         reloading = false;
         pushTimerStarted = false;
         pullTimerStarted = false;
+        pushing = false;
+        pulling = false;
+        pullTimer = new Timer();
+        pushTimer = new Timer();
     }
     public void setTriggerPull(boolean isPulled){
         if (isPulled)
             actuators.turnMagLockOff();
         else actuators.turnMagLockOn();
     }
-    
+    /*
     public void reloadInit() {
         if(!reloading) {
             reloading = true;
@@ -39,15 +45,16 @@ public class Turret {
             actuators.setReloadRelayForward();
         }
     }
-    
+    */
     public void pullInit() {
         if (!pulling) {
             pulling = true;
             pushing = false;
-            reloadTimer.start();
+            pullTimer.reset();
+            pullTimer.start();
             pullTimerStarted = true;
             pushTimerStarted = false;
-            actuators.setReloadRelayReverse();
+            actuators.setReloadRelayForward();
         }
     }
     
@@ -55,54 +62,36 @@ public class Turret {
         if (!pushing) {
             pulling = false;
             pushing = true;
-            reloadTimer.start();
+            //reloadTimer.start();
+            pullTimer.reset();
+            pullTimer.start();
             pullTimerStarted = false;
             pullTimerStarted = true;
-            actuators.setReloadRelayForward();
+            actuators.setReloadRelayReverse();
         }
     }
     
     public void reloadUpdate() {
         if (pulling) {
-            if (reloadTimer.get() > StaticVars.PULL_TIME_LIMIT) {
+            if (pullTimer.get() > StaticVars.PULL_TIME_LIMIT) {
                 actuators.setReloadRelayStop();
                 pushTimerStarted = false;
                 pullTimerStarted = false;
-                reloadTimer.reset();
-            } else actuators.setReloadRelayReverse();
+                pulling = false;
+                pushing = false;
+                //pullTimer.reset();
+            } else actuators.setReloadRelayForward();
         } else {
             if (pushing) {
-                if (reloadTimer.get() > StaticVars.PUSH_TIME_LIMIT) {
+                if (pushTimer.get() > StaticVars.PUSH_TIME_LIMIT) {
                     actuators.setReloadRelayStop();
                     pushTimerStarted = false;
                     pullTimerStarted = false;
-                    reloadTimer.reset();
-                } else actuators.setReloadRelayForward();
-            }
-        }
-    }
-    
-    public void reloadUpdateOld() {
-        if (reloading){
-            if (pushTimerStarted == true){
-                if(reloadTimer.get() > StaticVars.PUSH_TIME_LIMIT) {
-                    actuators.setReloadRelayReverse();
-                    pushTimerStarted = false;
-                    pullTimerStarted = true;
-                    reloadTimer.reset();
-                    reloadTimer.start();
-                } else actuators.setReloadRelayForward();
-            } else {
-                if (pullTimerStarted ==true){
-                    if(reloadTimer.get() > StaticVars.PULL_TIME_LIMIT /*|| !sensors.reloadLimitReached()*/){
-                        actuators.setReloadRelayStop();
-                        pushTimerStarted = false;
-                        pullTimerStarted = false;
-                        reloading =false;
-                        reloadTimer.reset();    
-                    } else actuators.setReloadRelayReverse();
-                }
-            }
+                    pulling = false;
+                    pushing  = false;
+                    //pushTimer.reset();
+                } else actuators.setReloadRelayReverse();
+            } else actuators.setReloadRelayStop();
         }
     }
 }
